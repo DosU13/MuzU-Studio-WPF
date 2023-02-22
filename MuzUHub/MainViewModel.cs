@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -72,20 +74,22 @@ class MainViewModel : BindableBase
     {
         if (item is string url)
         {
-            Application.Current.Shutdown();
-            string appPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            appPath = appPath.Substring(0, appPath.LastIndexOf('\\')+1) + "MuzU Studio.exe";
-            Process.Start(appPath, new string[] { url });
+            if(!File.Exists(url))
+            {
+                MessageBox.Show("Invalid File path");
+                return;
+            }
+            MuzUStudioRunner.Run(MuzUStudio_ArgType.MuzU_FILE, url);
         }
     }
 
     internal void OpenEmtpyProject()
     {
-        throw new NotImplementedException();
+        MuzUStudioRunner.Run(MuzUStudio_ArgType.NEW_PROJECT);
     }
 
     internal void NewProjectFromMidi(string fileName)
     {
-        throw new NotImplementedException();
+        MuzUStudioRunner.Run(MuzUStudio_ArgType.MIDI_FILE, fileName);
     }
 }

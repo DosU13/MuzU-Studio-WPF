@@ -36,17 +36,16 @@ public partial class App : Application
     /// <summary>
     /// Configures the services for the application.
     /// </summary>
-    private void ConfigureServices(MuzUProject muzUProject)
+    private void ConfigureServices(ProjectRepository projectRepository)
     {
         var services = new ServiceCollection();
 
-        // Services
-        services.AddSingleton(new ProjectRepository() { MuzUProject = muzUProject });
+        services.AddSingleton(projectRepository);
+        // Models
         services.AddSingleton<AudioService>();
         services.AddSingleton<PianoRollModel>();
         services.AddSingleton<SequenceListModel>();
-
-        // Viewmodels
+        // ViewModels
         services.AddTransient<MediaPlayerViewModel>();
         services.AddTransient<PianoRollViewModel>();
         services.AddTransient<ProjectPropertiesVM>();
@@ -60,49 +59,26 @@ public partial class App : Application
 
     private void Application_Startup(object sender, StartupEventArgs e)
     {
-        string projectPath;
-        if (e.Args.Length == 0)
+        ProjectRepository? projectRepository = null;
+        if (e.Args.Length == 0 || !int.TryParse(e.Args[0], out int argType))
         {
-            projectPath = MuzU_Studio.Properties.Settings.Default.LastProjectURL;
-            if (string.IsNullOrEmpty(projectPath)) 
+            projectRepository = ProjectRepository.InitDefault();
+        }
+        else
+        {
+            switch ((MuzUHub.MuzUStudio_ArgType)argType)
             {
-                ConfigureServices(new MuzUProject());
-                return; 
+                case MuzUHub.MuzUStudio_ArgType.MuzU_FILE:
+                    projectRepository = ProjectRepository.InitFromMuzUFile(e.Args[1]);
+                    break;
+                case MuzUHub.MuzUStudio_ArgType.MIDI_FILE:
+                    projectRepository = ProjectRepository.InitFromMidiFile(e.Args[1]);
+                    break;
+                case MuzUHub.MuzUStudio_ArgType.NEW_PROJECT:
+                    projectRepository = ProjectRepository.InitNew();
+                    break;
             }
-
-        }else projectPath = e.Args[0];
-        LoadProject(projectPath);
-    }
-
-    private void LoadProject(string projectPath)
-    {
-        switch(Path.GetExtension(projectPath).ToLower())
-        {
-            case ".midi":
-                InitProjectFromMidi(projectPath);
-                break;
-            case ".muzu":
-                InitMuzUProject(projectPath);
-                break;
         }
-    }
-
-    private void InitMuzUProject(string projectPath)
-    {
-        using (var stream = File.OpenText(projectPath))
-        {
-            var muzUProject = new MuzUProject(stream);
-            stream.Close();
-            ConfigureServices(muzUProject);
-        }
-    }
-
-    private void InitProjectFromMidi(string projectPath)
-    {
-        using (var stream = File.OpenRead(projectPath))
-        {
-            var muzUProject = MidiImporter.Import(stream, projectPath);
-            ConfigureServices(muzUProject);
-        }
+        ConfigureServices(projectRepository?? ProjectRepository.InitDefault());
     }
 }
