@@ -1,0 +1,139 @@
+﻿<UserControl
+    x:Class="MuzU_Studio.view.PianoRoll"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MuzU_Studio.view"
+    xmlns:model="clr-namespace:MuzU_Studio.model"
+    xmlns:viewmodel="clr-namespace:MuzU_Studio.viewmodel"
+    xmlns:util="clr-namespace:MuzU_Studio.util"
+    xmlns:zoomAndPan="clr-namespace:ZoomAndPan;assembly=ZoomAndPan"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    DataContext="{Binding Source={StaticResource Locator},
+                          Path=PianoRollViewModel}"
+    >
+    <UserControl.Resources>
+        <util:ColorToBrushConverter 
+                x:Key="colorToBrushConverter"/>
+        <util:VisibilityConverter
+                x:Key="visibilityConverter"/>
+
+        <DataTemplate 
+                DataType="{x:Type viewmodel:NoteViewModel}">
+            <Grid
+                MouseDown="Note_MouseDown"
+                MouseUp="Note_MouseUp"
+                MouseMove="Note_MouseMove">
+                <Rectangle
+                    Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    Fill="{Binding Color, Converter={StaticResource colorToBrushConverter}}"
+                    Cursor="Hand"/>
+                <Rectangle
+                    Name="Border"
+                    Stroke="{Binding BorderColor, Converter={StaticResource colorToBrushConverter}}"
+                    StrokeThickness="5"
+                    Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    Cursor="Hand"/>
+
+            </Grid>
+        </DataTemplate>
+
+        <!-- 
+        Override the style of the ListBox to remove the ScrollViewer.
+        All we want is ListBox logic but based on a Canvas.
+        -->
+        <Style x:Key="noScrollViewerListBoxStyle" TargetType="ListBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Canvas 
+                            Background="{TemplateBinding Background}"
+                            IsItemsHost="True" 
+                            />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 
+        Override the style of each ListBoxItem to bind Canvas.Left, Canvas.Top and IsSelected.
+        -->
+        <Style 
+            x:Key="listBoxItemStyle" 
+            TargetType="ListBoxItem"
+            >
+            <Setter 
+                Property="Canvas.Left" 
+                Value="{Binding X}" 
+                />
+            <Setter 
+                Property="Canvas.Top" 
+                Value="{Binding Y}" 
+                />
+            <Setter 
+                Property="IsSelected" 
+                Value="{Binding IsSelected}" 
+                />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate
+                DataType="{x:Type viewmodel:SequenceViewModel}">
+            <ListBox
+                    Visibility="{Binding Visible, Converter={StaticResource visibilityConverter}}"
+                    ItemsSource="{Binding Notes}"
+                    Style="{StaticResource noScrollViewerListBoxStyle}"
+                    ItemContainerStyle="{StaticResource listBoxItemStyle}"
+                />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="canvasContainer">
+        <ScrollViewer x:Name="scroller"
+                      CanContentScroll="True"
+                      VerticalScrollBarVisibility="Visible"
+                      HorizontalScrollBarVisibility="Visible"
+                      KeyDown="zoomAndPanControl_KeyDown"
+                      >
+            <zoomAndPan:ZoomAndPanControl
+                x:Name="zoomAndPanControl"
+                ContentHorizontalScale="{Binding PianoRollModel.ContentScaleX, Mode=TwoWay}"
+                ContentVerticalScale="{Binding PianoRollModel.ContentScaleY, Mode=TwoWay}"
+                ContentOffsetX="{Binding PianoRollModel.ContentOffsetX, Mode=TwoWay}"
+                ContentOffsetY="{Binding PianoRollModel.ContentOffsetY, Mode=TwoWay}"
+                ContentViewportWidth="{Binding PianoRollModel.ContentViewportWidth, Mode=OneWayToSource}"
+                ContentViewportHeight="{Binding PianoRollModel.ContentViewportHeight, Mode=OneWayToSource}"
+                MouseDown="zoomAndPanControl_MouseDown"
+                MouseUp="zoomAndPanControl_MouseUp"
+                MouseMove="zoomAndPanControl_MouseMove"
+	            MouseWheel="zoomAndPanControl_MouseWheel"
+                KeyDown="zoomAndPanControl_KeyDown"
+                >
+                <Grid x:Name="content" 
+                      Width="{Binding PianoRollModel.ContentWidth}" 
+                      Height="{Binding PianoRollModel.ContentHeight}"
+                      SizeChanged="pianoRoll_SizeChanged"
+                      >
+                    <ItemsControl 
+                        ItemsSource="{Binding SequenceModel.Sequences}"
+                        Background="Transparent"
+                        />
+                    <ItemsControl
+                        ItemsSource="{Binding PianoRollModel.Lines}"
+                        />
+                </Grid>
+            </zoomAndPan:ZoomAndPanControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

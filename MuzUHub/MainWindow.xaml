@@ -1,0 +1,89 @@
+﻿<Window x:Class="MuzUHub.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:MuzUHub"
+        mc:Ignorable="d"
+        Style="{DynamicResource MainWindowStyle}"
+        Title="MuzUHub" 
+        Height="450" 
+        Width="800"
+        MinHeight="150"
+        MinWidth="550"
+        >
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="Template_ProjectURL"
+                      DataType="{x:Type System:String}">
+
+            <Grid Margin="4"
+                  >
+                <Grid.InputBindings>
+                    <MouseBinding
+                        Gesture="LeftDoubleClick"
+                        Command="{Binding
+                            RelativeSource={RelativeSource AncestorType={x:Type Window}},
+                            Path=DataContext.OpenProjectCommand}"
+                        CommandParameter="{Binding}"/>
+                </Grid.InputBindings>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" 
+                           Text="{Binding}"
+                           FontSize="18"/>
+                <Button Content="❌"
+                        HorizontalAlignment="Right"
+                        Command="{Binding 
+                            RelativeSource={RelativeSource AncestorType={x:Type Window}},
+                            Path=DataContext.DeleteItemCommand}"
+                        CommandParameter="{Binding}"/>
+                <TextBlock Grid.Row="1" 
+                           Text="{Binding}"
+                           FontSize="10"
+                           HorizontalAlignment="Left"/>
+            </Grid>
+        </DataTemplate>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            VerticalAlignment="Center">
+            <Button Content="New Project"
+                    Click="NewProject_Click"
+                    FontSize="18"
+                    Width="200"
+                    Margin="3"
+                    />
+            <Button Content="Open Existing"
+                    Click="Open_Click"
+                    FontSize="18"
+                    Width="200"
+                    Margin="3"
+                    />
+            <Button Content="New From Midi"
+                    Click="NewFromMidi_Click"
+                    FontSize="18"
+                    Width="200"
+                    Margin="3"
+                    />
+        </StackPanel>
+        <ListBox x:Name="ProjectsListBox" Grid.Column="1"
+                 ItemsSource="{Binding ProjectUrls}"
+                 Margin="30"
+                 ItemTemplate="{StaticResource Template_ProjectURL}"
+                 />
+    </Grid>
+</Window>

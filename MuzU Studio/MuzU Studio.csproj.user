@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="view\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\MediaControls.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\pianoRoll\PianoOverview.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\pianoRoll\PianoRoll.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\ProjectProperties.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\SequenceListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\Visualizer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
