@@ -45,18 +45,15 @@
             <MenuItem Width="200" Grid.Column="0" FontSize="17" FontWeight="Bold"
                       Header="{Binding ProjectName, Mode=OneWay}"
                       IsEnabled="False"/>
-            <MenuItem  Grid.Column="1" Header="⋮" 
-                       FontSize="27" FontWeight="ExtraBold"
+            <MenuItem  Grid.Column="1" Header="Project Properties" 
+                       FontSize="16"
                        Click="ProjectProperties_Click"
                        IsEnabled="{Binding ExistProject, Mode=OneWay}"/>
             <MenuItem  Grid.Column="3" Header="Save" 
                        Click="Save_Click"
                        IsEnabled="{Binding ExistProject, Mode=OneWay}"/>
             <MenuItem Grid.Column="4"  Header=" ☰ " HorizontalAlignment="Right">
-                <MenuItem Header="New Empty" Click="NewEmpty_Click"/>
-                <MenuItem Header="New From Midi" Click="NewMidi_Click"/>
-                <Separator/>
-                <MenuItem Header="Open" Click="Open_Click"/>
+                <MenuItem Header="Open MuzU Hub" Click="OpenMuzUHub_Click"/>
                 <Separator/>
                 <MenuItem Header="Save" Click="Save_Click"
                               IsEnabled="{Binding ExistProjectFile, Mode=OneWay}"/>

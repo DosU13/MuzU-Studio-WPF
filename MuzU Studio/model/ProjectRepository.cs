@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace MuzU_Studio.model;
 
-internal class ProjectRepository
+public class ProjectRepository
 {
     public static ProjectRepository InitDefault()
     {
