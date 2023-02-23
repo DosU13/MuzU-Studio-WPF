@@ -15,9 +15,10 @@ namespace MuzU_Studio.model;
 
 public class ProjectRepository
 {
+    #region static Init methods
     public static ProjectRepository InitDefault()
     {
-        var projectPath = MuzU_Studio.Properties.Settings.Default.LastProjectURL;
+        var projectPath = MuzU_Studio.Properties.Settings.Default.LastProjectPath;
         return string.IsNullOrEmpty(projectPath) ? InitNew() : InitFromMuzUFile(projectPath);
     }
 
@@ -45,6 +46,7 @@ public class ProjectRepository
             return new ProjectRepository(muzUProject, path);
         }
     }
+    #endregion
 
     private ProjectRepository(MuzUProject muzUProject, string? projectPath = null)
     {
@@ -52,15 +54,38 @@ public class ProjectRepository
         ProjectPath = projectPath;
     }
 
-    public MuzUProject MuzUProject { get; set; }
+    public MuzUProject MuzUProject { get; }
 
-    public string? ProjectPath { get; set; }
+    private string? projectPath;
+    public string? ProjectPath { 
+        get { return projectPath; } 
+        set {
+            SetLastProjectPath(value);
+            if (!File.Exists(value)) throw new FileNotFoundException(value);
+            if(value != null) AddProjectPathToRecents(value);
+            projectPath = value;
+        } 
+    }
 
-    internal void AddProjectToSettings(string path)
+    /// <summary>
+    /// Updates MuzUHub User Settings
+    /// </summary>
+    /// <param name="path"></param>
+    private void AddProjectPathToRecents(string path)
     {
         var _projectUrls = MuzUHub.Properties.Settings.Default.ProjectsURLs!;
         _projectUrls.Add(path);
         MuzUHub.Properties.Settings.Default.ProjectsURLs = _projectUrls;
         MuzUHub.Properties.Settings.Default.Save();
+    }
+
+    /// <summary>
+    /// Updates MuzU Studio User Settings
+    /// </summary>
+    /// <param name="path"></param>
+    private void SetLastProjectPath(string? path)
+    {
+        Properties.Settings.Default.LastProjectPath = path;
+        Properties.Settings.Default.Save();
     }
 }

@@ -5,6 +5,7 @@ using MuzU_Studio.util;
 using MuzUStandard.data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +14,23 @@ namespace MuzU_Studio.viewmodel;
 
 public class ProjectPropertiesVM: BindableBase
 {
-    private MuzUData _muzUData;
-    private MuzUData MuzUData => _muzUData;
+    private ProjectRepository projectRepository;
+    private MuzUData MuzUData => projectRepository.MuzUProject.MuzUData;
 
-    public ProjectPropertiesVM(ProjectRepository projectModel)
+    public ProjectPropertiesVM(ProjectRepository projectRepository)
     {
-        _muzUData = projectModel.MuzUProject.MuzUData;
+        this.projectRepository = projectRepository;
     }
 
-    public string ProjectName { 
+    public string ProjectName
+    {
         get => MuzUData.Identity.Name;
-        set => MuzUData.Identity.Name = value;}
+        set
+        {
+            MuzUData.Identity.Name = value;
+            App.Current.Services.GetService<ProjectViewModel>()!.ProjectName_Changed();
+        }
+    }
 
     public string ProjectCreator
     {
@@ -58,32 +65,54 @@ public class ProjectPropertiesVM: BindableBase
     public string MusicLocalPath
     {
         get => MuzUData.MusicLocal.MusicPath;
-        set { MuzUData.MusicLocal.MusicPath = value;
-            App.Current.Services.GetService<AudioService>().UpdateAudio(value);
-            OnPropertyChanged();}
+        set {
+            if (File.Exists(value) == false) throw new FileNotFoundException(value);
+            MuzUData.MusicLocal.MusicPath = value;
+            App.Current.Services.GetService<AudioService>()!.UpdateAudio(value);
+            MusicTempoChanged();
+            OnPropertyChanged();
+        }
     }
 
     public long MusicLocalOffsetMicroseconds
     {
-        get => MuzUData.MusicLocal.MusicOffsetMicroseconds; 
-        set => MuzUData.MusicLocal.MusicOffsetMicroseconds = value;
+        get => MuzUData.MusicLocal.MusicOffsetMicroseconds;
+        set
+        {
+            MuzUData.MusicLocal.MusicOffsetMicroseconds = value;
+            MusicTempoChanged();
+        }
     }
 
     public double TempoBPM
     {
         get => MuzUData.Tempo.BPM;
-        set => MuzUData.Tempo.BPM = value;
+        set {
+            MuzUData.Tempo.BPM = value;
+            MusicTempoChanged();
+        }
     }
 
     public int TempoTimeSignNumerator
     {
         get => MuzUData.Tempo.TimeSignature.Numerator;
-        set => MuzUData.Tempo.TimeSignature.Numerator = value;
+        set {
+            MuzUData.Tempo.TimeSignature.Numerator = value;
+            MusicTempoChanged();
+        }
     }
 
     public int TempoTimeSignDenominator
     {
         get => MuzUData.Tempo.TimeSignature.Denominator;
-        set => MuzUData.Tempo.TimeSignature.Denominator = value;
+        set {
+            MuzUData.Tempo.TimeSignature.Denominator = value;
+            MusicTempoChanged();
+        }
+    }
+
+    private void MusicTempoChanged()
+    {
+        throw new NotImplementedException();
     }
 }

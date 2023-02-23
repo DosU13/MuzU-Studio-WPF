@@ -23,7 +23,16 @@ public class ProjectViewModel: BindableBase
 
     public MuzUProject MuzUProject => projectRepository.MuzUProject;
 
-    public string? ProjectPath { get => projectRepository.ProjectPath; set => projectRepository.ProjectPath = value; }
+    public string? ProjectPath
+    {
+        get => projectRepository.ProjectPath;
+        set
+        {
+            projectRepository.ProjectPath = value;
+            OnPropertyChanged(nameof(ProjectPath));
+            OnPropertyChanged(nameof(ExistProjectPath));
+        }
+    }
     public bool ExistProjectPath => ProjectPath != null;
 
     public string ProjectName { get => MuzUProject.MuzUData.Identity.Name??""; }
@@ -36,7 +45,6 @@ public class ProjectViewModel: BindableBase
             await Task.Factory.StartNew(delegate
             {
                 MuzUProject.Save(stream);
-                if (!ExistProjectPath) ProjectPath = filePath;
                 res = true;
             });
             stream.Close();
@@ -56,7 +64,7 @@ public class ProjectViewModel: BindableBase
         App.Current.Services.GetService<AudioService>()?.UpdateAudio(audioPath);
     }
 
-    internal void SaveProjectPathSettings()
+    internal void ProjectName_Changed()
     {
         throw new NotImplementedException();
     }

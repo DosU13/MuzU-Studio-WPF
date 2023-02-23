@@ -26,11 +26,6 @@ public partial class MainWindow : Window
 
     private MainViewModel MainViewModel => (DataContext as MainViewModel)!;
 
-    private void OnExit(object sender, ExitEventArgs e)
-    {
-        Properties.Settings.Default.Save();
-    }
-
     private void NewProject_Click(object sender, RoutedEventArgs e)
     {
         MainViewModel.OpenEmtpyProject();

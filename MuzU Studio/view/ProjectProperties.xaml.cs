@@ -23,7 +23,7 @@ namespace MuzU_Studio.view;
 /// </summary>
 public partial class ProjectProperties : Window
 {
-    public ProjectProperties(MuzUData muzUData)
+    public ProjectProperties()
     {
         InitializeComponent();
     }

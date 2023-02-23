@@ -26,12 +26,12 @@ namespace MuzU_Studio.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastProjectURL {
+        public string LastProjectPath {
             get {
-                return ((string)(this["LastProjectURL"]));
+                return ((string)(this["LastProjectPath"]));
             }
             set {
-                this["LastProjectURL"] = value;
+                this["LastProjectPath"] = value;
             }
         }
     }

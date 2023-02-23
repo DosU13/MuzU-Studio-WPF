@@ -23,7 +23,7 @@ public sealed partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private ProjectViewModel ProjectVM => this.DataContext! as ProjectViewModel;
+    private ProjectViewModel ProjectVM => this.DataContext as ProjectViewModel;
 
     private void OpenMuzUHub_Click(object sender, RoutedEventArgs e)
     {
@@ -50,7 +50,7 @@ public sealed partial class MainWindow : Window
         {
             if (await ProjectVM.SaveToFile(picker.FileName))
             {
-                ProjectVM.SaveProjectPathSettings();
+                ProjectVM.ProjectPath = picker.FileName;
                 return true;
             }
             else MessageBox.Show("Couldn't save the project");
@@ -63,7 +63,7 @@ public sealed partial class MainWindow : Window
     {
         if (projectProperties == null)
         {
-            projectProperties = new ProjectProperties(ProjectVM.MuzUProject.MuzUData);
+            projectProperties = new ProjectProperties();
             projectProperties.Show();
             projectProperties.Closed += (x, y) => { projectProperties = null; ProjectVM.NotifyBindings(); };
         }
