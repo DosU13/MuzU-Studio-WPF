@@ -14,35 +14,19 @@ namespace MuzU_Studio.viewmodel;
 
 public class ProjectViewModel: BindableBase
 {
-    private ProjectRepository projectModel;
-    internal VMRefreshableView VMRefreshableView;
+    private ProjectRepository projectRepository;
 
     public ProjectViewModel(ProjectRepository projectModel)
     {
-        this.projectModel = projectModel;
+        this.projectRepository = projectModel;
     }
 
-    public MuzUProject MuzUProject { get => projectModel.MuzUProject; set
-        {
-            projectModel.MuzUProject = value;
-            App.Current.Services.GetService<SequenceListModel>().Update(projectModel);
-            App.Current.Services.GetService<AudioService>().UpdateAudio(
-                projectModel.MuzUProject.MuzUData.MusicLocal.MusicPath);
-            OnPropertyChanged(string.Empty);
-            VMRefreshableView?.RefreshViewModel();
-        } }
+    public MuzUProject MuzUProject => projectRepository.MuzUProject;
 
-    public string ProjectPath { get => projectModel.ProjectPath; set => projectModel.ProjectPath = value; }
-    public bool ExistProject => MuzUProject != null;
+    public string? ProjectPath { get => projectRepository.ProjectPath; set => projectRepository.ProjectPath = value; }
     public bool ExistProjectPath => ProjectPath != null;
 
-    public string ProjectName { get => MuzUProject?.MuzUData.Identity.Name??""; }
-
-    public void NewEmptyProject()
-    {
-        MuzUProject = new MuzUProject();
-        ProjectPath = null;
-    }
+    public string ProjectName { get => MuzUProject.MuzUData.Identity.Name??""; }
 
     public async Task<bool> SaveToFile(string filePath)
     {
@@ -68,21 +52,12 @@ public class ProjectViewModel: BindableBase
     internal void NotifyBindings()
     {
         OnPropertyChanged(nameof(ProjectName));
+        string audioPath = MuzUProject.MuzUData.MusicLocal.MusicPath;
+        App.Current.Services.GetService<AudioService>()?.UpdateAudio(audioPath);
     }
 
-    internal async Task<bool> LoadFromFile(string filePath)
+    internal void SaveProjectPathSettings()
     {
-        using (var stream = File.OpenText(filePath))
-        {
-            bool res = false;
-            await Task.Factory.StartNew(delegate
-            {
-                MuzUProject = new MuzUProject(stream);
-                ProjectPath = filePath;
-                res = true;
-            });
-            stream.Close();
-            return res;
-        }
+        throw new NotImplementedException();
     }
 }

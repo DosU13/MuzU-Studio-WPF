@@ -5,11 +5,11 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzU Studio", "MuzU Studio\MuzU Studio.csproj", "{9662C1CF-77DA-4A42-8B35-758D9D9D3087}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzUStandard", "..\MuzU Old Framework\MuzUStandard\MuzUStandard.csproj", "{30416DDD-D181-4920-86DC-817CFE653881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzUStandard", "..\MuzU\MuzUStandard\MuzUStandard.csproj", "{30416DDD-D181-4920-86DC-817CFE653881}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuzUHub", "MuzUHub\MuzUHub.csproj", "{83B359A9-F215-4342-9D2B-0251C4696166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzUHub", "MuzUHub\MuzUHub.csproj", "{83B359A9-F215-4342-9D2B-0251C4696166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceLibrary", "ResourceLibrary\ResourceLibrary.csproj", "{8A02F4E1-EACD-4EA7-AE29-5D1070CDEB7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceLibrary", "ResourceLibrary\ResourceLibrary.csproj", "{8A02F4E1-EACD-4EA7-AE29-5D1070CDEB7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

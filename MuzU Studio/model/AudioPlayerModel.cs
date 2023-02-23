@@ -1,4 +1,6 @@
-﻿using MediaPlayer = System.Windows.Media.MediaPlayer;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.IO;
+using MediaPlayer = System.Windows.Media.MediaPlayer;
 
 namespace MuzU_Studio.model;
 
@@ -15,11 +17,12 @@ internal class AudioService
 
     public void UpdateAudio(string audioFilePath)
     {
+        mediaPlayer.Stop();
+        isPlaying = false;
+        if (File.Exists(audioFilePath) == false) return;
         try
         {
-            mediaPlayer.Stop();
             mediaPlayer.Open(new Uri(audioFilePath));
-            isPlaying = false;
         }
         catch (Exception) { }
     }

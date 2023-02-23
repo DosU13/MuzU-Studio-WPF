@@ -47,7 +47,7 @@ namespace MuzU_Studio {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.2.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.0.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
@@ -65,7 +65,7 @@ namespace MuzU_Studio {
             
             #line default
             #line hidden
-            System.Uri resourceLocater = new System.Uri("/MuzU Studio;component/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MuzU Studio;V1.0.0.0;component/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -79,7 +79,7 @@ namespace MuzU_Studio {
         /// </summary>
         [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.2.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.0.0")]
         public static void Main() {
             MuzU_Studio.App app = new MuzU_Studio.App();
             app.InitializeComponent();

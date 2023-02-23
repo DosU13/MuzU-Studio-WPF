@@ -53,6 +53,9 @@ public partial class MainWindow : Window
     {
         var picker = new OpenFileDialog
         {
+#if DEBUG
+            InitialDirectory = "D:\\DosU\\Documents\\midi",
+#endif
             DefaultExt = ".mid",
             Filter = "Midi file (*.mid)|*.mid"
         };

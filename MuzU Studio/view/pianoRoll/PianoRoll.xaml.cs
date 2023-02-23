@@ -13,7 +13,7 @@ using Point = System.Windows.Point;
 
 namespace MuzU_Studio.view;
 
-public sealed partial class PianoRoll : UserControl, VMRefreshableView
+public sealed partial class PianoRoll : UserControl
 {
     public PianoRoll()
     {

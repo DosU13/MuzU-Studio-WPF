@@ -22,7 +22,7 @@ namespace MuzU_Studio.view;
 /// <summary>
 /// Interaction logic for PianoOverview.xaml
 /// </summary>
-public partial class PianoOverview : UserControl, VMRefreshableView
+public partial class PianoOverview : UserControl
 {
     public PianoOverview()
     {

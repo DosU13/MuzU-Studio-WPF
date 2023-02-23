@@ -109,3 +109,59 @@ D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzU
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.dll.config
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.csproj.AssemblyReference.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\Visualizer.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MainWindow.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MediaControls.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\pianoRoll\PianoOverview.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\pianoRoll\PianoRoll.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\ProjectProperties.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\SequenceListView.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\Visualizer.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\App.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio_MarkupCompile.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio_MarkupCompile.lref
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Melanchall_DryWetMidi_Native32.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Melanchall_DryWetMidi_Native64.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Melanchall_DryWetMidi_Native64.dylib
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.deps.json
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.runtimeconfig.json
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.exe
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzU Studio.exe
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzU Studio.dll.config
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzU Studio.deps.json
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzU Studio.runtimeconfig.json
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzU Studio.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzU Studio.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Melanchall.DryWetMidi.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.VisualStudio.Modeling.Sdk.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\ResourceLibrary.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\ZoomAndPan.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUHub.dll.config
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\ResourceLibrary.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\App.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MainWindow.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MediaControls.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\pianoRoll\PianoOverview.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\pianoRoll\PianoRoll.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\ProjectProperties.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\SequenceListView.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.g.resources
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.GeneratedMSBuildEditorConfig.editorconfig
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.AssemblyInfoInputs.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.AssemblyInfo.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.csproj.CoreCompileInputs.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.csproj.CopyComplete
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\refint\MuzU Studio.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.genruntimeconfig.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\ref\MuzU Studio.dll
