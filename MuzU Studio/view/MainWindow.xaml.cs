@@ -6,7 +6,6 @@ using MuzU_Studio.Model;
 using MuzU_Studio.util;
 using MuzU_Studio.view;
 using MuzU_Studio.viewmodel;
-using MuzUStandard;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -23,7 +22,7 @@ public sealed partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private ProjectViewModel ProjectVM => this.DataContext as ProjectViewModel;
+    private ProjectViewModel ProjectVM => (this.DataContext as ProjectViewModel)!;
 
     private void OpenMuzUHub_Click(object sender, RoutedEventArgs e)
     {

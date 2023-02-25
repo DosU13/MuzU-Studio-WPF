@@ -1,0 +1,20 @@
+﻿MuzU Studio
+
+
+winexe
+C#
+.cs
+D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Release\net7.0-windows\
+MuzU_Studio
+none
+false
+TRACE;RELEASE;NET;NET7_0;NETCOREAPP
+D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\App.xaml
+7598491833
+
+351631485229
+207661942687
+view\MainWindow.xaml;view\MediaControls.xaml;view\pianoRoll\PianoOverview.xaml;view\pianoRoll\PianoRoll.xaml;view\ProjectProperties.xaml;view\SequenceListView.xaml;view\Visualizer.xaml;
+
+True
+

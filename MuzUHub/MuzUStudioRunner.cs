@@ -15,8 +15,17 @@ namespace MuzUHub
         {
             Application.Current.Shutdown();
             string appPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            appPath = appPath[..(appPath.LastIndexOf('\\') + 1)] + "MuzU Studio.exe";
-            Process.Start(appPath, new string[] {argType.ToString(), url});
+            string searchPattern = "MuzU Studio WPF\\";
+            int index = appPath.LastIndexOf(searchPattern);
+            if (index < 0)
+            {
+                MessageBox.Show("Path is not find");
+                return;
+            }
+            appPath = appPath[..(index + searchPattern.Length)];
+            appPath += "MuzU Studio\\bin\\Debug\\net7.0-windows\\MuzU Studio.exe";
+            var args = new string[] { argType.ToString(), url };
+            Process.Start(appPath, args);
         }
     }
 

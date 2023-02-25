@@ -60,10 +60,13 @@ public class ProjectRepository
     public string? ProjectPath { 
         get { return projectPath; } 
         set {
-            SetLastProjectPath(value);
-            if (!File.Exists(value)) throw new FileNotFoundException(value);
-            if(value != null) AddProjectPathToRecents(value);
             projectPath = value;
+            SetLastProjectPath(value);
+            if (value != null)
+            {
+                if (!File.Exists(value)) throw new FileNotFoundException(value);
+                AddProjectPathToRecents(value);
+            }
         } 
     }
 
