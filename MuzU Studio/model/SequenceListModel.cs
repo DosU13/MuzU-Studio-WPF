@@ -11,17 +11,16 @@ internal class SequenceListModel
     /// </summary>
     private ObservableCollection<SequenceViewModel> sequences = new ObservableCollection<SequenceViewModel>();
 
-    public SequenceListModel(ProjectRepository projectModel) {
-        Update(projectModel);
+    public SequenceListModel(ProjectRepository projectRepository) {
+        Update(projectRepository);
     }
 
-    public void Update(ProjectRepository projectModel)
+    public void Update(ProjectRepository projectRepository)
     {
         App.Current.Dispatcher.BeginInvoke(new Action(() =>
         {
             sequences.Clear();
-            MuzUData muzUData = projectModel.MuzUProject?.MuzUData;
-            if (muzUData == null) return;
+            MuzUData muzUData = projectRepository.MuzUProject.MuzUData;
             foreach (var sequenceData in muzUData.SequenceList.List)
             {
                 sequences.Add(new SequenceViewModel(sequenceData));
@@ -33,4 +32,6 @@ internal class SequenceListModel
     /// The list of rectangles that is displayed both in the main window and in the overview window.
     /// </summary>
     public ObservableCollection<SequenceViewModel> Sequences => sequences;
+
+    public ObservableCollection<NoteViewModel> FirstSequence => Sequences.FirstOrDefault()?.Notes;
 }

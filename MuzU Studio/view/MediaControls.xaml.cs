@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.viewmodel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +25,12 @@ public partial class MediaControls : UserControl
     public MediaControls()
     {
         InitializeComponent();
+        App.Current.ServiceManager.ServiceUpdated += ServiceManager_ServiceUpdated;
+    }
+
+    private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+            DataContext = serviceProvider.GetService<AudioPlayerViewModel>());
     }
 }

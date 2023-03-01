@@ -18,6 +18,13 @@ public sealed partial class PianoRoll : UserControl
     public PianoRoll()
     {
         this.InitializeComponent();
+        App.Current.ServiceManager.ServiceUpdated += ServiceManager_ServiceUpdated;
+    }
+
+    private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)
+    {
+        Application.Current.Dispatcher.Invoke(() => 
+            DataContext = serviceProvider.GetService<PianoRollViewModel>());
     }
 
     private PianoRollViewModel pianoRollViewModel => (PianoRollViewModel)DataContext;

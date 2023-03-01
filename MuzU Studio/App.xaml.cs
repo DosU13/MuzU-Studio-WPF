@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using MuzU_Studio.model;
 using MuzU_Studio.Model;
+using MuzU_Studio.util;
 using MuzU_Studio.viewmodel;
 using MuzUHub;
 using MuzUStandard;
@@ -23,6 +24,10 @@ public partial class App : Application
 {
     public App()
     {
+        //var task = ProjectRepository.InitFromMuzUFile("D:\\Desktop\\Time to Share.muzu");
+        ////task.RunSynchronously();
+        //ServiceManager = new ServiceManager();
+        //ServiceManager.ConfigureServices(task.Result);
         this.InitializeComponent();
     }
 
@@ -34,57 +39,31 @@ public partial class App : Application
     /// <summary>
     /// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
     /// </summary>
-    public IServiceProvider Services { get; set; }
+    public IServiceProvider Services => ServiceManager.Services;
 
-    /// <summary>
-    /// Configures the services for the application.
-    /// </summary>
-    private void ConfigureServices(ProjectRepository projectRepository)
-    {
-        var services = new ServiceCollection();
+    public ServiceManager ServiceManager { get; } = new ServiceManager();
 
-        services.AddSingleton(projectRepository);
-        // Models
-        services.AddSingleton<AudioService>();
-        services.AddSingleton<PianoRollModel>();
-        services.AddSingleton<SequenceListModel>();
-        // ViewModels
-        services.AddTransient<MediaPlayerViewModel>();
-        services.AddTransient<PianoRollViewModel>();
-        services.AddTransient<ProjectPropertiesVM>();
-        services.AddTransient<ProjectViewModel>();
-        services.AddTransient<SequenceViewModel>();
-        services.AddTransient<SequenceListViewModel>();
-        services.AddTransient<AudioPlayerViewModel>();
-
-        Services = services.BuildServiceProvider();
-    }
-
-    private void Application_Startup(object sender, StartupEventArgs e)
+    private async void Application_Startup(object sender, StartupEventArgs e)
     {
         var args = e.Args;
         //args = new[] {"MuzU_FILE", "D:\\Desktop\\Time to Share.muzu"};
-        //args = new[] {"MIDI_FILE", "D:\\Desktop\\Piano Hero 019 - Gemini - Time To Share.mid"};
-        ProjectRepository? projectRepository = null;
-        if (args.Length == 0 || !Enum.TryParse(args[0], out MuzUStudio_ArgType argType))
+        args = new[] {"MIDI_FILE", "D:\\Desktop\\Piano Hero 019 - Gemini - Time To Share.mid"};
+        if (args.Length == 0)
         {
-            projectRepository = ProjectRepository.InitDefault();
+            ServiceManager.ConfigureServices(await ProjectRepository.InitDefault());
+            return;
         }
-        else
+        if(Enum.TryParse(args[0], out MuzUStudio_ArgType argType))
         {
-            switch (argType)
+            ProjectRepository projectRepository = argType switch
             {
-                case MuzUStudio_ArgType.MuzU_FILE:
-                    projectRepository = ProjectRepository.InitFromMuzUFile(args[1]);
-                    break;
-                case MuzUStudio_ArgType.MIDI_FILE:
-                    projectRepository = ProjectRepository.InitFromMidiFile(args[1]);
-                    break;
-                case MuzUStudio_ArgType.NEW_PROJECT:
-                    projectRepository = ProjectRepository.InitNew();
-                    break;
-            }
+                MuzUStudio_ArgType.MuzU_FILE => await ProjectRepository.InitFromMuzUFile(args[1]),
+                MuzUStudio_ArgType.MIDI_FILE => await ProjectRepository.InitFromMidiFile(args[1]),
+                MuzUStudio_ArgType.NEW_PROJECT => ProjectRepository.InitNew(),
+            };
+            ServiceManager.ConfigureServices(projectRepository);
+            return;
         }
-        ConfigureServices(projectRepository?? ProjectRepository.InitDefault());
+        MessageBox.Show($"Application started with not proper arguments: {string.Join(' ', args)}");
     }
 }

@@ -16,10 +16,16 @@ namespace MuzU_Studio.model;
 public class ProjectRepository
 {
     #region static Init methods
-    public static ProjectRepository InitDefault()
+    public static async Task<ProjectRepository> InitDefault()
     {
         var projectPath = MuzU_Studio.Properties.Settings.Default.LastProjectPath;
-        return string.IsNullOrEmpty(projectPath) ? InitNew() : InitFromMuzUFile(projectPath);
+        return string.IsNullOrEmpty(projectPath) ? InitNew() : await InitFromMuzUFile(projectPath);
+    }
+
+    public static ProjectRepository InitEmpty()
+    {
+        //TODO()
+        return new ProjectRepository(new MuzUProject());
     }
 
     public static ProjectRepository InitNew()
@@ -27,21 +33,21 @@ public class ProjectRepository
         return new ProjectRepository(new MuzUProject());
     }
 
-    public static ProjectRepository InitFromMuzUFile(string path)
+    public static async Task<ProjectRepository> InitFromMuzUFile(string path)
     {
         using (var stream = File.OpenText(path))
         {
-            var muzUProject = new MuzUProject(stream);
+            var muzUProject = await Task.FromResult(new MuzUProject(stream));
             stream.Close();
             return new ProjectRepository(muzUProject, path);
         }
     }
 
-    public static ProjectRepository InitFromMidiFile(string path)
+    public static async Task<ProjectRepository> InitFromMidiFile(string path)
     {
         using (var stream = File.OpenRead(path))
         {
-            var muzUProject = MidiImporter.Import(stream, path);
+            var muzUProject = await Task.FromResult(MidiImporter.Import(stream, path));
             stream.Close();
             return new ProjectRepository(muzUProject, path);
         }

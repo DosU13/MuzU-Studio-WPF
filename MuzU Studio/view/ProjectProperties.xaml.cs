@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 using MuzU_Studio.viewmodel;
 using MuzUStandard.data;
 using System;
@@ -26,7 +27,15 @@ public partial class ProjectProperties : Window
     public ProjectProperties()
     {
         InitializeComponent();
+        App.Current.ServiceManager.ServiceUpdated += ServiceManager_ServiceUpdated;
     }
+
+    private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+            DataContext = serviceProvider.GetService<ProjectPropertiesVM>());
+    }
+
     private ProjectPropertiesVM projectPropertiesVM => (ProjectPropertiesVM)DataContext;
 
     private void MusicLocalPath_Click(object sender, RoutedEventArgs e)

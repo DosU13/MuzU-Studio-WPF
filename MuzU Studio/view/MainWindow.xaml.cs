@@ -19,10 +19,17 @@ public sealed partial class MainWindow : Window
 {
     public MainWindow()
     {
-        InitializeComponent();
+        InitializeComponent(); 
+        App.Current.ServiceManager.ServiceUpdated += ServiceManager_ServiceUpdated;
     }
 
-    private ProjectViewModel ProjectVM => (this.DataContext as ProjectViewModel)!;
+    private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+            DataContext = serviceProvider.GetService<ProjectViewModel>());
+    }
+
+    private ProjectViewModel ProjectVM => (ProjectViewModel)DataContext;
 
     private void OpenMuzUHub_Click(object sender, RoutedEventArgs e)
     {

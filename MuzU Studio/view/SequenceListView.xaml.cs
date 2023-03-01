@@ -1,4 +1,5 @@
-﻿using MuzU_Studio.viewmodel;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,13 @@ public partial class SequenceListView : UserControl
     public SequenceListView()
     {
         InitializeComponent();
+        App.Current.ServiceManager.ServiceUpdated += ServiceManager_ServiceUpdated;
+    }
+
+    private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)
+    {
+        Application.Current.Dispatcher.Invoke(() => 
+            DataContext = serviceProvider.GetService<SequenceListViewModel>());
     }
 
     private SequenceListViewModel sequenceListViewModel => (SequenceListViewModel)DataContext;
