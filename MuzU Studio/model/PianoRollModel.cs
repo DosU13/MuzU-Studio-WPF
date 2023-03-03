@@ -14,17 +14,6 @@ namespace MuzU_Studio.model;
 
 public partial class PianoRollModel
 {
-    ///// <summary>
-    ///// The singleton instance.
-    ///// This is a singleton for convenience.
-    ///// </summary>
-    //private static PianoRollModel instance = new PianoRollModel();
-
-    ///// <summary>
-    ///// Retreive the singleton instance.
-    ///// </summary>
-    //public static PianoRollModel Instance { get => instance; set => instance = value; }
-
     public PianoRollModel() { }
 
     internal const int HOR_SCALE = 1024;

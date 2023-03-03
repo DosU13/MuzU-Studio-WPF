@@ -156,9 +156,4 @@ public sealed partial class PianoRoll : UserControl
 
         e.Handled = true;
     }
-
-    public void RefreshViewModel()
-    {
-        DataContext = App.Current.Services.GetService<PianoRollViewModel>();
-    }
 }

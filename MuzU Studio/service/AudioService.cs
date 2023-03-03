@@ -2,7 +2,7 @@
 using System.IO;
 using MediaPlayer = System.Windows.Media.MediaPlayer;
 
-namespace MuzU_Studio.model;
+namespace MuzU_Studio.service;
 
 internal class AudioService
 {

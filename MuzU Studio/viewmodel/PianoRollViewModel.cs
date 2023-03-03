@@ -20,10 +20,12 @@ internal class PianoRollViewModel
     {
         this.pianoRollModel = pianoRollModel;
         this.sequenceModel = sequenceModel;
-
-        double max = 0;
-        foreach(var s in sequenceModel.Sequences) foreach(var n in s.Notes) if(max < n.Width + n.X) max = n.Width + n.X;
-        pianoRollModel.ContentWidth = max;
+        App.Current.Dispatcher.InvokeAsync(() =>{
+            Thread.Sleep(1000);
+            double max = 0;
+            foreach (var s in sequenceModel.Sequences) foreach (var n in s.Notes) if (max < n.Width + n.X) max = n.Width + n.X;
+            pianoRollModel.ContentWidth = max;
+        });
     }
 
     public PianoRollModel PianoRollModel

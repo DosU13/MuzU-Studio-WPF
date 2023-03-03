@@ -34,7 +34,8 @@ internal class SequenceViewModel : BindableBase
     
     public Color VisibilityColor => Visible ? Color : Color.FromArgb(0,0,0,0);
     public bool Visible { get => visible;
-        set { if (SetProperty(ref visible, value))
+        set { 
+            if (SetProperty(ref visible, value))
                 OnPropertyChanged(nameof(VisibilityColor));
         } }
 
