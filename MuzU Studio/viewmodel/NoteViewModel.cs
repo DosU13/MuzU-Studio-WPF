@@ -1,5 +1,6 @@
 ﻿using MuzU_Studio.model;
 using MuzU_Studio.util;
+using MuzU_Studio.viewmodel.util;
 using MuzUStandard.data;
 using System;
 using System.Windows.Media;
@@ -18,7 +19,9 @@ public class NoteViewModel : BindableBase
     /// <summary>
     /// Xml Data of the note
     /// </summary>
-    private Node node;
+    private readonly Node node;
+
+    private readonly ISequenceViewModel parent;
 
     /// <summary>
     /// The width of the rectangle (in content coordinates).
@@ -31,25 +34,16 @@ public class NoteViewModel : BindableBase
     private double height = 1;
 
     /// <summary>
-    /// The color of the rectangle.
-    /// </summary>
-    private Color color;
-
-    /// <summary>
     /// Set to 'true' when the rectangle is selected in the ListBox.
     /// </summary>
     private bool isSelected = false;
 
     #endregion Data Members
 
-    public NoteViewModel()
-    {
-    }
-
-    public NoteViewModel(Node node, Color color)
+    public NoteViewModel(Node node, ISequenceViewModel parent)
     {
         this.node = node;
-        this.color = color;
+        this.parent = parent;
     }
 
     /// <summary>
@@ -108,16 +102,9 @@ public class NoteViewModel : BindableBase
         get => height * VER_SCALE;
     }
 
-    /// <summary>
-    /// The color of the rectangle.
-    /// </summary>
-    public Color Color
-    {
-        get => color;
-        set => SetProperty(ref color, value);
-    }
+    public ISequenceViewModel Parent => parent;
 
-    public Color BorderColor => IsSelected ? Color.FromRgb(250,100,0) : Color;
+    public Color BorderColor => IsSelected ? Color.FromRgb(250,100,0) : Parent.Color;
 
     /// <summary>
     /// Set to 'true' when the rectangle is selected in the ListBox.

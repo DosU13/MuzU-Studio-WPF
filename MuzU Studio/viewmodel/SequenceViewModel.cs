@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 using MuzU_Studio.util;
+using MuzU_Studio.viewmodel.util;
 using MuzUStandard.data;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -7,7 +8,7 @@ using System.Windows.Media;
 
 namespace MuzU_Studio.viewmodel;
 
-internal class SequenceViewModel : BindableBase
+internal class SequenceViewModel : BindableBase, ISequenceViewModel
 {
     private Sequence data;
     private Color color;
@@ -25,12 +26,12 @@ internal class SequenceViewModel : BindableBase
 
         notes = new ObservableCollection<NoteViewModel>();
         foreach (var note in data.NodeList.List)
-            notes.Add(new NoteViewModel(note, color));
+            notes.Add(new NoteViewModel(note, this));
     }
 
     public Sequence Data => data;
     public ObservableCollection<NoteViewModel> Notes => notes;
-    public Color Color => color;
+    public Color Color { get => color; set => SetProperty(ref color, value); }
     
     public Color VisibilityColor => Visible ? Color : Color.FromArgb(0,0,0,0);
     public bool Visible { get => visible;
