@@ -7,6 +7,7 @@ using MuzUStandard;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Linq;
 using static System.Net.WebRequestMethods;
 using File = System.IO.File;
@@ -22,7 +23,7 @@ public class ProjectViewModel: BindableBase
         this.projectRepository = projectModel;
     }
 
-    public MuzUProject MuzUProject => projectRepository.MuzUProject;
+    public MuzUProject MuzUProject => projectRepository.ProjectModel.MuzUProject;
 
     public string? ProjectPath
     {
@@ -31,25 +32,34 @@ public class ProjectViewModel: BindableBase
         {
             projectRepository.ProjectPath = value;
             OnPropertyChanged(nameof(ProjectPath));
-            OnPropertyChanged(nameof(ExistProjectPath));
+            OnPropertyChanged(nameof(ProjectPathExists));
         }
     }
-    public bool ExistProjectPath => ProjectPath != null;
+    public bool ProjectPathExists => ProjectPath != null;
+    public bool ProjectExists => projectRepository.ProjectExists;
 
-    public string ProjectName { get => MuzUProject.MuzUData.Identity.Name??""; }
+    public string ProjectName { get => MuzUProject.MuzUData.Identity.Name; }
 
     public async Task<bool> SaveToFile(string filePath)
     {
-        using (var stream = File.Create(filePath))
+        try
         {
-            bool res = false;
-            await Task.Factory.StartNew(delegate
+            using (var stream = File.Create(filePath))
             {
-                MuzUProject.Save(stream);
-                res = true;
-            });
-            stream.Close();
-            return res;
+                bool res = false;
+                await Task.Factory.StartNew(delegate
+                {
+                    MuzUProject.Save(stream);
+                    res = true;
+                });
+                stream.Close();
+                return res;
+            }
+        }catch(Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Exception", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
         }
     }
 
@@ -58,15 +68,10 @@ public class ProjectViewModel: BindableBase
         return SaveToFile(ProjectPath);
     }
 
-    internal void NotifyBindings()
+    internal void ProjectProperties_Changed()
     {
         OnPropertyChanged(nameof(ProjectName));
         string audioPath = MuzUProject.MuzUData.MusicLocal.MusicPath;
         App.Current.Services.GetService<AudioService>()?.UpdateAudio(audioPath);
-    }
-
-    internal void ProjectName_Changed()
-    {
-        throw new NotImplementedException();
     }
 }

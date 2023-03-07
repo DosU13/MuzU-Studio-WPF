@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.model;
 using System.IO;
 using MediaPlayer = System.Windows.Media.MediaPlayer;
 
@@ -42,5 +43,11 @@ internal class AudioService
             mediaPlayer.Pause();
         else mediaPlayer.Play();
         isPlaying = !isPlaying;
+    }
+
+    internal void Update(ProjectRepository projectRepository)
+    {
+        if (!projectRepository.ProjectExists) return;
+        UpdateAudio(projectRepository.ProjectModel.MuzUProject.MuzUData.MusicLocal.MusicPath);
     }
 }

@@ -18,19 +18,18 @@ public class ProjectRepository
     #region static Init methods
     public static async Task<ProjectRepository> InitDefault()
     {
-        var projectPath = MuzU_Studio.Properties.Settings.Default.LastProjectPath;
-        return string.IsNullOrEmpty(projectPath) ? InitNew() : await InitFromMuzUFile(projectPath);
+        var projectPath = Properties.Settings.Default.LastProjectPath;
+        return string.IsNullOrEmpty(projectPath) ? InitEmpty() : await InitFromMuzUFile(projectPath);
     }
 
     public static ProjectRepository InitEmpty()
     {
-        //TODO()
-        return new ProjectRepository(new MuzUProject());
+        return new ProjectRepository(new EmptyProjectModel());
     }
 
     public static ProjectRepository InitNew()
     {
-        return new ProjectRepository(new MuzUProject());
+        return new ProjectRepository(new ProjectModel(new MuzUProject()));
     }
 
     public static async Task<ProjectRepository> InitFromMuzUFile(string path)
@@ -39,7 +38,7 @@ public class ProjectRepository
         {
             var muzUProject = await Task.FromResult(new MuzUProject(stream));
             stream.Close();
-            return new ProjectRepository(muzUProject, path);
+            return new ProjectRepository(new ProjectModel(muzUProject), path);
         }
     }
 
@@ -49,30 +48,27 @@ public class ProjectRepository
         {
             var muzUProject = await Task.FromResult(MidiImporter.Import(stream, path));
             stream.Close();
-            return new ProjectRepository(muzUProject, path);
+            return new ProjectRepository(new ProjectModel(muzUProject));
         }
     }
     #endregion
 
-    private ProjectRepository(MuzUProject muzUProject, string? projectPath = null)
+    private ProjectRepository(IProjectModel muzUProject, string? projectPath = null)
     {
-        MuzUProject = muzUProject;
+        ProjectModel = muzUProject;
         ProjectPath = projectPath;
     }
 
-    public MuzUProject MuzUProject { get; }
+    public IProjectModel ProjectModel { get; }
 
     private string? projectPath;
-    public string? ProjectPath { 
+    public string? ProjectPath {  
         get { return projectPath; } 
         set {
+            if(value != null && !File.Exists(value)) throw new FileNotFoundException(value);
             projectPath = value;
             SetLastProjectPath(value);
-            if (value != null)
-            {
-                if (!File.Exists(value)) throw new FileNotFoundException(value);
-                AddProjectPathToRecents(value);
-            }
+            if(value!=null) AddProjectPathToRecents(value);
         } 
     }
 
@@ -83,6 +79,7 @@ public class ProjectRepository
     private void AddProjectPathToRecents(string path)
     {
         var _projectUrls = MuzUHub.Properties.Settings.Default.ProjectsURLs!;
+        if(_projectUrls.Contains(path)) return; 
         _projectUrls.Add(path);
         MuzUHub.Properties.Settings.Default.ProjectsURLs = _projectUrls;
         MuzUHub.Properties.Settings.Default.Save();
@@ -94,7 +91,11 @@ public class ProjectRepository
     /// <param name="path"></param>
     private void SetLastProjectPath(string? path)
     {
+        if(!ProjectExists) return;
+        if (Properties.Settings.Default.LastProjectPath == path) return;
         Properties.Settings.Default.LastProjectPath = path;
         Properties.Settings.Default.Save();
     }
+
+    internal bool ProjectExists => ProjectModel is not EmptyProjectModel;
 }

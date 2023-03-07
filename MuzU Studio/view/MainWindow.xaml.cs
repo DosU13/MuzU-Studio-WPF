@@ -38,7 +38,7 @@ public sealed partial class MainWindow : Window
 
     private async void Save_Click(object sender, RoutedEventArgs e)
     {
-        if (ProjectVM.ExistProjectPath) await ProjectVM.SaveProject();
+        if (ProjectVM.ProjectPathExists) await ProjectVM.SaveProject();
         else await SaveWithFilePicker();
     }
 
@@ -71,7 +71,10 @@ public sealed partial class MainWindow : Window
         {
             projectProperties = new ProjectProperties();
             projectProperties.Show();
-            projectProperties.Closed += (x, y) => { projectProperties = null; ProjectVM.NotifyBindings(); };
+            projectProperties.Closed += (x, y) => { 
+                projectProperties = null;
+                ProjectVM.ProjectProperties_Changed();
+            };
         }
         else projectProperties.Focus();
     }
@@ -83,10 +86,11 @@ public sealed partial class MainWindow : Window
 
     private async Task<bool> SaveWorkDialog()
     {
+        if (!ProjectVM.ProjectExists) return true;
         var resp = MessageBox.Show("Do you want to save changes?", "MuzU Studio", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
         if (resp == MessageBoxResult.Yes)
         {
-            if (ProjectVM.ExistProjectPath)
+            if (ProjectVM.ProjectPathExists)
             {
                 if (await ProjectVM.SaveProject() == false)
                 {
@@ -98,5 +102,41 @@ public sealed partial class MainWindow : Window
         }
         else if (resp == MessageBoxResult.Cancel) return false;
         return true;
+    }
+
+    private async void NewProject_Click(object sender, RoutedEventArgs e)
+    {
+        if(await SaveWorkDialog()) App.Current.NewProject();
+    }
+
+    private async void NewProjectFromMIDI_Click(object sender, RoutedEventArgs e)
+    {
+        if (!await SaveWorkDialog()) return;
+        var picker = new OpenFileDialog
+        {
+#if DEBUG
+            InitialDirectory = "D:\\DosU\\Documents\\midi",
+#endif
+            DefaultExt = ".mid",
+            Filter = "Midi file (*.mid)|*.mid"
+        };
+        if (picker.ShowDialog() ?? false)
+        {
+            App.Current.NewProjectFromMIDI(picker.FileName);
+        }
+    }
+
+    private async void Open_Click(object sender, RoutedEventArgs e)
+    {
+        if(!await SaveWorkDialog()) return;
+        var picker = new OpenFileDialog
+        {
+            DefaultExt = ".muzu",
+            Filter = "MuzU file (*.muzu)|*.muzu"
+        };
+        if (picker.ShowDialog() ?? false)
+        {
+            App.Current.OpenMuzUProject(picker.FileName);
+        }
     }
 }

@@ -54,17 +54,25 @@
                 <MenuItem  Grid.Column="1" Header="Project Properties" 
                            FontSize="16"
                            Click="ProjectProperties_Click"
-                           IsEnabled="{Binding ExistProject, Mode=OneWay}"/>
+                           IsEnabled="{Binding ProjectExists, Mode=OneWay}"/>
                 <MenuItem  Grid.Column="3" Header="Save" 
                            Click="Save_Click"
-                           IsEnabled="{Binding ExistProject, Mode=OneWay}"/>
+                           IsEnabled="{Binding ProjectExists, Mode=OneWay}"/>
                 <MenuItem Grid.Column="4"  Header=" ☰ " HorizontalAlignment="Right">
+                    <MenuItem Header="New Project"
+                              Click="NewProject_Click"/>
+                    <MenuItem Header="New Project from MIDI"
+                              Click="NewProjectFromMIDI_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Open"
+                              Click="Open_Click"/>
+                    <Separator/>
                     <MenuItem Header="Open MuzU Hub" Click="OpenMuzUHub_Click"/>
                     <Separator/>
                     <MenuItem Header="Save" Click="Save_Click"
                                   IsEnabled="{Binding ExistProjectFile, Mode=OneWay}"/>
                     <MenuItem Header="Save as" Click="SaveAs_Click"
-                                  IsEnabled="{Binding ExistProject, Mode=OneWay}">
+                                  IsEnabled="{Binding ProjectExists, Mode=OneWay}">
                     </MenuItem>
                 </MenuItem>
             </Menu>

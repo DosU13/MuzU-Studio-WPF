@@ -20,7 +20,8 @@ internal class SequenceListModel
         App.Current.Dispatcher.BeginInvoke(new Action(() =>
         {
             sequences.Clear();
-            MuzUData muzUData = projectRepository.MuzUProject.MuzUData;
+            if (!projectRepository.ProjectExists) return;
+            MuzUData muzUData = projectRepository.ProjectModel.MuzUProject.MuzUData;
             foreach (var sequenceData in muzUData.SequenceList.List)
             {
                 sequences.Add(new SequenceViewModel(sequenceData));

@@ -25,13 +25,12 @@ namespace MuzU_Studio.util
         public void ConfigureServices(ProjectRepository projectRepository)
         {
             IServiceCollection _services = new ServiceCollection();
-            // Update any existing singleton instances with the new service provider
             foreach (var singleton in _singletons)
             {
-                if (singleton.Value is AudioService usesServiceProvider)
+                if (singleton.Value is AudioService serv)
                 {
-                    //usesServiceProvider.ServiceProvider = serviceProvider;
-                    _services.AddSingleton(usesServiceProvider);
+                    _services.AddSingleton(serv);
+                    serv.Update(projectRepository);
                 }
             }
             _services.AddSingleton(projectRepository);
@@ -47,10 +46,8 @@ namespace MuzU_Studio.util
             _services.AddTransient<SequenceListViewModel>();
             _services.AddTransient<AudioPlayerViewModel>();
 
-            // Build the service provider
             Services = _services.BuildServiceProvider();
 
-            // Notify subscribed views to update their viewmodels with the new service provider
             ServiceUpdated?.Invoke(Services);
         }
 

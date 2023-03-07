@@ -16,10 +16,11 @@ namespace MuzU_Studio.viewmodel;
 public class ProjectPropertiesVM: BindableBase
 {
     private ProjectRepository projectRepository;
-    private MuzUData MuzUData => projectRepository.MuzUProject.MuzUData;
+    private MuzUData MuzUData => projectRepository.ProjectModel.MuzUProject.MuzUData;
 
     public ProjectPropertiesVM(ProjectRepository projectRepository)
     {
+        if (!projectRepository.ProjectExists) throw new Exception("Project didn't exists");
         this.projectRepository = projectRepository;
     }
 
@@ -29,7 +30,6 @@ public class ProjectPropertiesVM: BindableBase
         set
         {
             MuzUData.Identity.Name = value;
-            App.Current.Services.GetService<ProjectViewModel>()!.ProjectName_Changed();
         }
     }
 
@@ -114,6 +114,6 @@ public class ProjectPropertiesVM: BindableBase
 
     private void MusicTempoChanged()
     {
-        throw new NotImplementedException();
+
     }
 }
