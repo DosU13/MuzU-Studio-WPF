@@ -61,27 +61,24 @@ internal class MidiImporter
             sequence.SequenceTemplate = template;
             foreach (Note note in trackNotes)
             {
-                Melanchall.DryWetMidi.Interaction.MusicalTimeSpan musicalTime = note.TimeAs<Melanchall.DryWetMidi.Interaction.MusicalTimeSpan>(tempoMap);
-                BarBeatFractionTimeSpan barBeatFractionTime = note.TimeAs<BarBeatFractionTimeSpan>(tempoMap);
-                BarBeatTicksTimeSpan barBeatTicksTime = note.TimeAs<BarBeatTicksTimeSpan>(tempoMap);
-                MetricTimeSpan metricTime = note.TimeAs<MetricTimeSpan>(tempoMap);
-                MidiTimeSpan midiTime = note.TimeAs<MidiTimeSpan>(tempoMap);
+                //var musicalTime = note.TimeAs<Melanchall.DryWetMidi.Interaction.MusicalTimeSpan>(tempoMap);
+                //BarBeatFractionTimeSpan barBeatFractionTime = note.TimeAs<BarBeatFractionTimeSpan>(tempoMap);
+                //BarBeatTicksTimeSpan barBeatTicksTime = note.TimeAs<BarBeatTicksTimeSpan>(tempoMap);
+                var metricTime = note.TimeAs<Melanchall.DryWetMidi.Interaction.MetricTimeSpan>(tempoMap);
+                //MidiTimeSpan midiTime = note.TimeAs<MidiTimeSpan>(tempoMap);
 
-                Melanchall.DryWetMidi.Interaction.MusicalTimeSpan musicalLength = note.LengthAs<Melanchall.DryWetMidi.Interaction.MusicalTimeSpan>(tempoMap);
-                MetricTimeSpan metricLength = note.LengthAs<MetricTimeSpan>(tempoMap);
-
-                Melanchall.DryWetMidi.Interaction.MusicalTimeSpan length = note.LengthAs<Melanchall.DryWetMidi.Interaction.MusicalTimeSpan>(tempoMap);
-                Node item = new Node();
-                item.Time.MicroSeconds = metricTime.TotalMicroseconds;
-                item.Time.Numerator = musicalTime.Numerator;
-                item.Time.Denominator = musicalTime.Denominator;
-                item.Length = new MuzUStandard.data.MusicalTimeSpan("Length")
+                //Melanchall.DryWetMidi.Interaction.MusicalTimeSpan musicalLength = note.LengthAs<Melanchall.DryWetMidi.Interaction.MusicalTimeSpan>(tempoMap);
+                var metricLength = note.LengthAs<Melanchall.DryWetMidi.Interaction.MetricTimeSpan>(tempoMap);
+                //Melanchall.DryWetMidi.Interaction.MusicalTimeSpan length = note.LengthAs<Melanchall.DryWetMidi.Interaction.MusicalTimeSpan>(tempoMap);
+               
+                Node item = new()
                 {
-                    MicroSeconds = metricLength.TotalMicroseconds,
-                    Numerator = musicalLength.Numerator,
-                    Denominator = musicalLength.Denominator
+                    Time = metricTime.TotalMicroseconds,
+                    //item.Time.Numerator = musicalTime.Numerator;
+                    //item.Time.Denominator = musicalTime.Denominator;
+                    Length = metricLength.TotalMicroseconds,
+                    Note = note.NoteNumber
                 };
-                item.Note = note.NoteNumber;
                 sequence.NodeList.List.Add(item);
             }
             result.Add(sequence);

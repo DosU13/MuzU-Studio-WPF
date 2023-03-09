@@ -56,13 +56,14 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double X
     {
-        get => (double) node.Time.Numerator.Value * HOR_SCALE / node.Time.Denominator.Value ;
+        get => (double) node.Time * HOR_SCALE;
         set
         {
-            long newX = Convert.ToInt64(value * node.Time.Denominator.Value / HOR_SCALE);
-            if (node.Time.Numerator == newX) return;
-            node.Time.Numerator = newX;
-            OnPropertyChanged();
+            var newTime = (long)(value / HOR_SCALE);
+            if (newTime != node.Time) {
+                node.Time = newTime;
+                OnPropertyChanged();
+            }
         }
     }
 
@@ -84,13 +85,15 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double Width
     {
-        get => (double) node.Length.Numerator.Value * HOR_SCALE / node.Length.Denominator.Value ;
+        get => (double) (node.Length ?? 1) * HOR_SCALE;
         set
         {
-            long newX = Convert.ToInt64(value * node.Length.Denominator.Value / HOR_SCALE);
-            if (node.Length.Numerator == newX) return;
-            node.Length.Numerator = newX;
-            OnPropertyChanged();
+            var newLength = (long)(value / HOR_SCALE);
+            if (newLength != node.Length)
+            {
+                node.Length = newLength;
+                OnPropertyChanged();
+            }
         }
     }
 
