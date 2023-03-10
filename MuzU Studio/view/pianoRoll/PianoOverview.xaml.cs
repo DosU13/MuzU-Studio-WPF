@@ -58,11 +58,11 @@ public partial class PianoOverview : UserControl
         // Update the position of the overview rect as the user drags it around.
         //
         double newContentOffsetX = Math.Min(Math.Max(0.0, Canvas.GetLeft(overviewZoomRectThumb) + e.HorizontalChange), 
-            pianoRollViewModel.PianoRollModel.ContentWidth - pianoRollViewModel.PianoRollModel.ContentViewportWidth);
+            pianoRollViewModel.PanAndZoomModel.ContentWidth - pianoRollViewModel.PanAndZoomModel.ContentViewportWidth);
         Canvas.SetLeft(overviewZoomRectThumb, newContentOffsetX);
 
         double newContentOffsetY = Math.Min(Math.Max(0.0, Canvas.GetTop(overviewZoomRectThumb) + e.VerticalChange), 
-            pianoRollViewModel.PianoRollModel.ContentHeight - pianoRollViewModel.PianoRollModel.ContentViewportHeight);
+            pianoRollViewModel.PanAndZoomModel.ContentHeight - pianoRollViewModel.PanAndZoomModel.ContentViewportHeight);
         Canvas.SetTop(overviewZoomRectThumb, newContentOffsetY);
     }
 

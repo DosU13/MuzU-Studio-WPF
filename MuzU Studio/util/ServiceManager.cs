@@ -37,6 +37,7 @@ namespace MuzU_Studio.util
             // Models
             _services.AddSingleton<PianoRollModel>();
             _services.AddSingleton<SequenceListModel>();
+            _services.AddSingleton<PanAndZoomModel>();
             // ViewModels
             _services.AddTransient<MediaPlayerViewModel>();
             _services.AddTransient<PianoRollViewModel>();

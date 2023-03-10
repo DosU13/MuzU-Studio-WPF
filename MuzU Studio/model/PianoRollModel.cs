@@ -16,9 +16,6 @@ public partial class PianoRollModel
 {
     public PianoRollModel() { }
 
-    internal const int HOR_SCALE = 1024;
-    internal const int VER_SCALE = 64;
-
     private List<Rectangle> lines = new List<Rectangle>();
     public List<Rectangle> Lines => lines;
 

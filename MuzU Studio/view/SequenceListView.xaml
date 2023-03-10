@@ -60,7 +60,7 @@
         </Grid.RowDefinitions>
         <ListBox Grid.Row="0"
                  ItemTemplate="{StaticResource SequenceItemTemplate}"
-                 ItemsSource="{Binding SequenceModel.Sequences}"/>
+                 ItemsSource="{Binding Sequences}"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

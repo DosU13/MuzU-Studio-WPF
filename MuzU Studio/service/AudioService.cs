@@ -5,16 +5,9 @@ using MediaPlayer = System.Windows.Media.MediaPlayer;
 
 namespace MuzU_Studio.service;
 
-internal class AudioService
+internal partial class AudioService
 {
-    private MediaPlayer mediaPlayer;
-
-    public AudioService()
-    {
-        mediaPlayer = new MediaPlayer();
-    }
-
-    public MediaPlayer MediaPlayer => mediaPlayer;
+    private readonly MediaPlayer mediaPlayer = new();
 
     public void UpdateAudio(string audioFilePath)
     {
@@ -31,17 +24,24 @@ internal class AudioService
     private bool isPlaying;
     public bool IsPlaying => isPlaying;
 
-    public void Stop()
-    {
-        mediaPlayer.Stop();
-    }
-
     internal void PlayPause()
     {
         if (mediaPlayer.Source == null) return;
-        if (isPlaying) 
+        if (mediaPlayer.Position == mediaPlayer.NaturalDuration)
+        {
+            mediaPlayer.Position = TimeSpan.Zero;
+            isPlaying = false;
+        }
+        if (isPlaying)
+        {
             mediaPlayer.Pause();
-        else mediaPlayer.Play();
+            _timer.Stop();
+        }
+        else
+        {
+            mediaPlayer.Play();
+            _timer.Start();
+        }
         isPlaying = !isPlaying;
     }
 

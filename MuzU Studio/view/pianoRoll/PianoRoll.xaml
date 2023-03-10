@@ -26,20 +26,24 @@
             <Grid
                 MouseDown="Note_MouseDown"
                 MouseUp="Note_MouseUp"
-                MouseMove="Note_MouseMove">
+                MouseMove="Note_MouseMove"
+                Visibility="{Binding Parent.Visible, 
+                    Converter={StaticResource visibilityConverter}}"
+                >
                 <Rectangle
                     Width="{Binding Width}"
                     Height="{Binding Height}"
-                    Fill="{Binding Color, Converter={StaticResource colorToBrushConverter}}"
+                    Fill="{Binding Parent.Color, 
+                        Converter={StaticResource colorToBrushConverter}}"
                     Cursor="Hand"/>
                 <Rectangle
                     Name="Border"
-                    Stroke="{Binding BorderColor, Converter={StaticResource colorToBrushConverter}}"
+                    Stroke="{Binding BorderColor, 
+                        Converter={StaticResource colorToBrushConverter}}"
                     StrokeThickness="5"
                     Width="{Binding Width}"
                     Height="{Binding Height}"
                     Cursor="Hand"/>
-
             </Grid>
         </DataTemplate>
 
@@ -108,12 +112,12 @@
                       >
             <zoomAndPan:ZoomAndPanControl
                 x:Name="zoomAndPanControl"
-                ContentHorizontalScale="{Binding PianoRollModel.ContentScaleX, Mode=TwoWay}"
-                ContentVerticalScale="{Binding PianoRollModel.ContentScaleY, Mode=TwoWay}"
-                ContentOffsetX="{Binding PianoRollModel.ContentOffsetX, Mode=TwoWay}"
-                ContentOffsetY="{Binding PianoRollModel.ContentOffsetY, Mode=TwoWay}"
-                ContentViewportWidth="{Binding PianoRollModel.ContentViewportWidth, Mode=OneWayToSource}"
-                ContentViewportHeight="{Binding PianoRollModel.ContentViewportHeight, Mode=OneWayToSource}"
+                ContentHorizontalScale="{Binding PanAndZoomModel.ContentScaleX, Mode=TwoWay}"
+                ContentVerticalScale="{Binding PanAndZoomModel.ContentScaleY, Mode=TwoWay}"
+                ContentOffsetX="{Binding PanAndZoomModel.ContentOffsetX, Mode=TwoWay}"
+                ContentOffsetY="{Binding PanAndZoomModel.ContentOffsetY, Mode=TwoWay}"
+                ContentViewportWidth="{Binding PanAndZoomModel.ContentViewportWidth, Mode=OneWayToSource}"
+                ContentViewportHeight="{Binding PanAndZoomModel.ContentViewportHeight, Mode=OneWayToSource}"
                 MouseDown="zoomAndPanControl_MouseDown"
                 MouseUp="zoomAndPanControl_MouseUp"
                 MouseMove="zoomAndPanControl_MouseMove"
@@ -121,17 +125,31 @@
                 KeyDown="zoomAndPanControl_KeyDown"
                 >
                 <Grid x:Name="content" 
-                      Width="{Binding PianoRollModel.ContentWidth}" 
-                      Height="{Binding PianoRollModel.ContentHeight}"
+                      Width="{Binding PanAndZoomModel.ContentWidth}" 
+                      Height="{Binding PanAndZoomModel.ContentHeight}"
                       SizeChanged="pianoRoll_SizeChanged"
                       >
-                    <ItemsControl 
-                        ItemsSource="{Binding SequenceModel.Sequences}"
+                    <ListBox 
+                        ItemsSource="{Binding Notes}"
                         Background="Transparent"
+                        Style="{StaticResource noScrollViewerListBoxStyle}"
+                        ItemContainerStyle="{StaticResource listBoxItemStyle}"
                         />
-                    <ItemsControl
-                        ItemsSource="{Binding PianoRollModel.Lines}"
+                    <!--<ItemsControl
+                        ItemsSource="{Binding Lines}"
+                        />-->
+
+                    <Canvas>
+                        <Rectangle
+                            x:Name="audioPos"
+                            Fill="IndianRed"
+                            Width="200" 
+                            Height="{Binding PanAndZoomModel.ContentHeight}"
+                            VerticalAlignment="Stretch"
+                            Canvas.Top="0"
+                            Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
                         />
+                    </Canvas>
                 </Grid>
             </zoomAndPan:ZoomAndPanControl>
         </ScrollViewer>

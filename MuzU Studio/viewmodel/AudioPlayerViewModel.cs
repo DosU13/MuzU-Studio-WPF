@@ -12,20 +12,19 @@ namespace MuzU_Studio.viewmodel;
 
 internal class AudioPlayerViewModel
 {
-    private AudioService audioService;
+    private readonly AudioService audioService;
 
     public AudioPlayerViewModel(AudioService audioService)
     {
         this.audioService = audioService;
     }
 
-    private ICommand playPauseCommand;
+    private ICommand? playPauseCommand;
     public ICommand PlayPauseCommand
     {
         get
         {
-            if (playPauseCommand == null)
-                playPauseCommand = new RelayCommand(param => audioService.PlayPause());
+            playPauseCommand ??= new RelayCommand(param => audioService.PlayPause());
             return playPauseCommand;
         }
     }

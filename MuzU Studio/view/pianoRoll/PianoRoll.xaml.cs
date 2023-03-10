@@ -110,8 +110,8 @@ public sealed partial class PianoRoll : UserControl
 
 
     bool draggingNoteMode = false;
-    Vector origNoteMouseDownPoint;
-    Point selectedNotePos;
+    Point noteOriginPos;
+    Point noteOriginLeftTop;
     private void Note_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.LeftButton != MouseButtonState.Pressed) return;
@@ -124,8 +124,8 @@ public sealed partial class PianoRoll : UserControl
         note.IsSelected = true;
 
         draggingNoteMode = true;
-        origNoteMouseDownPoint = e.GetPosition(content) - e.GetPosition(noteFrame);
-        selectedNotePos = new Point(note.X, note.Y);
+        noteOriginPos = e.GetPosition(content);// - e.GetPosition(noteFrame);
+        noteOriginLeftTop = new Point(note.X, note.Y);
 
         noteFrame.CaptureMouse();
 
@@ -151,8 +151,8 @@ public sealed partial class PianoRoll : UserControl
         Point curContentPoint = e.GetPosition(content);
         FrameworkElement noteFrame = (FrameworkElement)sender;
         NoteViewModel note = (NoteViewModel)noteFrame.DataContext;
-        note.X = selectedNotePos.X + curContentPoint.X - origNoteMouseDownPoint.X;
-        note.Y = Convert.ToInt32(selectedNotePos.Y + curContentPoint.Y - origNoteMouseDownPoint.Y);
+        note.X = noteOriginLeftTop.X + curContentPoint.X - noteOriginPos.X;
+        note.Y = Convert.ToInt32(noteOriginLeftTop.Y + curContentPoint.Y - noteOriginPos.Y);
 
         e.Handled = true;
     }

@@ -1,10 +1,12 @@
 ﻿using Melanchall.DryWetMidi.MusicTheory;
 using MuzU_Studio.model;
+using MuzU_Studio.service;
 using MuzU_Studio.util;
 using MuzU_Studio.view;
 using MuzUStandard.data;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,27 +17,28 @@ internal class PianoRollViewModel
 {
     private PianoRollModel pianoRollModel;
     private SequenceListModel sequenceModel;
+    private PanAndZoomModel panAndZoomModel;
+    private AudioService audioService;
 
-    public PianoRollViewModel(PianoRollModel pianoRollModel, SequenceListModel sequenceModel)
+    public PianoRollViewModel(PianoRollModel pianoRollModel, SequenceListModel sequenceModel, 
+        PanAndZoomModel panAndZoomModel, AudioService audioService)
     {
         this.pianoRollModel = pianoRollModel;
         this.sequenceModel = sequenceModel;
+        this.panAndZoomModel = panAndZoomModel;
+        this.audioService = audioService;
         App.Current.Dispatcher.InvokeAsync(() =>{
             Thread.Sleep(1000);
             double max = 0;
-            foreach (var s in sequenceModel.Sequences) foreach (var n in s.Notes) if (max < n.Width + n.X) max = n.Width + n.X;
-            pianoRollModel.ContentWidth = max;
+            foreach (var n in sequenceModel.Notes) if (max < n.Width + n.X) max = n.Width + n.X;
+            panAndZoomModel.ContentWidth = max;
         });
     }
 
-    public PianoRollModel PianoRollModel
-    {
-        get { return pianoRollModel; }
-        set { pianoRollModel = value; }
-    }
+    public PanAndZoomModel PanAndZoomModel => panAndZoomModel;
 
-    public SequenceListModel SequenceModel { 
-        get { return sequenceModel; }
-        set { sequenceModel = value; } }
 
+    public ObservableCollection<SequenceViewModel> Sequences => sequenceModel.Sequences;
+    public ObservableCollection<NoteViewModel> Notes => sequenceModel.Notes;
+    public AudioService AudioService => audioService;
 }

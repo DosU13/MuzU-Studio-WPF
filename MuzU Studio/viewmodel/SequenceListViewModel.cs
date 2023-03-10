@@ -1,20 +1,16 @@
 ﻿using MuzU_Studio.model;
+using System.Collections.ObjectModel;
 
 namespace MuzU_Studio.viewmodel;
 
 internal class SequenceListViewModel
 {
-    private SequenceListModel sequenceModel;
+    private readonly SequenceListModel sequenceModel;
 
     public SequenceListViewModel(SequenceListModel sequenceModel)
     {
         this.sequenceModel = sequenceModel;
     }
 
-    public SequenceListModel SequenceModel
-    {
-        get { return sequenceModel; }
-        set { sequenceModel = value; }
-    }
-
+    public ObservableCollection<SequenceViewModel> Sequences => sequenceModel.Sequences;
 }

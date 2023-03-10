@@ -10,9 +10,12 @@ using System.Windows.Media;
 
 namespace MuzU_Studio.model;
 
-public partial class PianoRollModel : BindableBase
+public class PanAndZoomModel : BindableBase
 {
-    #region Data Members
+    internal const double HOR_SCALE = 96.0 * 8.0 / 500_000.0; // 96 = x * 500_000 / 8
+    internal const int VER_SCALE = 64;
+
+    #region Data Members  
 
     ///
     /// The current scale at which the content is being viewed.
@@ -124,7 +127,7 @@ public partial class PianoRollModel : BindableBase
         }
         set
         {
-            if(SetProperty(ref contentWidth, value)) UpdateLines();
+            SetProperty(ref contentWidth, value);
         }
     }
 
@@ -139,7 +142,7 @@ public partial class PianoRollModel : BindableBase
         }
         set
         {
-            if (SetProperty(ref contentHeight, value)) UpdateLines();
+            SetProperty(ref contentHeight, value);
         }
     }
 

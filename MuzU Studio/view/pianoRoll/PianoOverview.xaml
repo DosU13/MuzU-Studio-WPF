@@ -35,12 +35,15 @@
             <Rectangle
                 Width="{Binding Width}"
                 Height="{Binding Height}"
-                Fill="{Binding Color, Converter={StaticResource colorToBrushConverter}}"
+                Fill="{Binding Parent.Color, 
+                    Converter={StaticResource colorToBrushConverter}}"
+                Visibility="{Binding Parent.Visible,
+                    Converter={StaticResource visibilityConverter}}"
                 />
         </DataTemplate>
 
         
-        <DataTemplate
+        <!--<DataTemplate
             DataType="{x:Type viewmodel:SequenceViewModel}">
             <ItemsControl
                 ItemsSource="{Binding Notes}"
@@ -60,7 +63,7 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-        </DataTemplate>
+        </DataTemplate>-->
     </UserControl.Resources>
 
     <!--
@@ -78,8 +81,8 @@
         -->
         <Grid
             x:Name="gridContent"
-            Width="{Binding PianoRollModel.ContentWidth}"
-            Height="{Binding PianoRollModel.ContentHeight}"
+            Width="{Binding PanAndZoomModel.ContentWidth}"
+            Height="{Binding PanAndZoomModel.ContentHeight}"
             SizeChanged="pianoRoll_SizeChanged"
             >
 
@@ -90,10 +93,20 @@
             -->
             <ItemsControl
                 x:Name="content"
-                ItemsSource="{Binding SequenceModel.Sequences}"
+                ItemsSource="{Binding Notes}"
                 Background="#10FFFFFF"
                 >
-
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="{Binding X}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
             </ItemsControl>
 
             <!--
@@ -101,12 +114,22 @@
             This show the area of the content that is being viewed in the main window.
             -->
             <Canvas>
+                <Rectangle
+                    x:Name="audioPos"
+                    Fill="IndianRed"
+                    Width="500" 
+                    Height="{Binding PanAndZoomModel.ContentHeight}"
+                    VerticalAlignment="Stretch"
+                    Canvas.Top="0"
+                    Canvas.Left="{Binding AudioService.UIPosition}"
+                    />
+
                 <Thumb
                     x:Name="overviewZoomRectThumb"
-                    Canvas.Left="{Binding PianoRollModel.ContentOffsetX, Mode=TwoWay}"
-                    Canvas.Top="{Binding PianoRollModel.ContentOffsetY, Mode=TwoWay}"
-                    Width="{Binding PianoRollModel.ContentViewportWidth}"
-                    Height="{Binding PianoRollModel.ContentViewportHeight}"
+                    Canvas.Left="{Binding PanAndZoomModel.ContentOffsetX, Mode=TwoWay}"
+                    Canvas.Top="{Binding PanAndZoomModel.ContentOffsetY, Mode=TwoWay}"
+                    Width="{Binding PanAndZoomModel.ContentViewportWidth}"
+                    Height="{Binding PanAndZoomModel.ContentViewportHeight}"
                     DragDelta="overviewZoomRectThumb_DragDelta"
                     Opacity="0.5"
                     >
@@ -126,7 +149,6 @@
                     </Thumb.Template>
                 </Thumb>
             </Canvas>
-
         </Grid>
     </zoomAndPan:ZoomAndPanControl>
 

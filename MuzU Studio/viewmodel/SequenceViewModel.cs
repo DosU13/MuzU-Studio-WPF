@@ -10,27 +10,20 @@ namespace MuzU_Studio.viewmodel;
 
 internal class SequenceViewModel : BindableBase, ISequenceViewModel
 {
-    private Sequence data;
+    private readonly Sequence data;
     private Color color;
     private bool visible = true;
-    private ObservableCollection<NoteViewModel> notes;
 
-    private static Random random = new Random();
+    private static readonly Random random = new();
     public SequenceViewModel(Sequence data)
     {
         this.data = data;
-        HslColor hslColor = new HslColor(Convert.ToByte(random.Next(256)), 256, 192);
+        HslColor hslColor = new(Convert.ToByte(random.Next(256)), 256, 192);
         var drColor = hslColor.ToRgbColor();
         color = Color.FromRgb(drColor.R, drColor.G, drColor.B);
-        Console.WriteLine($"{color}");
-
-        notes = new ObservableCollection<NoteViewModel>();
-        foreach (var note in data.NodeList.List)
-            notes.Add(new NoteViewModel(note, this));
     }
 
     public Sequence Data => data;
-    public ObservableCollection<NoteViewModel> Notes => notes;
     public Color Color { get => color; set => SetProperty(ref color, value); }
     
     public Color VisibilityColor => Visible ? Color : Color.FromArgb(0,0,0,0);
@@ -50,13 +43,12 @@ internal class SequenceViewModel : BindableBase, ISequenceViewModel
         }
     }
 
-    private ICommand visibilityCommand;
+    private ICommand? visibilityCommand;
     public ICommand VisibilityCommand
     {
         get
         {
-            if (visibilityCommand == null)
-                visibilityCommand = new RelayCommand(param => ToggleVisibility());
+            visibilityCommand ??= new RelayCommand(param => ToggleVisibility());
             return visibilityCommand;
         }
     }
