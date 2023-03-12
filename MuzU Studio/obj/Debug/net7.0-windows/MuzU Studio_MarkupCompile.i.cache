@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\
 MuzU_Studio
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\App.xaml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\App.xaml
 7598491833
 
 41-1811533679
-207-722858327
+207-1587516159
 view\MainWindow.xaml;view\MediaControls.xaml;view\pianoRoll\PianoOverview.xaml;view\pianoRoll\PianoRoll.xaml;view\ProjectProperties.xaml;view\SequenceListView.xaml;view\Visualizer.xaml;
 
 False

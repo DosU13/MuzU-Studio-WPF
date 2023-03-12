@@ -103,8 +103,35 @@
                 />
         </DataTemplate>
     </UserControl.Resources>
-    <Grid x:Name="canvasContainer">
+    <Grid x:Name="mainContainer">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <zoomAndPan:ZoomAndPanControl
+            x:Name="TimelineZoomAndPan"
+            ContentHorizontalScale="{Binding PanAndZoomModel.ContentScaleX, Mode=OneWay}"
+            ContentOffsetX="{Binding PanAndZoomModel.ContentOffsetX, Mode=OneWay}"
+            ContentViewportWidth="{Binding PanAndZoomModel.ContentViewportWidth, Mode=OneWay}"
+            >
+            <Canvas>
+                <Rectangle
+                            x:Name="audioPos"
+                            Fill="IndianRed"
+                            Width="200" 
+                            Height="{Binding PanAndZoomModel.ContentHeight}"
+                            VerticalAlignment="Stretch"
+                            Canvas.Top="0"
+                            Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
+                        />
+            </Canvas>
+        </zoomAndPan:ZoomAndPanControl>
         <ScrollViewer x:Name="scroller"
+                      Grid.Row="1" Grid.Column="1"
                       CanContentScroll="True"
                       VerticalScrollBarVisibility="Visible"
                       HorizontalScrollBarVisibility="Visible"
@@ -139,17 +166,6 @@
                         ItemsSource="{Binding Lines}"
                         />-->
 
-                    <Canvas>
-                        <Rectangle
-                            x:Name="audioPos"
-                            Fill="IndianRed"
-                            Width="200" 
-                            Height="{Binding PanAndZoomModel.ContentHeight}"
-                            VerticalAlignment="Stretch"
-                            Canvas.Top="0"
-                            Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
-                        />
-                    </Canvas>
                 </Grid>
             </zoomAndPan:ZoomAndPanControl>
         </ScrollViewer>
