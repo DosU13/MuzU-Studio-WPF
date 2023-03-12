@@ -37,6 +37,7 @@ internal class PianoRollViewModel
 
     public PanAndZoomModel PanAndZoomModel => panAndZoomModel;
 
+    public PianoRollModel PianoRollModel => pianoRollModel;
 
     public ObservableCollection<SequenceViewModel> Sequences => sequenceModel.Sequences;
     public ObservableCollection<NoteViewModel> Notes => sequenceModel.Notes;

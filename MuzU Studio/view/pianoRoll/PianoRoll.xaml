@@ -47,6 +47,21 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate 
+                DataType="{x:Type viewmodel:PianoKeyViewModel}">
+            <Grid>
+                <Rectangle
+                    Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    Fill="{Binding FillColor}"
+                    />
+                <TextBlock
+                    Text="{Binding KeyName}"
+                    Foreground="Yellow"
+                    />
+            </Grid>
+        </DataTemplate>
+
         <!-- 
         Override the style of the ListBox to remove the ScrollViewer.
         All we want is ListBox logic but based on a Canvas.
@@ -92,24 +107,15 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <DataTemplate
-                DataType="{x:Type viewmodel:SequenceViewModel}">
-            <ListBox
-                    Visibility="{Binding Visible, Converter={StaticResource visibilityConverter}}"
-                    ItemsSource="{Binding Notes}"
-                    Style="{StaticResource noScrollViewerListBoxStyle}"
-                    ItemContainerStyle="{StaticResource listBoxItemStyle}"
-                />
-        </DataTemplate>
     </UserControl.Resources>
+    
     <Grid x:Name="mainContainer">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="{Binding PianoRollModel.PianoKeysWidth}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <zoomAndPan:ZoomAndPanControl
@@ -129,6 +135,28 @@
                             Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
                         />
             </Canvas>
+        </zoomAndPan:ZoomAndPanControl>
+        <zoomAndPan:ZoomAndPanControl
+            x:Name="PianoKeysZoomAndPan"
+            ContentVerticalScale="{Binding PanAndZoomModel.ContentScaleY, Mode=OneWay}"
+            ContentOffsetY="{Binding PanAndZoomModel.ContentOffsetY, Mode=OneWay}"
+            ContentViewportHeight="{Binding PanAndZoomModel.ContentViewportHeight, Mode=OneWay}"
+            >
+            <ItemsControl
+                ItemsSource="{Binding PianoRollModel.PianoKeys}"
+                Background="Transparent"
+                >
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </zoomAndPan:ZoomAndPanControl>
         <ScrollViewer x:Name="scroller"
                       Grid.Row="1" Grid.Column="1"

@@ -41,29 +41,6 @@
                     Converter={StaticResource visibilityConverter}}"
                 />
         </DataTemplate>
-
-        
-        <!--<DataTemplate
-            DataType="{x:Type viewmodel:SequenceViewModel}">
-            <ItemsControl
-                ItemsSource="{Binding Notes}"
-                Visibility="{Binding Visible, 
-                    Converter={StaticResource visibilityConverter}}">
-                <ItemsControl.ItemContainerStyle>
-                    <Style>
-                        <Setter Property="Canvas.Left" Value="{Binding X}" />
-                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-
-
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </DataTemplate>-->
     </UserControl.Resources>
 
     <!--

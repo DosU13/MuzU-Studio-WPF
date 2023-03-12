@@ -1,4 +1,6 @@
-﻿using MuzU_Studio.util;
+﻿using MuzU_Studio.model;
+using MuzU_Studio.util;
+using MuzU_Studio.viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,6 +23,7 @@ public partial class PianoRollModel
 
     private SolidColorBrush lineClr = Brushes.Gray;
 
+
     public void UpdateLines()
     {
         return;
@@ -38,4 +41,22 @@ public partial class PianoRollModel
         //    lines.Add(l);  
         //}
     }
+
+    #region Piano Keys
+    public double PianoKeysWidth => PianoKeyViewModel.PianoKeysWidth;
+
+    private List<PianoKeyViewModel>? pianoKeys;
+    public List<PianoKeyViewModel> PianoKeys => pianoKeys ??= InitPianoKeys();
+
+    private List<PianoKeyViewModel> InitPianoKeys()
+    {
+        // Populate the collection with PianoKeyViewModels for all 128 MIDI keys
+        pianoKeys = new();
+        for (int i = 0; i < 128; i++)
+        {
+            pianoKeys.Add(new PianoKeyViewModel(i));
+        }
+        return pianoKeys;
+    }
+    #endregion
 }
