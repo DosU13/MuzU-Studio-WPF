@@ -49,15 +49,18 @@
 
         <DataTemplate 
                 DataType="{x:Type viewmodel:PianoKeyViewModel}">
-            <Grid>
-                <Rectangle
+            <Grid
                     Width="{Binding Width}"
-                    Height="{Binding Height}"
+                    Height="{Binding Height}">
+                <Rectangle
                     Fill="{Binding FillColor}"
                     />
                 <TextBlock
                     Text="{Binding KeyName}"
-                    Foreground="Yellow"
+                    Foreground="IndianRed"
+                    VerticalAlignment="Center"
+                    FontWeight="Black"
+                    FontSize="15"
                     />
             </Grid>
         </DataTemplate>
@@ -119,45 +122,68 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <zoomAndPan:ZoomAndPanControl
+            Grid.Row="0" Grid.Column="1"
             x:Name="TimelineZoomAndPan"
             ContentHorizontalScale="{Binding PanAndZoomModel.ContentScaleX, Mode=OneWay}"
             ContentOffsetX="{Binding PanAndZoomModel.ContentOffsetX, Mode=OneWay}"
             ContentViewportWidth="{Binding PanAndZoomModel.ContentViewportWidth, Mode=OneWay}"
             >
-            <Canvas>
-                <Rectangle
-                            x:Name="audioPos"
-                            Fill="IndianRed"
-                            Width="200" 
-                            Height="{Binding PanAndZoomModel.ContentHeight}"
-                            VerticalAlignment="Stretch"
-                            Canvas.Top="0"
-                            Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
-                        />
-            </Canvas>
+            <Grid Width="{Binding PanAndZoomModel.ContentWidth}"
+                  Height="20">
+                <Canvas>
+                    <Rectangle
+                                x:Name="audioPos"
+                                Fill="IndianRed"
+                                Width="100" 
+                                Height="{Binding PanAndZoomModel.ContentHeight}"
+                                VerticalAlignment="Stretch"
+                                Canvas.Top="0"
+                                Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
+                            />
+                </Canvas>
+            </Grid>
         </zoomAndPan:ZoomAndPanControl>
-        <zoomAndPan:ZoomAndPanControl
+        <ItemsControl
+                    ItemsSource="{Binding PianoRollModel.PianoKeys}"
+                    Background="Transparent"
+                    >
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        <!--<zoomAndPan:ZoomAndPanControl
+            Grid.Row="1" Grid.Column="0"
             x:Name="PianoKeysZoomAndPan"
             ContentVerticalScale="{Binding PanAndZoomModel.ContentScaleY, Mode=OneWay}"
-            ContentOffsetY="{Binding PanAndZoomModel.ContentOffsetY, Mode=OneWay}"
-            ContentViewportHeight="{Binding PanAndZoomModel.ContentViewportHeight, Mode=OneWay}"
+            ContentOffsetY="{Binding PanAndZoomModel.ContentOffsetY, Mode=TwoWay}"
             >
-            <ItemsControl
-                ItemsSource="{Binding PianoRollModel.PianoKeys}"
-                Background="Transparent"
-                >
-                <ItemsControl.ItemContainerStyle>
-                    <Style>
-                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </zoomAndPan:ZoomAndPanControl>
+            <Grid
+                Width="30"
+                Height="{Binding PanAndZoomModel.ContentHeight}">
+                <ItemsControl
+                    ItemsSource="{Binding PianoRollModel.PianoKeys}"
+                    Background="Transparent"
+                    >
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </zoomAndPan:ZoomAndPanControl>-->
         <ScrollViewer x:Name="scroller"
                       Grid.Row="1" Grid.Column="1"
                       CanContentScroll="True"
@@ -193,7 +219,6 @@
                     <!--<ItemsControl
                         ItemsSource="{Binding Lines}"
                         />-->
-
                 </Grid>
             </zoomAndPan:ZoomAndPanControl>
         </ScrollViewer>

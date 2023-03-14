@@ -21,7 +21,7 @@ namespace MuzU_Studio.viewmodel
         {
             KeyName = GetKeyName(midiKeyNumber);
             FillColor = GetFillColor(midiKeyNumber);
-            Width = (double)GetWidth(midiKeyNumber);
+            Width = PianoKeysWidth;
             Height = PanAndZoomModel.VER_SCALE;
             Y = midiKeyNumber * PanAndZoomModel.VER_SCALE;
         }
