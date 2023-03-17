@@ -27,12 +27,6 @@ internal class PianoRollViewModel
         this.sequenceModel = sequenceModel;
         this.panAndZoomModel = panAndZoomModel;
         this.audioService = audioService;
-        App.Current.Dispatcher.InvokeAsync(() =>{
-            Thread.Sleep(1000);
-            double max = 0;
-            foreach (var n in sequenceModel.Notes) if (max < n.Width + n.X) max = n.Width + n.X;
-            panAndZoomModel.ContentWidth = max;
-        });
     }
 
     public PanAndZoomModel PanAndZoomModel => panAndZoomModel;

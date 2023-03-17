@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\App.xaml
 81559316011
 
-41941206508
+4396891618
 207-1231210346
 view\MainWindow.xaml;view\MediaControls.xaml;view\pianoRoll\PianoKeysControl.xaml;view\pianoRoll\PianoOverview.xaml;view\pianoRoll\PianoRoll.xaml;view\ProjectProperties.xaml;view\SequenceListView.xaml;view\Visualizer.xaml;
 
-True
+False
 

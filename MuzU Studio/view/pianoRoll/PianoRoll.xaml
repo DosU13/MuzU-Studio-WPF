@@ -9,6 +9,8 @@
     xmlns:zoomAndPan="clr-namespace:ZoomAndPan;assembly=ZoomAndPan"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:Windows="clr-namespace:System.Windows;assembly=mscorlib"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -16,10 +18,14 @@
                           Path=PianoRollViewModel}"
     >
     <UserControl.Resources>
+        <System:Double x:Key="PianoKeyWidth">30</System:Double>
+        <System:Double x:Key="TimelineHeight">20</System:Double>
         <util:ColorToBrushConverter 
                 x:Key="colorToBrushConverter"/>
         <util:VisibilityConverter
                 x:Key="visibilityConverter"/>
+        <util:GridLengthConverter
+                x:Key="gridLengthConverter"/>
 
         <DataTemplate 
                 DataType="{x:Type viewmodel:NoteViewModel}">
@@ -50,13 +56,27 @@
         <DataTemplate 
                 DataType="{x:Type viewmodel:PianoKeyViewModel}">
             <Grid
-                    Width="{Binding Width}"
+                    Width="{StaticResource PianoKeyWidth}"
                     Height="{Binding Height}">
                 <Rectangle
                     Fill="{Binding FillColor}"
                     />
                 <TextBlock
                     Text="{Binding KeyName}"
+                    Foreground="IndianRed"
+                    VerticalAlignment="Center"
+                    FontWeight="Black"
+                    FontSize="15"
+                    />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate 
+                DataType="{x:Type viewmodel:TimelineItemViewModel}">
+            <Grid
+                    Height="{StaticResource TimelineHeight}">
+                <TextBlock
+                    Text="{Binding Time}"
                     Foreground="IndianRed"
                     VerticalAlignment="Center"
                     FontWeight="Black"
@@ -114,11 +134,13 @@
     
     <Grid x:Name="mainContainer">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="{Binding Source={StaticResource TimelineHeight},
+                                    Converter={StaticResource gridLengthConverter}}"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding PianoRollModel.PianoKeysWidth}"/>
+            <ColumnDefinition Width="{Binding Source={StaticResource PianoKeyWidth},
+                                Converter={StaticResource gridLengthConverter}}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <zoomAndPan:ZoomAndPanControl
@@ -129,7 +151,7 @@
             ContentViewportWidth="{Binding PanAndZoomModel.ContentViewportWidth, Mode=OneWay}"
             >
             <Grid Width="{Binding PanAndZoomModel.ContentWidth}"
-                  Height="20">
+                  Height="{StaticResource TimelineHeight}">
                 <Canvas>
                     <Rectangle
                                 x:Name="audioPos"
@@ -141,31 +163,31 @@
                                 Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
                             />
                 </Canvas>
-            </Grid>
-        </zoomAndPan:ZoomAndPanControl>
-        <ItemsControl
-                    ItemsSource="{Binding PianoRollModel.PianoKeys}"
+                <ItemsControl
+                    ItemsSource="{Binding PianoRollModel.TimelineItems}"
                     Background="Transparent"
                     >
-            <ItemsControl.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Canvas.Top" Value="{Binding Y}" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Canvas />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
-        <!--<zoomAndPan:ZoomAndPanControl
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Canvas.Left" Value="{Binding X}" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </zoomAndPan:ZoomAndPanControl>
+        <zoomAndPan:ZoomAndPanControl
             Grid.Row="1" Grid.Column="0"
             x:Name="PianoKeysZoomAndPan"
             ContentVerticalScale="{Binding PanAndZoomModel.ContentScaleY, Mode=OneWay}"
             ContentOffsetY="{Binding PanAndZoomModel.ContentOffsetY, Mode=TwoWay}"
             >
             <Grid
-                Width="30"
+                Width="{StaticResource PianoKeyWidth}"
                 Height="{Binding PanAndZoomModel.ContentHeight}">
                 <ItemsControl
                     ItemsSource="{Binding PianoRollModel.PianoKeys}"
@@ -183,7 +205,7 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </Grid>
-        </zoomAndPan:ZoomAndPanControl>-->
+        </zoomAndPan:ZoomAndPanControl>
         <ScrollViewer x:Name="scroller"
                       Grid.Row="1" Grid.Column="1"
                       CanContentScroll="True"

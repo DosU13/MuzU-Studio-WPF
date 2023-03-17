@@ -1,4 +1,5 @@
-﻿using MuzU_Studio.model;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.model;
 using MuzU_Studio.util;
 using MuzU_Studio.viewmodel;
 using System;
@@ -16,7 +17,9 @@ namespace MuzU_Studio.model;
 
 public partial class PianoRollModel
 {
-    public PianoRollModel() { }
+    public PianoRollModel() {
+        
+    }
 
     private List<Rectangle> lines = new List<Rectangle>();
     public List<Rectangle> Lines => lines;
@@ -43,7 +46,6 @@ public partial class PianoRollModel
     }
 
     #region Piano Keys
-    public double PianoKeysWidth => PianoKeyViewModel.PianoKeysWidth;
 
     private List<PianoKeyViewModel>? pianoKeys;
     public List<PianoKeyViewModel> PianoKeys => pianoKeys ??= InitPianoKeys();
@@ -57,6 +59,25 @@ public partial class PianoRollModel
             pianoKeys.Add(new PianoKeyViewModel(i));
         }
         return pianoKeys;
+    }
+    #endregion
+
+    #region TimeLine
+    private List<TimelineItemViewModel>? timelineItems;
+    public List<TimelineItemViewModel> TimelineItems => timelineItems ??= InitTimelineItems();
+
+    private List<TimelineItemViewModel> InitTimelineItems()
+    {
+        // Populate the collection with PianoKeyViewModels for all 128 MIDI keys
+        timelineItems = new();
+        var panAndZoomModel = App.Current.Services.GetService<PanAndZoomModel>()!;
+        var itemWidth = PanAndZoomModel.HOR_SCALE * 1_000_000;
+        int j = 0;
+        for (double i = 0; i < panAndZoomModel.ContentWidth; j++, i+= itemWidth)
+        {
+            timelineItems.Add(new TimelineItemViewModel(j, i));
+        }
+        return timelineItems;
     }
     #endregion
 }

@@ -55,7 +55,7 @@ namespace MuzU_Studio.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MuzU Studio;V1.0.0.0;component/view/projectproperties.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MuzU Studio;component/view/projectproperties.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\ProjectProperties.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

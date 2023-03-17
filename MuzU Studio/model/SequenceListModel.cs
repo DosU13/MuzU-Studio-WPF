@@ -1,4 +1,5 @@
-﻿using MuzU_Studio.viewmodel;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.viewmodel;
 using MuzUStandard.data;
 using System.Collections.ObjectModel;
 
@@ -31,6 +32,10 @@ internal class SequenceListModel
                 foreach (var note in sequenceData.NodeList.List)
                     notes.Add(new NoteViewModel(note, sequenceViewModel));
             }
+
+            double max = 0;
+            foreach (var n in notes) if (max < n.Width + n.X) max = n.Width + n.X;
+            App.Current.Services.GetService<PanAndZoomModel>()!.ContentWidth = max;
         }));
     }
 
