@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\MuzU Old Framework\MuzUStandard\MuzUStandard.csproj" />
     <ProjectReference Include="..\MuzUHub\MuzUHub.csproj" />
+    <ProjectReference Include="..\PianoRoll\PianoRoll.csproj" />
     <ProjectReference Include="..\ResourceLibrary\ResourceLibrary.csproj" />
   </ItemGroup>
 

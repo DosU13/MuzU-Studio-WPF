@@ -1,2 +1,5 @@
 E:\Doslan\source\repos\MuzU Studio WPF\PianoRoll\obj\Debug\net7.0-windows\PianoRoll.csproj.AssemblyReference.cache
 E:\Doslan\source\repos\MuzU Studio WPF\PianoRoll\obj\Debug\net7.0-windows\PianoRoll_MarkupCompile.cache
+E:\Doslan\source\repos\MuzU Studio WPF\PianoRoll\obj\Debug\net7.0-windows\PianoRoll.g.cs
+E:\Doslan\source\repos\MuzU Studio WPF\PianoRoll\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\Doslan\source\repos\MuzU Studio WPF\PianoRoll\obj\Debug\net7.0-windows\PianoRoll_MarkupCompile.lref

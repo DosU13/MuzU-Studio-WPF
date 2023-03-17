@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:MuzU_Studio.viewmodel"
         xmlns:view="clr-namespace:MuzU_Studio.view"
+        xmlns:piano_roll="clr-namespace:PianoRoll;assembly=PianoRoll"
         Title="MainWindow" Height="900" Width="1600"
         Style="{DynamicResource MainWindowStyle}"
         DataContext="{Binding Source={StaticResource Locator}, 
@@ -108,8 +109,9 @@
                     <view:MediaControls x:Name="MediaControls"/>
                     <view:PianoOverview x:Name="PianoOverview" 
                                         Grid.Row="1"/>
-                    <view:PianoRoll x:Name="PianoRoll" 
-                                    Grid.Row="2"/>
+                    
+                    <piano_roll:PianoRoll x:Name="PianoRoll" 
+                                          Grid.Row="2"/>
                 </Grid>
                 <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
                 <!--<view:Visualizer x:Name="Visualizer" 

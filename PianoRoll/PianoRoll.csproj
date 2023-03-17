@@ -6,4 +6,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="ZoomAndPan">
+      <HintPath>lib\ZoomAndPan.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
