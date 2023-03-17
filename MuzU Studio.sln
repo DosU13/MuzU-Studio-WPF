@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceLibrary", "Resource
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzUStandard", "..\MuzU Old Framework\MuzUStandard\MuzUStandard.csproj", "{4E1BBFF1-C246-4F15-9BA7-887B0937902E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PianoRoll", "PianoRoll\PianoRoll.csproj", "{BCB42DBC-C5FA-42F3-BCF1-117E8EABB30D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4E1BBFF1-C246-4F15-9BA7-887B0937902E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E1BBFF1-C246-4F15-9BA7-887B0937902E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E1BBFF1-C246-4F15-9BA7-887B0937902E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCB42DBC-C5FA-42F3-BCF1-117E8EABB30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB42DBC-C5FA-42F3-BCF1-117E8EABB30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB42DBC-C5FA-42F3-BCF1-117E8EABB30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB42DBC-C5FA-42F3-BCF1-117E8EABB30D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

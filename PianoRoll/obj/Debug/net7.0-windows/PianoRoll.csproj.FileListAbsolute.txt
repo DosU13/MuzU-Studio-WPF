@@ -1,0 +1,2 @@
+E:\Doslan\source\repos\MuzU Studio WPF\PianoRoll\obj\Debug\net7.0-windows\PianoRoll.csproj.AssemblyReference.cache
+E:\Doslan\source\repos\MuzU Studio WPF\PianoRoll\obj\Debug\net7.0-windows\PianoRoll_MarkupCompile.cache

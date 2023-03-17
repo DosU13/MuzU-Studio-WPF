@@ -7,18 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="view\pianoRoll\PianoKeysControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="view\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="view\MediaControls.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="view\pianoRoll\PianoKeysControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="view\pianoRoll\PianoOverview.xaml">
