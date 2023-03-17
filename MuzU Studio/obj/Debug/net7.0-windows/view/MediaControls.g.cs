@@ -10,8 +10,6 @@
 //------------------------------------------------------------------------------
 
 using MuzU_Studio.view;
-using MuzU_Studio.viewmodel;
-using PianoRoll;
 using System;
 using System.Diagnostics;
 using System.Windows;

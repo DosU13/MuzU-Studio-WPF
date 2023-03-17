@@ -221,3 +221,5 @@ E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\refi
 E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.pdb
 E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.genruntimeconfig.cache
 E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\ref\MuzU Studio.dll
+E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\PianoRoll.dll
+E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\PianoRoll.pdb
