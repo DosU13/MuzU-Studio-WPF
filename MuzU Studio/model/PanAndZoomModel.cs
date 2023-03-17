@@ -1,4 +1,5 @@
-﻿using MuzU_Studio.util;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.util;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -128,6 +129,7 @@ public class PanAndZoomModel : BindableBase
         set
         {
             SetProperty(ref contentWidth, value);
+            App.Current.Services.GetService<PianoRollModel>()?.Update();
         }
     }
 

@@ -63,13 +63,13 @@ public partial class PianoRollModel
     #endregion
 
     #region TimeLine
-    private List<TimelineItemViewModel>? timelineItems;
-    public List<TimelineItemViewModel> TimelineItems => timelineItems ??= InitTimelineItems();
+    private readonly ObservableCollection<TimelineItemViewModel> timelineItems = new();
+    public ObservableCollection<TimelineItemViewModel> TimelineItems => timelineItems;
 
-    private List<TimelineItemViewModel> InitTimelineItems()
+    private void InitTimelineItems()
     {
         // Populate the collection with PianoKeyViewModels for all 128 MIDI keys
-        timelineItems = new();
+        timelineItems.Clear();
         var panAndZoomModel = App.Current.Services.GetService<PanAndZoomModel>()!;
         var itemWidth = PanAndZoomModel.HOR_SCALE * 1_000_000;
         int j = 0;
@@ -77,7 +77,11 @@ public partial class PianoRollModel
         {
             timelineItems.Add(new TimelineItemViewModel(j, i));
         }
-        return timelineItems;
     }
     #endregion
+
+    internal void Update()
+    {
+        InitTimelineItems();
+    }
 }

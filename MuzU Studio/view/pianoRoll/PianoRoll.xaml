@@ -75,13 +75,15 @@
                 DataType="{x:Type viewmodel:TimelineItemViewModel}">
             <Grid
                     Height="{StaticResource TimelineHeight}">
-                <TextBlock
+                <Rectangle Fill="White"     
+                           Width="{Binding Thickness}"/>
+                <!--<TextBlock
                     Text="{Binding Time}"
                     Foreground="IndianRed"
                     VerticalAlignment="Center"
                     FontWeight="Black"
-                    FontSize="15"
-                    />
+                    FontSize="150"
+                    />-->
             </Grid>
         </DataTemplate>
 
@@ -147,7 +149,7 @@
             Grid.Row="0" Grid.Column="1"
             x:Name="TimelineZoomAndPan"
             ContentHorizontalScale="{Binding PanAndZoomModel.ContentScaleX, Mode=OneWay}"
-            ContentOffsetX="{Binding PanAndZoomModel.ContentOffsetX, Mode=OneWay}"
+            ContentOffsetX="{Binding PanAndZoomModel.ContentOffsetX, Mode=TwoWay}"
             ContentViewportWidth="{Binding PanAndZoomModel.ContentViewportWidth, Mode=OneWay}"
             >
             <Grid Width="{Binding PanAndZoomModel.ContentWidth}"
