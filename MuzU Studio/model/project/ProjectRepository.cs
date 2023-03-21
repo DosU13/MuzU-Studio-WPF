@@ -34,21 +34,31 @@ public class ProjectRepository
 
     public static async Task<ProjectRepository> InitFromMuzUFile(string path)
     {
-        using (var stream = File.OpenText(path))
+        try
         {
+            using var stream = File.OpenText(path);
             var muzUProject = await Task.FromResult(new MuzUProject(stream));
             stream.Close();
             return new ProjectRepository(new ProjectModel(muzUProject), path);
+        }
+        catch (Exception)
+        {
+            return InitEmpty();
         }
     }
 
     public static async Task<ProjectRepository> InitFromMidiFile(string path)
     {
-        using (var stream = File.OpenRead(path))
+        try
         {
+            using var stream = File.OpenRead(path);
             var muzUProject = await Task.FromResult(MidiImporter.Import(stream, path));
             stream.Close();
             return new ProjectRepository(new ProjectModel(muzUProject));
+        }
+        catch (Exception)
+        {
+            return InitEmpty();
         }
     }
     #endregion

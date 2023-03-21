@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MuzU_Studio.model;
+using MuzU_Studio.service;
 using MuzU_Studio.viewmodel;
 using System;
 using System.Runtime.ConstrainedExecution;
@@ -162,5 +163,11 @@ public sealed partial class PianoRoll : UserControl
     {
         if (sender is not Thumb thumb) return;
         Canvas.SetLeft(thumb, Canvas.GetLeft(thumb) + e.HorizontalChange);
+    }
+
+    private void Tineline_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        var audioService = App.Current.Services.GetService<AudioService>()!;
+        audioService.PlayheadPosition = e.GetPosition(sender as Rectangle).X;
     }
 }

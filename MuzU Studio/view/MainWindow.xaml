@@ -114,8 +114,8 @@
                                           Grid.Row="2"/>
                 </Grid>
                 <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
-                <!--<view:Visualizer x:Name="Visualizer" 
-                                 Grid.Row="2" Grid.ColumnSpan="2"/>-->
+                <view:Visualizer x:Name="Visualizer" 
+                                 Grid.Row="2" Grid.ColumnSpan="2"/>
             </Grid>
         </Grid>
     </Grid>

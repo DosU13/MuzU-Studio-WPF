@@ -12,7 +12,7 @@ internal partial class AudioService
     public void UpdateAudio(string audioFilePath)
     {
         mediaPlayer.Stop();
-        isPlaying = false;
+        IsPlaying = false;
         if (File.Exists(audioFilePath) == false) return;
         try
         {
@@ -22,7 +22,12 @@ internal partial class AudioService
     }
 
     private bool isPlaying;
-    public bool IsPlaying => isPlaying;
+    public bool IsPlaying
+    {
+        get => isPlaying;
+        set => SetProperty(ref isPlaying, value);
+    }
+    public const string Nameof_IsPlaying = nameof(IsPlaying);
 
     internal void PlayPause()
     {
@@ -30,9 +35,9 @@ internal partial class AudioService
         if (mediaPlayer.Position == mediaPlayer.NaturalDuration)
         {
             mediaPlayer.Position = TimeSpan.Zero;
-            isPlaying = false;
+            IsPlaying = false;
         }
-        if (isPlaying)
+        if (IsPlaying)
         {
             mediaPlayer.Pause();
             _timer.Stop();
@@ -42,7 +47,7 @@ internal partial class AudioService
             mediaPlayer.Play();
             _timer.Start();
         }
-        isPlaying = !isPlaying;
+        IsPlaying = !IsPlaying;
     }
 
     internal void Update(ProjectRepository projectRepository)

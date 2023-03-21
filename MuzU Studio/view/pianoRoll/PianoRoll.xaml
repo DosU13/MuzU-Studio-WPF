@@ -148,8 +148,6 @@
                                 Converter={StaticResource gridLengthConverter}}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Row="0" Grid.ColumnSpan="2"
-                   Fill="#08FFFFFF"/>
         <zoomAndPan:ZoomAndPanControl
             Grid.RowSpan="2" Grid.Column="1"
             x:Name="TimelineZoomAndPan"
@@ -175,6 +173,10 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <Canvas>
+                    <Rectangle Width="{Binding PanAndZoomModel.ContentWidth}"
+                               Height="{StaticResource TimelineHeight}"
+                               MouseLeftButtonDown="Tineline_MouseLeftButtonDown"
+                               Fill="#08FFFFFF"/>
                     <Thumb
                         x:Name="playheadThumb"
                         Width="{Binding PlayheadThumbWidth, Mode=OneWay}" 

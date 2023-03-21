@@ -6,7 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    Loaded="UserControl_Loaded">
 
     <UserControl.Resources>
         <LinearGradientBrush x:Key="Laser" StartPoint="0,0.5" EndPoint="1,0.5">
@@ -23,7 +24,7 @@
         </LinearGradientBrush>
     </UserControl.Resources>
 
-    <!--<Canvas x:Name="VizCanvas"  Background="#FF221531"
-                    Clip="{x:Bind RectangularBounds}" 
-                    Loaded="bestCanvas_Loaded"/>-->
+    <Canvas x:Name="MainCanvas"  
+            Background="#FF221531"
+            />
 </UserControl>
