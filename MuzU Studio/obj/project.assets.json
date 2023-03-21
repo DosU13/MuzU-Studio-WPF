@@ -1393,19 +1393,6 @@
           "bin/placeholder/MuzUStandard.dll": {}
         }
       },
-      "PianoRoll/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/PianoRoll.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/PianoRoll.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
-        ]
-      },
       "ResourceLibrary/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -4823,13 +4810,8 @@
     },
     "MuzUStandard/1.0.0": {
       "type": "project",
-      "path": "../../MuzU Old Framework/MuzUStandard/MuzUStandard.csproj",
-      "msbuildProject": "../../MuzU Old Framework/MuzUStandard/MuzUStandard.csproj"
-    },
-    "PianoRoll/1.0.0": {
-      "type": "project",
-      "path": "../PianoRoll/PianoRoll.csproj",
-      "msbuildProject": "../PianoRoll/PianoRoll.csproj"
+      "path": "../../MuzU/MuzUStandard/MuzUStandard.csproj",
+      "msbuildProject": "../../MuzU/MuzUStandard/MuzUStandard.csproj"
     },
     "ResourceLibrary/1.0.0": {
       "type": "project",
@@ -4845,29 +4827,23 @@
       "Microsoft.VisualStudio.Modeling.Sdk >= 17.4.33103.184",
       "MuzUHub >= 1.0.0",
       "MuzUStandard >= 1.0.0",
-      "PianoRoll >= 1.0.0",
       "ResourceLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\djeksheev\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\dosla\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\MuzU Studio.csproj",
+      "projectUniqueName": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzU Studio\\MuzU Studio.csproj",
       "projectName": "MuzU Studio",
-      "projectPath": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\MuzU Studio.csproj",
-      "packagesPath": "C:\\Users\\djeksheev\\.nuget\\packages\\",
-      "outputPath": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\obj\\",
+      "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzU Studio\\MuzU Studio.csproj",
+      "packagesPath": "C:\\Users\\dosla\\.nuget\\packages\\",
+      "outputPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzU Studio\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\djeksheev\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\dosla\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4881,17 +4857,14 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "E:\\Doslan\\source\\repos\\MuzU Old Framework\\MuzUStandard\\MuzUStandard.csproj": {
-              "projectPath": "E:\\Doslan\\source\\repos\\MuzU Old Framework\\MuzUStandard\\MuzUStandard.csproj"
+            "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUHub\\MuzUHub.csproj": {
+              "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUHub\\MuzUHub.csproj"
             },
-            "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUHub\\MuzUHub.csproj": {
-              "projectPath": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUHub\\MuzUHub.csproj"
+            "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\ResourceLibrary\\ResourceLibrary.csproj": {
+              "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\ResourceLibrary\\ResourceLibrary.csproj"
             },
-            "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\PianoRoll\\PianoRoll.csproj": {
-              "projectPath": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\PianoRoll\\PianoRoll.csproj"
-            },
-            "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\ResourceLibrary\\ResourceLibrary.csproj": {
-              "projectPath": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\ResourceLibrary\\ResourceLibrary.csproj"
+            "D:\\DosU\\DevU\\Visual Studio\\MuzU\\MuzUStandard\\MuzUStandard.csproj": {
+              "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU\\MuzUStandard\\MuzUStandard.csproj"
             }
           }
         }
@@ -4942,7 +4915,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

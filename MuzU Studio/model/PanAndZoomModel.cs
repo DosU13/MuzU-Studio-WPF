@@ -13,8 +13,18 @@ namespace MuzU_Studio.model;
 
 public class PanAndZoomModel : BindableBase
 {
-    internal const double HOR_SCALE = 96.0 * 8.0 / 500_000.0; // 96 = x * 500_000 / 8
-    internal const int VER_SCALE = 64;
+    /// <summary>
+    /// Microseconds * HOR_SCALE = Proper measurement on the piano board
+    /// </summary>
+    private const double HOR_SCALE = 96.0 * 8.0 / 500_000.0; // 96 = x * 500_000 / 8
+
+    internal static double FromMicroseconds(long microseconds) => microseconds * HOR_SCALE;
+    internal static long ToMicroseconds(double microseconds) => (long)(microseconds / HOR_SCALE);
+    
+    /// <summary>
+    /// Microseconds * VER_SCALE = Proper measurement on the piano board
+    /// </summary>
+    internal const int NOTE_HEIGHT = 64;
 
     #region Data Members  
 
@@ -37,12 +47,12 @@ public class PanAndZoomModel : BindableBase
     ///
     /// The width of the content (in content coordinates).
     /// 
-    private double contentWidth = 128 * HOR_SCALE;
+    private double contentWidth = 1 << 10;
 
     ///
     /// The heigth of the content (in content coordinates).
     /// 
-    private double contentHeight = 128 * VER_SCALE;
+    private double contentHeight = 128 * NOTE_HEIGHT;
 
     ///
     /// The width of the viewport onto the content (in content coordinates).
@@ -129,9 +139,13 @@ public class PanAndZoomModel : BindableBase
         set
         {
             SetProperty(ref contentWidth, value);
-            App.Current.Services.GetService<PianoRollModel>()?.Update();
         }
     }
+
+    /// <summary>
+    /// Width of a pixel inside PanAndZoom with width equal to ContentWidth
+    /// </summary>
+    public double ContentWidthUnit => ContentWidth / (1 << 13);
 
     ///
     /// The heigth of the content (in content coordinates).
@@ -165,6 +179,11 @@ public class PanAndZoomModel : BindableBase
         }
     }
 
+    /// <summary>
+    /// Width of a pixel inside PanAndZoom with width equal to ContentViewportWidth
+    /// </summary>
+    public double ContentViewportWidthUnit => ContentViewportWidth / (1 << 13);
+
     ///
     /// The heigth of the viewport onto the content (in content coordinates).
     /// The value for this is actually computed by the main window's ZoomAndPanControl and update in the
@@ -181,4 +200,6 @@ public class PanAndZoomModel : BindableBase
             SetProperty(ref contentViewportHeight, value);
         }
     }
+    public const string Nameof_ContentWidth = nameof(ContentWidth);
+    public const string Nameof_ContentViewportWidth = nameof(ContentViewportWidth);
 }

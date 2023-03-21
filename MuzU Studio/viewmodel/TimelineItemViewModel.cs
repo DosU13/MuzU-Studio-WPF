@@ -1,4 +1,8 @@
-﻿using MuzUHub;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.model;
+using MuzU_Studio.viewmodel.shared_property;
+using MuzUHub;
+using MuzUStandard.data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +15,16 @@ namespace MuzU_Studio.viewmodel;
 public class TimelineItemViewModel : BindableBase
 {
     public string Time { get; set; }
-    public double X { get; set; }
-    public double Thickness { get; set; }
-    private static readonly double baseThickness = 100;
+    private double _x;
+    public double X { 
+        get => _x; 
+    }
+    public ThicknessSharedProperty LineThickness { get; }
 
-    public TimelineItemViewModel(int time, double x)
+    public TimelineItemViewModel(int time, double x, ThicknessSharedProperty thickness)
     {
         Time = time.ToString();
-        X = x;
-        if (time % 16 == 0) Thickness = baseThickness * 4;
-        else if (time % 4 == 0) Thickness = baseThickness * 2;
-        else Thickness= baseThickness * 1;
+        _x = x;
+        LineThickness = thickness;
     }
 }

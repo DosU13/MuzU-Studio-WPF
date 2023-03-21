@@ -92,13 +92,13 @@
             -->
             <Canvas>
                 <Rectangle
-                    x:Name="audioPos"
+                    x:Name="playhead"
                     Fill="IndianRed"
-                    Width="500" 
+                    Width="{Binding PlayheadWidthInOverview}" 
                     Height="{Binding PanAndZoomModel.ContentHeight}"
                     VerticalAlignment="Stretch"
                     Canvas.Top="0"
-                    Canvas.Left="{Binding AudioService.UIPosition}"
+                    Canvas.Left="{Binding AudioService.PlayheadPosition}"
                     />
 
                 <Thumb
@@ -109,6 +109,7 @@
                     Height="{Binding PanAndZoomModel.ContentViewportHeight}"
                     DragDelta="overviewZoomRectThumb_DragDelta"
                     Opacity="0.5"
+                    Background="Yellow"
                     >
                     <Thumb.Template>
                         <ControlTemplate 
@@ -116,8 +117,7 @@
                             >
 
                             <Border 
-                                BorderBrush="Black"
-                                BorderThickness="1"
+                                BorderThickness="0"
                                 Background="Yellow"
                                 CornerRadius="1"                                        
                                 />

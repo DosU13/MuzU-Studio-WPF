@@ -19,8 +19,8 @@ public class PianoKeyViewModel
     {
         KeyName = GetKeyName(midiKeyNumber);
         FillColor = GetFillColor(midiKeyNumber);
-        Height = PanAndZoomModel.VER_SCALE;
-        Y = midiKeyNumber * PanAndZoomModel.VER_SCALE;
+        Height = PanAndZoomModel.NOTE_HEIGHT;
+        Y = midiKeyNumber * PanAndZoomModel.NOTE_HEIGHT;
     }
 
     // Helper methods to calculate key properties based on MIDI key number

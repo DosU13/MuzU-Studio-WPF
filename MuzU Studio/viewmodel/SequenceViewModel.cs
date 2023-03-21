@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 using MuzU_Studio.util;
-using MuzU_Studio.viewmodel.util;
+using MuzU_Studio.viewmodel.shared_property;
 using MuzUStandard.data;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace MuzU_Studio.viewmodel;
 
-internal class SequenceViewModel : BindableBase, ISequenceViewModel
+internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
 {
     private readonly Sequence data;
     private Color color;

@@ -112,8 +112,8 @@ public class ProjectPropertiesVM: BindableBase
         }
     }
 
-    private void MusicTempoChanged()
+    private static void MusicTempoChanged()
     {
-
+        App.Current.Services.GetService<PianoRollModel>()!.UpdateTempo();
     }
 }

@@ -17,9 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MuzU Old Framework\MuzUStandard\MuzUStandard.csproj" />
+    <ProjectReference Include="..\..\MuzU\MuzUStandard\MuzUStandard.csproj" />
     <ProjectReference Include="..\MuzUHub\MuzUHub.csproj" />
-    <ProjectReference Include="..\PianoRoll\PianoRoll.csproj" />
     <ProjectReference Include="..\ResourceLibrary\ResourceLibrary.csproj" />
   </ItemGroup>
 
@@ -42,6 +41,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="viewmodel\util\" />
   </ItemGroup>
 
 </Project>

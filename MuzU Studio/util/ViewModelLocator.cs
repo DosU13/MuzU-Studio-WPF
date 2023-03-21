@@ -12,11 +12,11 @@ internal class ViewModelLocator
 {
     static ViewModelLocator() { }
 
-    public MediaPlayerViewModel MediaPlayerViewModel => App.Current.Services.GetService<MediaPlayerViewModel>();
-    public PianoRollViewModel PianoRollViewModel => App.Current.Services.GetService<PianoRollViewModel>();
-    public ProjectPropertiesVM ProjectPropertiesVM => App.Current.Services.GetService<ProjectPropertiesVM>();
-    public ProjectViewModel ProjectViewModel => App.Current.Services.GetService<ProjectViewModel>();
-    public SequenceViewModel SequenceViewModel => App.Current.Services.GetService<SequenceViewModel>();
-    public SequenceListViewModel SequenceListViewModel => App.Current.Services.GetService<SequenceListViewModel>();
-    public AudioPlayerViewModel AudioPlayerViewModel => App.Current.Services.GetService<AudioPlayerViewModel>();
+    public static MediaPlayerViewModel MediaPlayerViewModel => App.Current.Services.GetService<MediaPlayerViewModel>()!;
+    public static PianoRollViewModel PianoRollViewModel => App.Current.Services.GetService<PianoRollViewModel>()!;
+    public static ProjectPropertiesVM ProjectPropertiesVM => App.Current.Services.GetService<ProjectPropertiesVM>()!;
+    public static ProjectViewModel ProjectViewModel => App.Current.Services.GetService<ProjectViewModel>()!;
+    public static SequenceViewModel SequenceViewModel => App.Current.Services.GetService<SequenceViewModel>()!;
+    public static SequenceListViewModel SequenceListViewModel => App.Current.Services.GetService<SequenceListViewModel>()!;
+    public static MediaControlsViewModel MediaControlsViewModel => App.Current.Services.GetService<MediaControlsViewModel>()!;
 }

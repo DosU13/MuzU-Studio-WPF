@@ -1,9 +1,9 @@
 ﻿using Melanchall.DryWetMidi.Interaction;
+using Microsoft.Extensions.DependencyInjection;
 using MuzU_Studio.model;
 using MuzU_Studio.util;
-using MuzU_Studio.viewmodel.util;
+using MuzU_Studio.viewmodel.shared_property;
 using MuzUStandard.data;
-using System;
 using System.Windows.Media;
 
 namespace MuzU_Studio.viewmodel;
@@ -13,8 +13,7 @@ namespace MuzU_Studio.viewmodel;
 /// </summary>
 public class NoteViewModel : BindableBase
 {
-    static double HOR_SCALE => PanAndZoomModel.HOR_SCALE;
-    static int VER_SCALE => PanAndZoomModel.VER_SCALE;
+    static int NOTE_HEIGHT => PanAndZoomModel.NOTE_HEIGHT;
 
     #region Data Members
     /// <summary>
@@ -22,7 +21,7 @@ public class NoteViewModel : BindableBase
     /// </summary>
     private readonly Node node;
 
-    private readonly ISequenceViewModel parent;
+    private readonly ISequenceSharedProperty parent;
 
     /// <summary>
     /// Set to 'true' when the rectangle is selected in the ListBox.
@@ -31,7 +30,7 @@ public class NoteViewModel : BindableBase
 
     #endregion Data Members
 
-    public NoteViewModel(Node node, ISequenceViewModel parent)
+    public NoteViewModel(Node node, ISequenceSharedProperty parent)
     {
         this.node = node;
         this.parent = parent;
@@ -47,10 +46,11 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double X
     {
-        get => node.Time * HOR_SCALE;
+        get => PanAndZoomModel.FromMicroseconds(node.Time);
         set
         {
-            var newTime = (long)(value / HOR_SCALE);
+            var snappedValue = App.Current.Services.GetService<PianoRollModel>()!.SnapToGrid(value);
+            var newTime = PanAndZoomModel.ToMicroseconds(snappedValue);
             if (newTime != node.Time) {
                 node.Time = newTime;
                 OnPropertyChanged();
@@ -70,9 +70,9 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public int Y
     {
-        get => node.Note.Value * VER_SCALE;
+        get => node.Note.Value * NOTE_HEIGHT;
         set {
-            int newValue = (int)Math.Round((double)value / VER_SCALE);
+            int newValue = (int)Math.Round((double)value / NOTE_HEIGHT);
             if (node.Note.Value == newValue) return;
             node.Note = newValue;
             OnPropertyChanged();
@@ -84,10 +84,10 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double Width
     {
-        get => (node.Length ?? 500_000.0/8) * HOR_SCALE;
+        get => PanAndZoomModel.FromMicroseconds(node.Length ?? 500_000L/8);
         set
         {
-            var newLength = (long)(value / HOR_SCALE);
+            var newLength = PanAndZoomModel.ToMicroseconds(value);
             if (newLength != node.Length)
             {
                 node.Length = newLength;
@@ -101,10 +101,10 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double Height
     {
-        get => VER_SCALE;
+        get => NOTE_HEIGHT;
     }
 
-    public ISequenceViewModel Parent => parent;
+    public ISequenceSharedProperty Parent => parent;
 
     public Color BorderColor => IsSelected ? Color.FromRgb(250,100,0) : Parent.Color;
 

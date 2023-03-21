@@ -73,9 +73,13 @@
         <DataTemplate 
                 DataType="{x:Type viewmodel:TimelineItemViewModel}">
             <Grid
-                    Height="{StaticResource TimelineHeight}">
+                Height="{Binding DataContext.PanAndZoomModel.ContentHeight,
+                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                Visibility="{Binding LineThickness.Visible, 
+                             Converter={StaticResource visibilityConverter}}"                
+                >
                 <Rectangle Fill="White"     
-                           Width="{Binding Thickness}"/>
+                           Width="{Binding LineThickness.Value}"/>
                 <!--<TextBlock
                     Text="{Binding Time}"
                     Foreground="IndianRed"
@@ -144,26 +148,17 @@
                                 Converter={StaticResource gridLengthConverter}}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="2"
+                   Fill="#08FFFFFF"/>
         <zoomAndPan:ZoomAndPanControl
-            Grid.Row="0" Grid.Column="1"
+            Grid.RowSpan="2" Grid.Column="1"
             x:Name="TimelineZoomAndPan"
             ContentHorizontalScale="{Binding PanAndZoomModel.ContentScaleX, Mode=OneWay}"
             ContentOffsetX="{Binding PanAndZoomModel.ContentOffsetX, Mode=TwoWay}"
             ContentViewportWidth="{Binding PanAndZoomModel.ContentViewportWidth, Mode=OneWay}"
             >
             <Grid Width="{Binding PanAndZoomModel.ContentWidth}"
-                  Height="{StaticResource TimelineHeight}">
-                <Canvas>
-                    <Rectangle
-                                x:Name="audioPos"
-                                Fill="IndianRed"
-                                Width="100" 
-                                Height="{Binding PanAndZoomModel.ContentHeight}"
-                                VerticalAlignment="Stretch"
-                                Canvas.Top="0"
-                                Canvas.Left="{Binding AudioService.UIPosition, Mode=TwoWay}"
-                            />
-                </Canvas>
+                  Height="{Binding PanAndZoomModel.ContentHeight}">
                 <ItemsControl
                     ItemsSource="{Binding PianoRollModel.TimelineItems}"
                     Background="Transparent"
@@ -179,6 +174,36 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
+                <Canvas>
+                    <Thumb
+                        x:Name="playheadThumb"
+                        Width="{Binding PlayheadThumbWidth, Mode=OneWay}" 
+                        Height="{Binding Source={StaticResource TimelineHeight}, Mode=OneWay}"
+                        Canvas.Top="0"
+                        Canvas.Left="{Binding PlayheadThumbLeft, Mode=TwoWay}"
+                        DragDelta="PlayheadThumb_DragDelta"
+                        >
+                        <Thumb.Template>
+                            <ControlTemplate 
+                            TargetType="{x:Type Thumb}"
+                            >
+                                <Border 
+                                BorderThickness="0"
+                                Background="IndianRed"
+                                CornerRadius="1"                                        
+                                />
+                            </ControlTemplate>
+                        </Thumb.Template>
+                    </Thumb>
+                    <Rectangle
+                        x:Name="playhead"
+                        Fill="IndianRed"
+                        Width="{Binding PlayheadWidthInPianoRoll, Mode=OneWay}" 
+                        Height="{Binding PanAndZoomModel.ContentHeight, Mode=OneWay}"
+                        Canvas.Top="0"
+                        Canvas.Left="{Binding AudioService.PlayheadPosition, Mode=OneWay}"
+                        />
+                </Canvas>
             </Grid>
         </zoomAndPan:ZoomAndPanControl>
         <zoomAndPan:ZoomAndPanControl
@@ -189,7 +214,7 @@
             >
             <Grid
                 Width="{StaticResource PianoKeyWidth}"
-                Height="{Binding PanAndZoomModel.ContentHeight}">
+                Height="{Binding PanAndZoomModel.ContentHeight, Mode=OneWay}">
                 <ItemsControl
                     ItemsSource="{Binding PianoRollModel.PianoKeys}"
                     Background="Transparent"

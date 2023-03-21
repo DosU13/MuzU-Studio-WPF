@@ -14,7 +14,6 @@
           "Microsoft.VisualStudio.Modeling.Sdk": "17.4.33103.184",
           "MuzUHub": "1.0.0",
           "MuzUStandard": "1.0.0",
-          "PianoRoll": "1.0.0",
           "ResourceLibrary": "1.0.0",
           "ZoomAndPan": "1.0.0.0"
         },
@@ -747,11 +746,6 @@
           "MuzUStandard.dll": {}
         }
       },
-      "PianoRoll/1.0.0": {
-        "runtime": {
-          "PianoRoll.dll": {}
-        }
-      },
       "ResourceLibrary/1.0.0": {
         "runtime": {
           "ResourceLibrary.dll": {}
@@ -1325,11 +1319,6 @@
       "sha512": ""
     },
     "MuzUStandard/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PianoRoll/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

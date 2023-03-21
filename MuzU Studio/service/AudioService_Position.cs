@@ -16,21 +16,24 @@ namespace MuzU_Studio.service
         public AudioService()
         {
             _timer.Interval = TimeSpan.FromSeconds(0.01);
-            _timer.Tick += new EventHandler(Timer_tick);
+            _timer.Tick += _timer_Tick; ;
             _timer.Start();
         }
 
-        private void Timer_tick(object sender, EventArgs e)
+        private void _timer_Tick(object? sender, EventArgs e)
         {
-            OnPropertyChanged(nameof(UIPosition));
+            OnPropertyChanged(nameof(PlayheadPosition));
         }
 
-        public double UIPosition {
-            get => mediaPlayer.Position.TotalMicroseconds * PanAndZoomModel.HOR_SCALE;
+        public double PlayheadPosition {
+            get => PanAndZoomModel.FromMicroseconds((long)mediaPlayer.Position.TotalMicroseconds);
             set {
-                double newValue = value / PanAndZoomModel.HOR_SCALE;
-                mediaPlayer.Position = TimeSpan.FromMicroseconds(newValue);
+                double newMicroseconds = PanAndZoomModel.ToMicroseconds(value);
+                if (Math.Abs(mediaPlayer.Position.Microseconds - newMicroseconds) < 1_000_000) return;
+                mediaPlayer.Position = TimeSpan.FromMicroseconds(newMicroseconds);
+                OnPropertyChanged();
             }
         }
+        public const string Nameof_PlayheadPosition = nameof(PlayheadPosition);
     }
 }

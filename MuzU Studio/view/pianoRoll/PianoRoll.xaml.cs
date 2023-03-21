@@ -5,6 +5,7 @@ using System;
 using System.Runtime.ConstrainedExecution;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
 using Point = System.Windows.Point;
@@ -155,5 +156,11 @@ public sealed partial class PianoRoll : UserControl
         note.Y = Convert.ToInt32(noteOriginLeftTop.Y + curContentPoint.Y - noteOriginPos.Y);
 
         e.Handled = true;
+    }
+
+    private void PlayheadThumb_DragDelta(object sender, DragDeltaEventArgs e)
+    {
+        if (sender is not Thumb thumb) return;
+        Canvas.SetLeft(thumb, Canvas.GetLeft(thumb) + e.HorizontalChange);
     }
 }

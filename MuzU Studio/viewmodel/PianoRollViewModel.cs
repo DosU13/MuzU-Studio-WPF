@@ -3,6 +3,7 @@ using MuzU_Studio.model;
 using MuzU_Studio.service;
 using MuzU_Studio.util;
 using MuzU_Studio.view;
+using MuzU_Studio.viewmodel.shared_property;
 using MuzUStandard.data;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace MuzU_Studio.viewmodel;
 
-internal class PianoRollViewModel
+internal class PianoRollViewModel: BindableBase
 {
     private PianoRollModel pianoRollModel;
     private SequenceListModel sequenceModel;
@@ -27,6 +28,26 @@ internal class PianoRollViewModel
         this.sequenceModel = sequenceModel;
         this.panAndZoomModel = panAndZoomModel;
         this.audioService = audioService;
+        panAndZoomModel.PropertyChanged += PanAndZoomModel_PropertyChanged;
+        audioService.PropertyChanged += AudioService_PropertyChanged;
+    }
+
+    private void AudioService_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if(e.PropertyName == AudioService.Nameof_PlayheadPosition)
+            OnPropertyChanged(nameof(PlayheadThumbLeft));
+    }
+
+    private void PanAndZoomModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == PanAndZoomModel.Nameof_ContentWidth)
+            OnPropertyChanged(nameof(PlayheadWidthInOverview));
+        if (e.PropertyName == PanAndZoomModel.Nameof_ContentViewportWidth)
+        {
+            OnPropertyChanged(nameof(PlayheadWidthInPianoRoll));
+            OnPropertyChanged(nameof(PlayheadThumbWidth));
+            OnPropertyChanged(nameof(PlayheadThumbLeft));
+        }
     }
 
     public PanAndZoomModel PanAndZoomModel => panAndZoomModel;
@@ -36,4 +57,19 @@ internal class PianoRollViewModel
     public ObservableCollection<SequenceViewModel> Sequences => sequenceModel.Sequences;
     public ObservableCollection<NoteViewModel> Notes => sequenceModel.Notes;
     public AudioService AudioService => audioService;
+
+    public double PlayheadWidthInOverview => PanAndZoomModel.ContentWidthUnit * 8;
+
+    public double PlayheadWidthInPianoRoll => PanAndZoomModel.ContentViewportWidthUnit * 8;
+    public double PlayheadThumbWidth => PanAndZoomModel.ContentViewportWidthUnit * 128;
+    public double PlayheadThumbLeft
+    {
+        get => AudioService.PlayheadPosition - PlayheadThumbWidth / 2;
+        set
+        {
+            double newPlayheadPosition = value + PlayheadThumbWidth / 2;
+            if (AudioService.PlayheadPosition == newPlayheadPosition) return;
+            AudioService.PlayheadPosition = newPlayheadPosition;
+        }
+    }
 }

@@ -4,13 +4,50 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:MuzU_Studio.view"
+             xmlns:util="clr-namespace:MuzU_Studio.util"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator},
-                                   Path=AudioPlayerViewModel}">
+                                   Path=MediaControlsViewModel}">
+    <UserControl.Resources>
+        <util:BeatToMusicalNameConverter 
+            x:Key="beatToMusicalNameConverter"/>
+        <util:MusicalNameRule
+            x:Key="musicalNameRule"/>
+    </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
-        <Button Width="30" 
+        <Button Width="32"
                 Content="{Binding PlayPauseStr}"
                 Command="{Binding PlayPauseCommand}"/>
+        <TextBlock Text="🧲:"
+                   VerticalAlignment="Center"
+                   Margin="10,0,0,0"/>
+        <ComboBox IsEditable="True"
+                  SelectedIndex="0"
+                  >
+            <ComboBox.Text>
+                <Binding Path="BeatSnapToGrid" Mode="TwoWay"
+                         Converter="{StaticResource beatToMusicalNameConverter}">
+                    <Binding.ValidationRules>
+                        <util:MusicalNameRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+            <ComboBoxItem Content="none"/>
+            <ComboBoxItem Content="bar"/>
+            <ComboBoxItem Content="beat"/>
+            <ComboBoxItem Content="1/2 beat"/>
+            <ComboBoxItem Content="1/3 beat"/>
+            <ComboBoxItem Content="1/4 beat"/>
+            <ComboBoxItem Content="1/6 beat"/>
+            <ComboBoxItem Content="step"/>
+            <ComboBoxItem Content="1/2 step"/>
+            <ComboBoxItem Content="1/3 step"/>
+            <ComboBoxItem Content="1/4 step"/>
+            <ComboBoxItem Content="1/6 step"/>
+            <ComboBoxItem Content="1/8 step"/>
+        </ComboBox>
+        <TextBlock Text="{Binding BeatSnapToGrid}"
+                   Margin="5"/>
     </StackPanel>
 </UserControl>

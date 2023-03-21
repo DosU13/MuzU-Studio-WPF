@@ -31,6 +31,6 @@ public partial class MediaControls : UserControl
     private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)
     {
         Application.Current.Dispatcher.Invoke(() =>
-            DataContext = serviceProvider.GetService<AudioPlayerViewModel>());
+            DataContext = serviceProvider.GetService<MediaControlsViewModel>());
     }
 }
