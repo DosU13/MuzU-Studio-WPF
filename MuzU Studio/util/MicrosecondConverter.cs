@@ -20,7 +20,7 @@ public class MicrosecondConverter : IValueConverter
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if(value is not string str) throw new InvalidCastException("string type needed: " + value);
-        str = new string(str.Replace(',', '.').Where(x => char.IsDigit(x) || x == '.').ToArray());
+        str = new string(str.Replace(',', '.').Where(x => char.IsDigit(x) || x == '.' || x=='-').ToArray());
         return (long)(double.Parse(str, CultureInfo.InvariantCulture) * 1_000_000);
     }
 }

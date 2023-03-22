@@ -1,4 +1,5 @@
-﻿using MuzU_Studio.model;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.model;
 using MuzU_Studio.util;
 using System;
 using System.Collections.Generic;
@@ -25,11 +26,14 @@ namespace MuzU_Studio.service
             OnPropertyChanged(nameof(PlayheadPosition));
         }
 
+        private long MusicOffset => App.Current.Services.GetService<ProjectRepository>()!
+                    .ProjectModel.MuzUProject.MuzUData.MusicLocal.MusicOffsetMicroseconds;
+                                    
         public double PlayheadPosition {
-            get => PanAndZoomModel.FromMicroseconds((long)mediaPlayer.Position.TotalMicroseconds);
+            get => PanAndZoomModel.FromMicroseconds(
+                (long)mediaPlayer.Position.TotalMicroseconds - MusicOffset);
             set {
-                double newMicroseconds = PanAndZoomModel.ToMicroseconds(value);
-                if (Math.Abs(mediaPlayer.Position.Microseconds - newMicroseconds) < 1_000_000) return;
+                double newMicroseconds = PanAndZoomModel.ToMicroseconds(value) + MusicOffset;
                 mediaPlayer.Position = TimeSpan.FromMicroseconds(newMicroseconds);
                 OnPropertyChanged();
             }
