@@ -33,9 +33,9 @@ internal class MediaControlsViewModel
 
     public string PlayPauseStr => audioService.IsPlaying ? "▶️" : "||";
 
-    public double BeatSnapToGrid
+    public double SnapToGridInterval
     {
-        get => pianoRollModel.BeatSnapToGrid;
-        set => pianoRollModel.BeatSnapToGrid = value;
+        get => pianoRollModel.SnapToGridInterval;
+        set => pianoRollModel.SnapToGridInterval = value;
     }
 }

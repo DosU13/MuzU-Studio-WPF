@@ -53,9 +53,4 @@ internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
         }
     }
     public void ToggleVisibility() => Visible = !Visible;
-
-    public void Sequence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-    {
-        ToggleVisibility();
-    }
 }

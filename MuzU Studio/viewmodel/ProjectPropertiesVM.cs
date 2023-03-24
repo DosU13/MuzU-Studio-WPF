@@ -70,7 +70,6 @@ public class ProjectPropertiesVM: BindableBase
             if (File.Exists(value) == false) throw new FileNotFoundException(value);
             MuzUData.MusicLocal.MusicPath = value;
             App.Current.Services.GetService<AudioService>()!.UpdateAudio(value);
-            MusicTempoChanged();
             OnPropertyChanged();
         }
     }
@@ -81,7 +80,6 @@ public class ProjectPropertiesVM: BindableBase
         set
         {
             MuzUData.MusicLocal.MusicOffsetMicroseconds = value;
-            MusicTempoChanged();
         }
     }
 
@@ -90,7 +88,6 @@ public class ProjectPropertiesVM: BindableBase
         get => MuzUData.Tempo.BPM;
         set {
             MuzUData.Tempo.BPM = value;
-            MusicTempoChanged();
         }
     }
 
@@ -99,7 +96,6 @@ public class ProjectPropertiesVM: BindableBase
         get => MuzUData.Tempo.TimeSignature.Numerator;
         set {
             MuzUData.Tempo.TimeSignature.Numerator = value;
-            MusicTempoChanged();
         }
     }
 
@@ -108,12 +104,6 @@ public class ProjectPropertiesVM: BindableBase
         get => MuzUData.Tempo.TimeSignature.Denominator;
         set {
             MuzUData.Tempo.TimeSignature.Denominator = value;
-            MusicTempoChanged();
         }
-    }
-
-    private static void MusicTempoChanged()
-    {
-        App.Current.Services.GetService<PianoRollModel>()!.UpdateTempo();
     }
 }

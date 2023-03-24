@@ -50,11 +50,17 @@ public class NoteViewModel : BindableBase
         set
         {
             var snappedValue = App.Current.Services.GetService<PianoRollModel>()!.SnapToGrid(value);
-            var newTime = PanAndZoomModel.ToMicroseconds(snappedValue);
-            if (newTime != node.Time) {
-                node.Time = newTime;
-                OnPropertyChanged();
-            }
+            ForceSetX(snappedValue);
+        }
+    }
+
+    public void ForceSetX(double x)
+    {
+        var newTime = PanAndZoomModel.ToMicroseconds(x);
+        if (newTime != node.Time)
+        {
+            node.Time = newTime;
+            OnPropertyChanged();
         }
     }
 

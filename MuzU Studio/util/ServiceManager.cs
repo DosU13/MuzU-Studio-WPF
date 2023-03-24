@@ -46,6 +46,7 @@ namespace MuzU_Studio.util
             _services.AddTransient<SequenceViewModel>();
             _services.AddTransient<SequenceListViewModel>();
             _services.AddTransient<MediaControlsViewModel>();
+            _services.AddTransient<ToolboxViewModel>();
 
             Services = _services.BuildServiceProvider();
 

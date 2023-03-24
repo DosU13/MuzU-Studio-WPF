@@ -7,6 +7,11 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="view\Toolbox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="view\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -23,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="view\SequenceListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\Toolbox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="view\Visualizer.xaml">

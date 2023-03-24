@@ -21,40 +21,40 @@ public partial class PianoRollModel
 {
     public PianoRollModel() {
         App.Current.Services.GetService<PanAndZoomModel>()!.PropertyChanged += PanAndZoom_PropertyChanged;
-        UpdateTempo();
     }
 
     private void PanAndZoom_PropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (sender is not PanAndZoomModel panAndZoomModel) return;
-        if(e.PropertyName == PanAndZoomModel.Nameof_ContentWidth) UpdateTimelineItems();
-        else if(e.PropertyName == PanAndZoomModel.Nameof_ContentViewportWidth) 
+        if (e.PropertyName == PanAndZoomModel.Nameof_ContentWidth) UpdateTimelineItems();
+        else if (e.PropertyName == PanAndZoomModel.Nameof_ContentViewportWidth)
             UpdateTimelineItemThickness(panAndZoomModel);
     }
 
-    private double _beatLength = PanAndZoomModel.FromMicroseconds(1_000_000);
-    public double BeatLength { get => _beatLength;
-        set {
-            if (_beatLength == value) return;
-            _beatLength = value;
-            UpdateTimelineItems();
-        } 
-    }
-    private double beatSnapToGrid = 0.0;
-    public double BeatSnapToGrid
+    public double BeatLength { get {
+            var muzuData = App.Current.Services.GetService<ProjectRepository>()!.ProjectModel.MuzUProject.MuzUData;
+            return PanAndZoomModel.FromMicroseconds(60_000_000) / muzuData.Tempo.BPM;
+        } }
+    
+    private double snapToGridInterval = 0.0;
+    public double SnapToGridInterval
     {
-        get => beatSnapToGrid;
+        get => snapToGridInterval;
         set
         {
-            if(beatSnapToGrid == value) return;
-            beatSnapToGrid = value;
+            if(snapToGridInterval == value) return;
+            snapToGridInterval = value;
         }
     }
-    public double SnapToGrid(double value)
+
+    public double SnapToGrid(double value, double intervalInBeats)
     {
-        if (BeatSnapToGrid == 0) return value;
-        return RoundI(value, BeatLength * BeatSnapToGrid);
+        if (intervalInBeats == 0) return value;
+        return RoundI(value, BeatLength * intervalInBeats);
     }
+
+    public double SnapToGrid(double value) => SnapToGrid(value, SnapToGridInterval);
+
     public static double RoundI(double number, double roundingInterval)
     {
         return (double)((decimal)roundingInterval * Math.Round((decimal)number / (decimal)roundingInterval, MidpointRounding.AwayFromZero));
@@ -92,7 +92,7 @@ public partial class PianoRollModel
             if (ind % BeatsPerSection == 0) thickness = _sectionsThickness;
             else if (ind % BeatsPerWhole == 0) thickness = _wholesThickness;
             else thickness = _beatsThickness;
-            timelineItems.Add(new TimelineItemViewModel(ind, ind*BeatLength, thickness));
+            timelineItems.Add(new TimelineItemViewModel(ind, ind* BeatLength, thickness));
         }
     }
 
@@ -120,10 +120,4 @@ public partial class PianoRollModel
     private readonly ThicknessSharedProperty _sectionsThickness = new(4);
 
     #endregion
-
-    internal void UpdateTempo()
-    {
-        var muzuData = App.Current.Services.GetService<ProjectRepository>()!.ProjectModel.MuzUProject.MuzUData;
-        BeatLength = PanAndZoomModel.FromMicroseconds(60_000_000) / muzuData.Tempo.BPM;
-    }
 }

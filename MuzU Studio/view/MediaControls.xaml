@@ -26,7 +26,7 @@
                   SelectedIndex="0"
                   >
             <ComboBox.Text>
-                <Binding Path="BeatSnapToGrid" Mode="TwoWay"
+                <Binding Path="SnapToGridInterval" Mode="TwoWay"
                          Converter="{StaticResource beatToMusicalNameConverter}">
                     <Binding.ValidationRules>
                         <util:MusicalNameRule/>
