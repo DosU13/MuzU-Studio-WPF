@@ -3,6 +3,7 @@ using MuzU_Studio.model;
 using MuzUHub;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
@@ -73,7 +74,9 @@ namespace MuzU_Studio.viewmodel
         public string[] MelodizeTypes = Enum.GetNames<MelodizeType>();
         public enum MelodizeType
         {
+            [Description("Highest")]
             HIGHEST,
+            ["Lowest"]
             LOWEST,
             LOUDEST,
             LOUDEST_THEN_HIGHEST,
