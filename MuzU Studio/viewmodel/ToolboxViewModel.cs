@@ -67,7 +67,8 @@ internal class ToolboxViewModel : BindableBase
         set => SetProperty(ref choosenMelodizeType, EnumUtils.GetValue<MelodizeType>(value));
     }
 
-    public string[] MelodizeTypes = EnumUtils.GetDisplayNames<MelodizeType>().ToArray();
+    private readonly string[] melodizeTypes = EnumUtils.GetDisplayNames<MelodizeType>().ToArray();
+    public string[] MelodizeTypes => melodizeTypes;
 
     public enum MelodizeType
     {
@@ -138,6 +139,27 @@ internal class ToolboxViewModel : BindableBase
             sequence.Data.NodeList.List = list.Where((item,index) => !removeItems[index]).ToList();
         }
         App.Current.Services.GetService<SequenceListModel>()!.Update();
+    }
+    #endregion
+
+    #region Change BPM
+    private double changeBPMParameter;
+    public double ChangeBPMParameter { get => changeBPMParameter; set => changeBPMParameter = value; }
+
+
+    private ICommand? changeBPMCommand;
+    public ICommand ChangeBPMCommand
+    {
+        get
+        {
+            changeBPMCommand ??= new RelayCommand(param => ChangeBPM());
+            return changeBPMCommand;
+        }
+    }
+
+    private void ChangeBPM()
+    {
+
     }
     #endregion
 }
