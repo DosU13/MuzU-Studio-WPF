@@ -16,11 +16,13 @@ namespace MuzU_Studio.viewmodel;
 
 internal class ToolboxViewModel : BindableBase
 {
-    private SequenceListModel sequenceListModel;
+    private readonly SequenceListModel sequenceListModel;
+    private readonly ProjectRepository projectRepository;
 
-    public ToolboxViewModel(SequenceListModel sequenceListModel)
+    public ToolboxViewModel(SequenceListModel sequenceListModel, ProjectRepository projectRepository)
     {
         this.sequenceListModel = sequenceListModel;
+        this.projectRepository = projectRepository;
     }
 
     #region Snap All
@@ -138,7 +140,7 @@ internal class ToolboxViewModel : BindableBase
             }
             sequence.Data.NodeList.List = list.Where((item,index) => !removeItems[index]).ToList();
         }
-        App.Current.Services.GetService<SequenceListModel>()!.Update();
+        sequenceListModel.Update();
     }
     #endregion
 
@@ -159,7 +161,18 @@ internal class ToolboxViewModel : BindableBase
 
     private void ChangeBPM()
     {
-
+        var muzuData = projectRepository.ProjectModel.MuzUProject.MuzUData;
+        var changeFactor = changeBPMParameter / muzuData.Tempo.BPM;
+        foreach(var sequence in muzuData.SequenceList.List)
+        {
+            foreach(var node in sequence.NodeList.List)
+            {
+                node.Time = (long)(node.Time * changeFactor);
+                if(node.Length != null) node.Length = (long)(node.Length * changeFactor);
+            }
+        }
+        muzuData.Tempo.BPM = changeBPMParameter;
+        sequenceListModel.Update();
     }
     #endregion
 }

@@ -61,24 +61,25 @@
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="0"
                           ItemsSource="{Binding MelodizeTypes, Mode=OneWay}"
+                          Text="{Binding ChoosenMelodizeType, Mode=TwoWay}"
                           Margin="0,0,5,0"/>
                 <Button Grid.Column="1"
                         Content="Melodize"
                         Command="{Binding MelodizeCommand}"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Change Rhythm">
+        <GroupBox Header="Change BPM">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0"
-                          ItemsSource="{Binding MelodizeTypes, Mode=OneWay}"
-                          Margin="0,0,5,0"/>
+                <TextBox Grid.Column="0"
+                         Text="{Binding ChangeBPMParameter, Mode=OneWay}"
+                         Margin="0,0,5,0"/>
                 <Button Grid.Column="1"
-                        Content="Melodize"
-                        Command="{Binding MelodizeCommand}"/>
+                        Content="Change"
+                        Command="{Binding ChangeBPMCommand}"/>
             </Grid>
         </GroupBox>
     </StackPanel>
