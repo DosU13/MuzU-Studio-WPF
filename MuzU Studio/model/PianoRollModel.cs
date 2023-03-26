@@ -1,19 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MuzU_Studio.model;
-using MuzU_Studio.util;
 using MuzU_Studio.viewmodel;
 using MuzU_Studio.viewmodel.shared_property;
 using MuzUStandard.data;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace MuzU_Studio.model;
 

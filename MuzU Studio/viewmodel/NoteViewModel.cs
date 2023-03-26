@@ -60,7 +60,7 @@ public class NoteViewModel : BindableBase
         if (newTime != node.Time)
         {
             node.Time = newTime;
-            OnPropertyChanged();
+            OnPropertyChanged(nameof(X));
         }
     }
 

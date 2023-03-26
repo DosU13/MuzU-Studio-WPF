@@ -7,17 +7,17 @@ namespace MuzU_Studio.model;
 
 internal class SequenceListModel
 {
-    /// <summary>
-    /// The list of rectangles that is displayed both in the main window and in the overview window.
-    /// </summary>
+    private readonly ProjectRepository projectRepository;
+
     private readonly ObservableCollection<SequenceViewModel> sequences = new();
     private readonly ObservableCollection<NoteViewModel> notes = new();
 
     public SequenceListModel(ProjectRepository projectRepository) {
-        Update(projectRepository);
+        this.projectRepository = projectRepository;
+        Update();
     }
 
-    public void Update(ProjectRepository projectRepository)
+    public void Update()
     {
         App.Current.Dispatcher.BeginInvoke(new Action(() =>
         {
