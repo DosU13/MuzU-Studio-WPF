@@ -41,14 +41,38 @@
         <DataTemplate x:Key="SequenceItemTemplate"
                       DataType="vm:SequenceViewModel">
             <Grid>
-                <TextBox Text="{Binding Name, Mode=TwoWay}"
-                         HorizontalAlignment="Left" Width="Auto"
-                         Margin="30,0,0,0"/>
-                <Button HorizontalAlignment="Left"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="button" 
+                        HorizontalAlignment="Left"
                         Width="25" Height="25"
-                        Background="{Binding VisibilityColor, Converter={StaticResource colorToBrushConverter}}"
+                        Background="{Binding VisibilityColor, Converter={StaticResource colorToBrushConverter},
+                                                              Mode=OneWay}"
                         Command="{Binding VisibilityCommand}"
-                        Style="{StaticResource buttonHoverStyle}"/>
+                        Style="{StaticResource buttonHoverStyle}">
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Opacidade" Width="100">
+                                <MenuItem.Template>
+                                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                                        <Slider Width="100" 
+                                                Minimum="0" 
+                                                Maximum="240" 
+                                                TickFrequency="0.1" 
+                                                IsSnapToTickEnabled="True"
+                                                Value="{Binding Path=Hue, Mode=TwoWay}"/>
+                                    </ControlTemplate>
+                                </MenuItem.Template>
+                            </MenuItem>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+                <TextBox Grid.Column="1" 
+                         Text="{Binding Name, Mode=TwoWay}"
+                         Margin="5,0,0,0">
+                </TextBox>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>

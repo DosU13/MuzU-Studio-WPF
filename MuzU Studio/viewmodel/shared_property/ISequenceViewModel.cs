@@ -9,7 +9,8 @@ namespace MuzU_Studio.viewmodel.shared_property
 {
     public interface ISequenceSharedProperty
     {
-        public Color Color { get; set; }
-        public bool Visible { get; set; }
+        public int Hue { get; }
+        public Color Color { get; }
+        public bool Visible { get; }
     }
 }

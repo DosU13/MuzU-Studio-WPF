@@ -75,7 +75,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
-                         Text="{Binding ChangeBPMParameter, Mode=OneWay}"
+                         Text="{Binding ChangeBPMParameter, Mode=TwoWay}"
                          Margin="0,0,5,0"/>
                 <Button Grid.Column="1"
                         Content="Change"

@@ -43,7 +43,7 @@ public sealed partial class Visualizer : UserControl
             {
                 Width = width,
                 Height = MainCanvas.ActualHeight,
-                Fill = LaserBrushFrom(note.Parent.Color)
+                Fill = LaserBrushFrom(note.Parent.Hue)
             };
             MainCanvas.Children.Add(rect);
             Canvas.SetLeft(rect, (MainCanvas.ActualWidth - 100) * 
@@ -51,17 +51,15 @@ public sealed partial class Visualizer : UserControl
         }
     }
 
-    private static LinearGradientBrush LaserBrushFrom(Color color)
+    private static LinearGradientBrush LaserBrushFrom(int hue)
     {
-        var hslColor = HslColor.FromRgbColor(System.Drawing.Color.FromArgb(0xFF, color.R,color.G,color.B));
-        var hue = hslColor.Hue;
         HslColor lightness45 = new(hue, 255, 114);
         var drawing45 = lightness45.ToRgbColor();
         Color lightness45Color = Color.FromRgb(drawing45.R, drawing45.G, drawing45.B);
         HslColor lightness63 = new(hue, 255, 160);
         var drawing63 = lightness63.ToRgbColor();
         Color lightness63Color = Color.FromRgb(drawing63.R, drawing63.G, drawing63.B);
-        Color transparent = Color.FromArgb(0x00, color.R, color.G, color.B);
+        Color transparent = Color.FromArgb(0x00, drawing63.R, drawing63.G, drawing63.B);
         var laserBrush = new LinearGradientBrush(
             new GradientStopCollection
             {

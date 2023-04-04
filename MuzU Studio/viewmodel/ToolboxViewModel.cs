@@ -146,7 +146,9 @@ internal class ToolboxViewModel : BindableBase
 
     #region Change BPM
     private double changeBPMParameter;
-    public double ChangeBPMParameter { get => changeBPMParameter; set => changeBPMParameter = value; }
+    public double ChangeBPMParameter { 
+        get => changeBPMParameter;
+        set => SetProperty(ref changeBPMParameter, value); }
 
 
     private ICommand? changeBPMCommand;
@@ -162,7 +164,7 @@ internal class ToolboxViewModel : BindableBase
     private void ChangeBPM()
     {
         var muzuData = projectRepository.ProjectModel.MuzUProject.MuzUData;
-        var changeFactor = changeBPMParameter / muzuData.Tempo.BPM;
+        var changeFactor = muzuData.Tempo.BPM / changeBPMParameter;
         foreach(var sequence in muzuData.SequenceList.List)
         {
             foreach(var node in sequence.NodeList.List)
