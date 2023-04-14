@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.Modeling.Diagrams;
 using MuzU_Studio.model;
 using MuzU_Studio.service;
 using MuzU_Studio.viewmodel;
+using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -35,10 +36,13 @@ public sealed partial class Visualizer : UserControl
         var sequenceList = App.Current.Services.GetService<SequenceListModel>()!;
         var musicPos = App.Current.Services.GetService<AudioService>()!.PlayheadPosition;
         MainCanvas.Children.Clear();
+        double backFlashFactor = 0;
         foreach (var note in sequenceList.Notes.Where(x => x.Parent.Visible && 
                                 x.X <= musicPos && musicPos <= x.X + x.Width))
         {
             double width = 50 + 50 * (((musicPos % 10 / 10.0) + note.Node.Note!.Value/128.0) % 1.0);
+            double tempFlashFactor = Math.Max(100_000D - PanAndZoomModel.ToMicroseconds(musicPos - note.X), 0) / 100_000;
+            if (backFlashFactor < tempFlashFactor) backFlashFactor = tempFlashFactor;
             Rectangle rect = new()
             {
                 Width = width,
@@ -49,7 +53,21 @@ public sealed partial class Visualizer : UserControl
             Canvas.SetLeft(rect, (MainCanvas.ActualWidth - 100) * 
                 (note.Node.Note!.Value/128.0) + 50 - width / 2);
         }
+        MainCanvas.Background = BackBrushFrom(backFlashFactor);
     }
+
+    private static Brush BackBrushFrom(double factor)
+    {
+        var defaultColor = System.Drawing.Color.FromArgb(0xFF, 0x22, 0x15, 0x31);
+        var hslColor = HslColor.FromRgbColor(defaultColor);
+
+        hslColor.Luminosity += (int)(13 * factor);
+
+        var lightColor = hslColor.ToRgbColor();
+
+        return new SolidColorBrush(Color.FromRgb(lightColor.R, lightColor.G, lightColor.B));
+    }
+
 
     private static LinearGradientBrush LaserBrushFrom(int hue)
     {

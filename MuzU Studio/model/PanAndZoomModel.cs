@@ -19,7 +19,7 @@ public class PanAndZoomModel : BindableBase
     private const double HOR_SCALE = 96.0 * 8.0 / 500_000.0; // 96 = x * 500_000 / 8
 
     internal static double FromMicroseconds(long microseconds) => microseconds * HOR_SCALE;
-    internal static long ToMicroseconds(double microseconds) => (long)(microseconds / HOR_SCALE);
+    internal static long ToMicroseconds(double pixels) => (long)(pixels / HOR_SCALE);
     
     /// <summary>
     /// Microseconds * VER_SCALE = Proper measurement on the piano board
