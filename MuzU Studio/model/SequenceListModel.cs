@@ -36,6 +36,7 @@ internal class SequenceListModel
             double max = 0;
             foreach (var n in notes) if (max < n.Width + n.X) max = n.Width + n.X;
             App.Current.Services.GetService<PanAndZoomModel>()!.ContentWidth = max;
+            SelectedSequence = Sequences.FirstOrDefault();
         }));
     }
 
@@ -43,6 +44,6 @@ internal class SequenceListModel
     /// The list of rectangles that is displayed both in the main window and in the overview window.
     /// </summary>
     public ObservableCollection<SequenceViewModel> Sequences => sequences;
-
+    public SequenceViewModel? SelectedSequence;
     public ObservableCollection<NoteViewModel> Notes => notes;
 }

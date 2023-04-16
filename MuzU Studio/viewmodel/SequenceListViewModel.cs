@@ -13,4 +13,9 @@ internal class SequenceListViewModel
     }
 
     public ObservableCollection<SequenceViewModel> Sequences => sequenceModel.Sequences;
+    public SequenceViewModel? SelectedSequence
+    {
+        get => sequenceModel.SelectedSequence;
+        set => sequenceModel.SelectedSequence = value;
+    }
 }

@@ -1,0 +1,10 @@
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\bin\Debug\netstandard1.4\MuzUStandard.deps.json
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\bin\Debug\netstandard1.4\MuzUStandard.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\bin\Debug\netstandard1.4\MuzUStandard.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.csproj.AssemblyReference.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.GeneratedMSBuildEditorConfig.editorconfig
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.AssemblyInfoInputs.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.AssemblyInfo.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.csproj.CoreCompileInputs.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.pdb

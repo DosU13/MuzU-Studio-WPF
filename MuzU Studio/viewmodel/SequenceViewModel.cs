@@ -29,6 +29,8 @@ internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
 
     public Sequence Data => sequence;
     private Color color;
+    private Color darkerColor;
+    private Color reverseColor;
     public Color Color
     {
         get => color;
@@ -37,6 +39,16 @@ internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
             if (SetProperty(ref color, value))
                 OnPropertyChanged(nameof(VisibilityColor));
         }
+    }
+    public Color DarkerColor
+    {
+        get => darkerColor;
+        set => SetProperty(ref darkerColor, value);
+    }
+    public Color ReverseColor
+    {
+        get => reverseColor;
+        set => SetProperty(ref reverseColor, value);
     }
 
     private const string HueName = "Hue";
@@ -52,6 +64,12 @@ internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
                 HslColor hslColor = new(value, 240, 176);
                 var drColor = hslColor.ToRgbColor();
                 Color = Color.FromRgb(drColor.R, drColor.G, drColor.B);
+                HslColor hslDarkerColor = new(value, 240, 40);
+                var drDarkerColor = hslDarkerColor.ToRgbColor();
+                DarkerColor = Color.FromRgb(drDarkerColor.R, drDarkerColor.G, drDarkerColor.B);
+                HslColor hslReverseColor = new((value+120)%240, 240, 176);
+                var drReverseColor = hslReverseColor.ToRgbColor();
+                ReverseColor = Color.FromRgb(drReverseColor.R, drReverseColor.G, drReverseColor.B);
             }
         }
     }

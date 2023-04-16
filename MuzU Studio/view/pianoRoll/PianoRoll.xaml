@@ -45,10 +45,11 @@
                     Name="Border"
                     Stroke="{Binding BorderColor, 
                         Converter={StaticResource colorToBrushConverter}}"
-                    StrokeThickness="5"
+                    StrokeThickness="10"
                     Width="{Binding Width}"
                     Height="{Binding Height}"
-                    Cursor="Hand"/>
+                    Cursor="Hand">
+                </Rectangle>
             </Grid>
         </DataTemplate>
 
@@ -175,7 +176,7 @@
                 <Canvas>
                     <Rectangle Width="{Binding PanAndZoomModel.ContentWidth}"
                                Height="{StaticResource TimelineHeight}"
-                               MouseLeftButtonDown="Tineline_MouseLeftButtonDown"
+                               MouseLeftButtonDown="Timeline_MouseLeftButtonDown"
                                Fill="#08FFFFFF"/>
                     <Thumb
                         x:Name="playheadThumb"

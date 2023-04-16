@@ -11,6 +11,8 @@ namespace MuzU_Studio.viewmodel.shared_property
     {
         public int Hue { get; }
         public Color Color { get; }
+        public Color DarkerColor { get; }
+        public Color ReverseColor { get; }
         public bool Visible { get; }
     }
 }

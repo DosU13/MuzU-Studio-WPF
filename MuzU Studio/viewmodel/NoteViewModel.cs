@@ -74,12 +74,12 @@ public class NoteViewModel : BindableBase
     /// <summary>
     /// The Y coordinate of the location of the rectangle (in content coordinates).
     /// </summary>
-    public int Y
+    public double Y
     {
-        get => node.Note.Value * NOTE_HEIGHT;
+        get => (node.Note??64) * NOTE_HEIGHT;
         set {
-            int newValue = (int)Math.Round((double)value / NOTE_HEIGHT);
-            if (node.Note.Value == newValue) return;
+            int newValue = (int)Math.Round(value / NOTE_HEIGHT);
+            if (node.Note == newValue) return;
             node.Note = newValue;
             OnPropertyChanged();
         }
@@ -90,15 +90,21 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double Width
     {
-        get => PanAndZoomModel.FromMicroseconds(node.Length ?? 500_000L/8);
+        get => PanAndZoomModel.FromMicroseconds(node.Length ?? 500_000L / 8);
         set
         {
-            var newLength = PanAndZoomModel.ToMicroseconds(value);
-            if (newLength != node.Length)
-            {
-                node.Length = newLength;
-                OnPropertyChanged();
-            }
+            var snappedValue = App.Current.Services.GetService<PianoRollModel>()!.SnapToGrid(value);
+            ForceSetWidth(snappedValue);
+        }
+    }
+
+    public void ForceSetWidth(double width)
+    {
+        var newLength = PanAndZoomModel.ToMicroseconds(width);
+        if (newLength != node.Length)
+        {
+            node.Length = newLength;
+            OnPropertyChanged(nameof(Width));
         }
     }
 
@@ -112,7 +118,7 @@ public class NoteViewModel : BindableBase
 
     public ISequenceSharedProperty Parent => parent;
 
-    public Color BorderColor => IsSelected ? Color.FromRgb(250,100,0) : Parent.Color;
+    public Color BorderColor => IsSelected ? Parent.ReverseColor : Parent.DarkerColor;
 
     /// <summary>
     /// Set to 'true' when the rectangle is selected in the ListBox.

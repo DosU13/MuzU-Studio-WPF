@@ -70,7 +70,7 @@
                     <MenuItem Header="Open MuzU Hub" Click="OpenMuzUHub_Click"/>
                     <Separator/>
                     <MenuItem Header="Save" Click="Save_Click"
-                                  IsEnabled="{Binding ExistProjectFile, Mode=OneWay}"/>
+                                  IsEnabled="{Binding ProjectPathExists, Mode=OneWay}"/>
                     <MenuItem Header="Save as" Click="SaveAs_Click"
                                   IsEnabled="{Binding ProjectExists, Mode=OneWay}">
                     </MenuItem>

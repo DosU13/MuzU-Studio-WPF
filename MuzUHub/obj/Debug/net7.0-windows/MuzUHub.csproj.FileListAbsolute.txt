@@ -25,3 +25,30 @@ E:\Doslan\source\repos\MuzU Studio WPF\MuzUHub\obj\Debug\net7.0-windows\refint\M
 E:\Doslan\source\repos\MuzU Studio WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.pdb
 E:\Doslan\source\repos\MuzU Studio WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.genruntimeconfig.cache
 E:\Doslan\source\repos\MuzU Studio WPF\MuzUHub\obj\Debug\net7.0-windows\ref\MuzUHub.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\MuzUHub.exe
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\MuzUHub.dll.config
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\MuzUHub.deps.json
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\MuzUHub.runtimeconfig.json
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\MuzUHub.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\MuzUHub.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\ResourceLibrary.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\bin\Debug\net7.0-windows\ResourceLibrary.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.csproj.AssemblyReference.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MainWindow.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\App.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub_MarkupCompile.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub_MarkupCompile.lref
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\App.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MainWindow.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.g.resources
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.GeneratedMSBuildEditorConfig.editorconfig
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.AssemblyInfoInputs.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.AssemblyInfo.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.csproj.CoreCompileInputs.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.csproj.CopyComplete
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\refint\MuzUHub.dll
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.pdb
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\MuzUHub.genruntimeconfig.cache
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUHub\obj\Debug\net7.0-windows\ref\MuzUHub.dll

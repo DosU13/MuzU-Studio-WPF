@@ -14,6 +14,32 @@
             x:Key="beatToMusicalNameConverter"/>
         <util:MusicalNameRule
             x:Key="musicalNameRule"/>
+        <util:ColorToBrushConverter
+            x:Key="colorToBrushConverter"/>
+        
+        <Style x:Key="buttonHoverStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="1"
+                        Padding="4,2" 
+                        BorderBrush="DarkGray" 
+                        CornerRadius="3" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
         <Button Width="32"
@@ -23,7 +49,7 @@
                    VerticalAlignment="Center"
                    Margin="10,0,0,0"/>
         <ComboBox IsEditable="True"
-                  SelectedIndex="0"
+                  Margin="0,0,10,0"
                   >
             <ComboBox.Text>
                 <Binding Path="SnapToGridInterval" Mode="TwoWay"
@@ -47,7 +73,25 @@
             <ComboBoxItem Content="1/6 step"/>
             <ComboBoxItem Content="1/8 step"/>
         </ComboBox>
-        <TextBlock Text="{Binding BeatSnapToGrid}"
-                   Margin="5"/>
+        <Button Content=" ± " 
+                Background="{Binding AddRemoveModeColor, Mode=OneWay, 
+                            Converter={StaticResource colorToBrushConverter}}"
+                Command="{Binding AddRemoveModeCommand}"
+                Style="{StaticResource buttonHoverStyle}"
+                FontSize="17"
+                Margin="0,0,10,0"/>
+        <Button Content="📏"
+                Background="{Binding ChangeLengthModeColor, Mode=OneWay, 
+                            Converter={StaticResource colorToBrushConverter}}"
+                Command="{Binding ChangeLengthModeCommand}"
+                Style="{StaticResource buttonHoverStyle}"
+                Margin="0,0,10,0"/>
+        <Button Content="↔↨" 
+                Background="{Binding TranslateModeColor, Mode=OneWay, 
+                            Converter={StaticResource colorToBrushConverter}}"
+                Command="{Binding TranslateModeCommand}"
+                Style="{StaticResource buttonHoverStyle}"
+                FontSize="16"
+                Margin="0,0,10,0"/>
     </StackPanel>
 </UserControl>

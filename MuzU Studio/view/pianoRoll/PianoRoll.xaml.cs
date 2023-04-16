@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
+using static MuzU_Studio.model.PianoRollModel;
 using Point = System.Windows.Point;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -30,6 +31,7 @@ public sealed partial class PianoRoll : UserControl
     }
 
     private PianoRollViewModel pianoRollViewModel => (PianoRollViewModel)DataContext;
+    private EnumEditMode editMode => pianoRollViewModel.EditMode;
 
     private void zoomAndPanControl_MouseWheel(object sender, MouseWheelEventArgs e)
     {
@@ -60,11 +62,16 @@ public sealed partial class PianoRoll : UserControl
     }
 
     private bool isPanningMode = false;
-    private Point origContentMouseDownPoint;
+    private Point mouseDownPointRelativeToContent;
     private void zoomAndPanControl_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.ChangedButton == MouseButton.Middle) isPanningMode = true;
-        origContentMouseDownPoint = e.GetPosition(content);
+        mouseDownPointRelativeToContent = e.GetPosition(content);
+        if (editMode == EnumEditMode.AddRemoveMode &&
+            e.ChangedButton == MouseButton.Left)
+        {
+            pianoRollViewModel.AddNote(mouseDownPointRelativeToContent, NewNoteWidth);
+        }
     }
 
     private void zoomAndPanControl_MouseMove(object sender, MouseEventArgs e)
@@ -72,7 +79,7 @@ public sealed partial class PianoRoll : UserControl
         if (isPanningMode)
         {
             Point curContentMousePoint = e.GetPosition(content);
-            Vector dragOffset = curContentMousePoint - origContentMouseDownPoint;
+            Vector dragOffset = curContentMousePoint - mouseDownPointRelativeToContent;
             zoomAndPanControl.ContentOffsetX -= dragOffset.X;
             zoomAndPanControl.ContentOffsetY -= dragOffset.Y;
             e.Handled = true;
@@ -111,51 +118,95 @@ public sealed partial class PianoRoll : UserControl
     }
 
 
-    bool draggingNoteMode = false;
-    Point noteOriginPos;
-    Point noteOriginLeftTop;
+    private bool draggingNoteMode = false;
+    private Point notePosRelativeToContentWhenPressed;
+    private Point noteXYWhenPressed;
+    private double noteWidthWhenPressed;
+    private double? _newNoteWidth = null;
+    private double NewNoteWidth
+    {
+        get => _newNoteWidth ??= BeatLength;
+        set => _newNoteWidth = value;
+    }
     private void Note_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        if (e.LeftButton != MouseButtonState.Pressed) return;
         content.Focus();
         Keyboard.Focus(content);
 
-        FrameworkElement noteFrame = (FrameworkElement)sender;
-        NoteViewModel note = (NoteViewModel)noteFrame.DataContext;
+        if (sender is not FrameworkElement noteFrame ||
+            noteFrame.DataContext is not NoteViewModel note)
+        {
+            e.Handled = true;
+            return;
+        }
 
         note.IsSelected = true;
 
-        draggingNoteMode = true;
-        noteOriginPos = e.GetPosition(content);// - e.GetPosition(noteFrame);
-        noteOriginLeftTop = new Point(note.X, note.Y);
-
-        noteFrame.CaptureMouse();
+        switch (editMode)
+        {
+            case EnumEditMode.None: break;
+            case EnumEditMode.AddRemoveMode: 
+                if(e.ChangedButton == MouseButton.Left)
+                {
+                    pianoRollViewModel.AddNote(e.GetPosition(content), NewNoteWidth);
+                }
+                else if(e.ChangedButton == MouseButton.Right)
+                {
+                    pianoRollViewModel.Notes.Remove(note);
+                }
+                break;
+            case EnumEditMode.ChangeLengthMode: 
+            case EnumEditMode.TranslateMode:
+                if (e.ChangedButton != MouseButton.Left) return;
+                draggingNoteMode = true;
+                notePosRelativeToContentWhenPressed = e.GetPosition(content);
+                noteXYWhenPressed = new Point(note.X, note.Y);
+                noteWidthWhenPressed = note.Width;
+                noteFrame.CaptureMouse();
+                break;
+        }
 
         e.Handled = true;
     }
 
     private void Note_MouseUp(object sender, MouseButtonEventArgs e)
     {
-        if (!draggingNoteMode) return;
-
         draggingNoteMode = false;
 
-        FrameworkElement noteFrame = (FrameworkElement)sender;
-        noteFrame.ReleaseMouseCapture();
+        FrameworkElement? noteFrame = (FrameworkElement)sender;
+        noteFrame?.ReleaseMouseCapture();
 
         e.Handled = true;
     }
 
     private void Note_MouseMove(object sender, MouseEventArgs e)
     {
-        if(!draggingNoteMode) return;
-
         Point curContentPoint = e.GetPosition(content);
-        FrameworkElement noteFrame = (FrameworkElement)sender;
-        NoteViewModel note = (NoteViewModel)noteFrame.DataContext;
-        note.X = noteOriginLeftTop.X + curContentPoint.X - noteOriginPos.X;
-        note.Y = Convert.ToInt32(noteOriginLeftTop.Y + curContentPoint.Y - noteOriginPos.Y);
+        if (sender is not FrameworkElement noteFrame ||
+            noteFrame.DataContext is not NoteViewModel note)
+        {
+            e.Handled = true;
+            return;
+        }
 
+        switch (editMode) {
+            case EnumEditMode.None: break;
+            case EnumEditMode.AddRemoveMode: break;
+            case EnumEditMode.ChangeLengthMode:
+                if (draggingNoteMode)
+                {
+                    note.Width = noteWidthWhenPressed + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
+                    NewNoteWidth = note.Width;
+                }
+                break;
+            case EnumEditMode.TranslateMode:
+                if (draggingNoteMode)
+                {
+                    note.X = noteXYWhenPressed.X + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
+                    note.Y = Convert.ToInt32(noteXYWhenPressed.Y + curContentPoint.Y - notePosRelativeToContentWhenPressed.Y);
+                }
+                break;
+        }
         e.Handled = true;
     }
 
@@ -165,7 +216,7 @@ public sealed partial class PianoRoll : UserControl
         Canvas.SetLeft(thumb, Canvas.GetLeft(thumb) + e.HorizontalChange);
     }
 
-    private void Tineline_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    private void Timeline_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         var audioService = App.Current.Services.GetService<AudioService>()!;
         audioService.PlayheadPosition = e.GetPosition(sender as Rectangle).X;

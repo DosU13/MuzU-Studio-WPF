@@ -11,6 +11,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using static MuzU_Studio.model.PianoRollModel;
 
 namespace MuzU_Studio.viewmodel;
 
@@ -50,6 +52,20 @@ internal class PianoRollViewModel: BindableBase
         }
     }
 
+    internal void AddNote(Point point, double width)
+    {
+        if (sequenceModel.SelectedSequence is null) return;
+        Node newNode = new();
+        sequenceModel.SelectedSequence!.Data.NodeList.List.Add(newNode);
+        NoteViewModel newNote = new(newNode, sequenceModel.SelectedSequence)
+        {
+            X = point.X,
+            Y = (int)(point.Y / PanAndZoomModel.NOTE_HEIGHT)*PanAndZoomModel.NOTE_HEIGHT,
+            Width = width
+        };
+        Notes.Add(newNote);
+    }
+
     public PanAndZoomModel PanAndZoomModel => panAndZoomModel;
 
     public PianoRollModel PianoRollModel => pianoRollModel;
@@ -72,4 +88,6 @@ internal class PianoRollViewModel: BindableBase
             AudioService.PlayheadPosition = newPlayheadPosition;
         }
     }
+
+    public EnumEditMode EditMode => pianoRollModel.EditMode;
 }

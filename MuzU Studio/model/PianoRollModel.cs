@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace MuzU_Studio.model;
 
-public partial class PianoRollModel
+public class PianoRollModel
 {
     public PianoRollModel() {
         App.Current.Services.GetService<PanAndZoomModel>()!.PropertyChanged += PanAndZoom_PropertyChanged;
@@ -21,12 +21,12 @@ public partial class PianoRollModel
             UpdateTimelineItemThickness(panAndZoomModel);
     }
 
-    public double BeatLength { get {
+    public static double BeatLength { get {
             var muzuData = App.Current.Services.GetService<ProjectRepository>()!.ProjectModel.MuzUProject.MuzUData;
             return PanAndZoomModel.FromMicroseconds(60_000_000) / muzuData.Tempo.BPM;
         } }
     
-    private double snapToGridInterval = 0.0;
+    private double snapToGridInterval = 1.0;
     public double SnapToGridInterval
     {
         get => snapToGridInterval;
@@ -49,6 +49,17 @@ public partial class PianoRollModel
     {
         return (double)((decimal)roundingInterval * Math.Round((decimal)number / (decimal)roundingInterval, MidpointRounding.AwayFromZero));
     }
+
+    public enum EnumEditMode
+    {
+        None,
+        AddRemoveMode,
+        ChangeLengthMode,
+        TranslateMode,
+    }
+
+    private EnumEditMode editMode = EnumEditMode.None;
+    public EnumEditMode EditMode { get => editMode; set => editMode = value; }
 
     #region Piano Keys
 

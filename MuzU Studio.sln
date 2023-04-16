@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzUHub", "MuzUHub\MuzUHub.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceLibrary", "ResourceLibrary\ResourceLibrary.csproj", "{8A02F4E1-EACD-4EA7-AE29-5D1070CDEB7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzUStandard", "..\MuzU Old Framework\MuzUStandard\MuzUStandard.csproj", "{96C8BF00-9636-4F3B-B4B6-C07BFC01D2F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuzUStandard", "MuzUStandard\MuzUStandard.csproj", "{A064DDBA-8192-4C3F-B9BE-24F560B78DFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{8A02F4E1-EACD-4EA7-AE29-5D1070CDEB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A02F4E1-EACD-4EA7-AE29-5D1070CDEB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A02F4E1-EACD-4EA7-AE29-5D1070CDEB7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96C8BF00-9636-4F3B-B4B6-C07BFC01D2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96C8BF00-9636-4F3B-B4B6-C07BFC01D2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96C8BF00-9636-4F3B-B4B6-C07BFC01D2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96C8BF00-9636-4F3B-B4B6-C07BFC01D2F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A064DDBA-8192-4C3F-B9BE-24F560B78DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A064DDBA-8192-4C3F-B9BE-24F560B78DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A064DDBA-8192-4C3F-B9BE-24F560B78DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A064DDBA-8192-4C3F-B9BE-24F560B78DFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
