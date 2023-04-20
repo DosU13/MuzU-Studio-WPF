@@ -114,9 +114,6 @@ public sealed partial class MainWindow : Window
         if (!await SaveWorkDialog()) return;
         var picker = new OpenFileDialog
         {
-#if DEBUG
-            InitialDirectory = "D:\\DosU\\Documents\\midi",
-#endif
             DefaultExt = ".mid",
             Filter = "Midi file (*.mid)|*.mid"
         };

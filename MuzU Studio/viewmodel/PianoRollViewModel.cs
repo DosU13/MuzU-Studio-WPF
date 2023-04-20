@@ -56,10 +56,9 @@ internal class PianoRollViewModel: BindableBase
     {
         if (sequenceModel.SelectedSequence is null) return;
         Node newNode = new();
-        sequenceModel.SelectedSequence!.Data.NodeList.List.Add(newNode);
         NoteViewModel newNote = new(newNode, sequenceModel.SelectedSequence)
         {
-            X = point.X,
+            X = pianoRollModel.SnapToGridByFloor(point.X),
             Y = (int)(point.Y / PanAndZoomModel.NOTE_HEIGHT)*PanAndZoomModel.NOTE_HEIGHT,
             Width = width
         };

@@ -17,6 +17,7 @@ internal partial class AudioService
         try
         {
             mediaPlayer.Open(new Uri(audioFilePath));
+            App.Current.Services.GetService<PianoRollModel>()!.UpdateWidth();
         }
         catch (Exception) { }
     }
@@ -28,6 +29,13 @@ internal partial class AudioService
         set => SetProperty(ref isPlaying, value);
     }
     public const string Nameof_IsPlaying = nameof(IsPlaying);
+
+    public double AudioDurationMicroseconds {
+        get {
+            return mediaPlayer.NaturalDuration.HasTimeSpan ? 
+                mediaPlayer.NaturalDuration.TimeSpan.TotalMicroseconds : 0;
+        }
+    }
 
     internal void PlayPause()
     {

@@ -49,8 +49,7 @@ internal class ToolboxViewModel : BindableBase
         {
             if (note.Parent.Visible)
             {
-                var newX = App.Current.Services.GetService<PianoRollModel>()!
-                                      .SnapToGrid(note.X, SnapAllInterval);
+                var newX = PianoRollModel.SnapToGrid(note.X, SnapAllInterval);
                 var oldTime = note.Node.Time;
                 note.ForceSetX(newX);
                 var newTime = note.Node.Time;
@@ -140,7 +139,7 @@ internal class ToolboxViewModel : BindableBase
             }
             sequence.Data.NodeList.List = list.Where((item,index) => !removeItems[index]).ToList();
         }
-        sequenceListModel.Update();
+        sequenceListModel.ReinitCollections();
     }
     #endregion
 
@@ -165,16 +164,12 @@ internal class ToolboxViewModel : BindableBase
     {
         var muzuData = projectRepository.ProjectModel.MuzUProject.MuzUData;
         var changeFactor = muzuData.Tempo.BPM / changeBPMParameter;
-        foreach(var sequence in muzuData.SequenceList.List)
+        foreach(var note in sequenceListModel.Notes)
         {
-            foreach(var node in sequence.NodeList.List)
-            {
-                node.Time = (long)(node.Time * changeFactor);
-                if(node.Length != null) node.Length = (long)(node.Length * changeFactor);
-            }
+            note.ForceSetX(note.X * changeFactor);
+            note.ForceSetWidth(note.Width * changeFactor);
         }
         muzuData.Tempo.BPM = changeBPMParameter;
-        sequenceListModel.Update();
     }
     #endregion
 }

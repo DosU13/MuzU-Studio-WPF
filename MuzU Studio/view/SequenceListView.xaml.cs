@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 using MuzU_Studio.viewmodel;
 using System;
 using System.Collections.Generic;
@@ -32,4 +33,17 @@ public partial class SequenceListView : UserControl
     }
 
     private SequenceListViewModel sequenceListViewModel => (SequenceListViewModel)DataContext;
+
+    private void AddSequenceFromMidi_Click(object sender, RoutedEventArgs e)
+    {
+        var picker = new OpenFileDialog
+        {
+            DefaultExt = ".mid",
+            Filter = "Midi file (*.mid)|*.mid"
+        };
+        if (picker.ShowDialog() ?? false)
+        {
+            sequenceListViewModel.AddSequenceFromMidi(picker.FileName);
+        }
+    }
 }

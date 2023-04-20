@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.Modeling.Diagrams;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.Modeling.Diagrams;
+using MuzU_Studio.model;
 using MuzU_Studio.util;
 using MuzU_Studio.viewmodel.shared_property;
 using MuzUStandard.data;
@@ -101,4 +103,15 @@ internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
         }
     }
     public void ToggleVisibility() => Visible = !Visible;
+
+    private ICommand? removeCommand;
+    public ICommand RemoveCommand =>
+        removeCommand ??= new RelayCommand(param => Remove());
+
+    private void Remove()
+    {
+        var sequenceListModel = App.Current.Services.GetService<SequenceListModel>()!;
+        sequenceListModel.Sequences.Remove(this);
+        sequenceListModel.ReinitCollections();
+    }
 }

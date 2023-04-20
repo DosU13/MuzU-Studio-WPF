@@ -8,3 +8,13 @@ D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4
 D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.csproj.CoreCompileInputs.cache
 D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.dll
 D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.pdb
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\bin\Debug\netstandard1.4\MuzUStandard.deps.json
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\bin\Debug\netstandard1.4\MuzUStandard.dll
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\bin\Debug\netstandard1.4\MuzUStandard.pdb
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.csproj.AssemblyReference.cache
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.GeneratedMSBuildEditorConfig.editorconfig
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.AssemblyInfoInputs.cache
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.AssemblyInfo.cs
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.csproj.CoreCompileInputs.cache
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.dll
+E:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\netstandard1.4\MuzUStandard.pdb
