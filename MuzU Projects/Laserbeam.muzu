@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MuzUData>
+  <Identity>
+    <Name>Laserbeam</Name>
+    <Creator>DosU</Creator>
+    <Description></Description>
+  </Identity>
+  <Music>
+    <Name>Ray Volpe</Name>
+    <Author>Laserbeam</Author>
+    <Version></Version>
+  </Music>
+  <MusicLocal>
+    <MusicPath>E:\Music\2022 07-08\Ray Volpe - Laserbeam.mp3</MusicPath>
+    <MusicOffsetMicroseconds>0</MusicOffsetMicroseconds>
+  </MusicLocal>
+  <Tempo>
+    <MicrosecondsPerQuarterNote>800000</MicrosecondsPerQuarterNote>
+    <TimeSignature>
+      <Numerator>4</Numerator>
+      <Denominator>4</Denominator>
+    </TimeSignature>
+  </Tempo>
+  <SequenceList count="2">
+    <item-0>
+      <Sequence>
+        <Name>Snap  </Name>
+        <SequenceTemplate>
+          <LengthEnabled>false</LengthEnabled>
+          <NoteEnabled>false</NoteEnabled>
+          <LyricsEnabled>false</LyricsEnabled>
+          <TimeUnit>Both</TimeUnit>
+          <PropertiesList count="1">
+            <item-0>
+              <Property>
+                <Name>Hue</Name>
+                <Value>240</Value>
+              </Property>
+            </item-0>
+          </PropertiesList>
+        </SequenceTemplate>
+        <NodeList count="102">
+          <item-0>
+            <Node Time="0" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-0>
+          <item-1>
+            <Node Time="400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-1>
+          <item-2>
+            <Node Time="800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-2>
+          <item-3>
+            <Node Time="1200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-3>
+          <item-4>
+            <Node Time="1600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-4>
+          <item-5>
+            <Node Time="2000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-5>
+          <item-6>
+            <Node Time="2400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-6>
+          <item-7>
+            <Node Time="2800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-7>
+          <item-8>
+            <Node Time="3200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-8>
+          <item-9>
+            <Node Time="3600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-9>
+          <item-10>
+            <Node Time="4000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-10>
+          <item-11>
+            <Node Time="4400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-11>
+          <item-12>
+            <Node Time="4800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-12>
+          <item-13>
+            <Node Time="5200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-13>
+          <item-14>
+            <Node Time="5600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-14>
+          <item-15>
+            <Node Time="6000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-15>
+          <item-16>
+            <Node Time="6400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-16>
+          <item-17>
+            <Node Time="6799999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-17>
+          <item-18>
+            <Node Time="7200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-18>
+          <item-19>
+            <Node Time="7600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-19>
+          <item-20>
+            <Node Time="8000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-20>
+          <item-21>
+            <Node Time="8400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-21>
+          <item-22>
+            <Node Time="8800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-22>
+          <item-23>
+            <Node Time="9200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-23>
+          <item-24>
+            <Node Time="9600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-24>
+          <item-25>
+            <Node Time="10000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-25>
+          <item-26>
+            <Node Time="10400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-26>
+          <item-27>
+            <Node Time="10800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-27>
+          <item-28>
+            <Node Time="11200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-28>
+          <item-29>
+            <Node Time="11599999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-29>
+          <item-30>
+            <Node Time="12000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-30>
+          <item-31>
+            <Node Time="12400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-31>
+          <item-32>
+            <Node Time="12800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-32>
+          <item-33>
+            <Node Time="13200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-33>
+          <item-34>
+            <Node Time="13599999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-34>
+          <item-35>
+            <Node Time="14000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-35>
+          <item-36>
+            <Node Time="14400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-36>
+          <item-37>
+            <Node Time="14800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-37>
+          <item-38>
+            <Node Time="15200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-38>
+          <item-39>
+            <Node Time="15599999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-39>
+          <item-40>
+            <Node Time="16000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-40>
+          <item-41>
+            <Node Time="16400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-41>
+          <item-42>
+            <Node Time="16800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-42>
+          <item-43>
+            <Node Time="17200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-43>
+          <item-44>
+            <Node Time="17600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-44>
+          <item-45>
+            <Node Time="18000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-45>
+          <item-46>
+            <Node Time="18400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-46>
+          <item-47>
+            <Node Time="18800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-47>
+          <item-48>
+            <Node Time="19200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-48>
+          <item-49>
+            <Node Time="19600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-49>
+          <item-50>
+            <Node Time="20000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-50>
+          <item-51>
+            <Node Time="20400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-51>
+          <item-52>
+            <Node Time="20800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-52>
+          <item-53>
+            <Node Time="20800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-53>
+          <item-54>
+            <Node Time="20800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-54>
+          <item-55>
+            <Node Time="21200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-55>
+          <item-56>
+            <Node Time="21200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-56>
+          <item-57>
+            <Node Time="20800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-57>
+          <item-58>
+            <Node Time="20400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-58>
+          <item-59>
+            <Node Time="20000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-59>
+          <item-60>
+            <Node Time="21600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-60>
+          <item-61>
+            <Node Time="22000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-61>
+          <item-62>
+            <Node Time="22400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-62>
+          <item-63>
+            <Node Time="22800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-63>
+          <item-64>
+            <Node Time="23199999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-64>
+          <item-65>
+            <Node Time="23600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-65>
+          <item-66>
+            <Node Time="24000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-66>
+          <item-67>
+            <Node Time="24400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-67>
+          <item-68>
+            <Node Time="24800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-68>
+          <item-69>
+            <Node Time="25199999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-69>
+          <item-70>
+            <Node Time="25600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-70>
+          <item-71>
+            <Node Time="26000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-71>
+          <item-72>
+            <Node Time="26400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-72>
+          <item-73>
+            <Node Time="26800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-73>
+          <item-74>
+            <Node Time="27199999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-74>
+          <item-75>
+            <Node Time="27600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-75>
+          <item-76>
+            <Node Time="28000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-76>
+          <item-77>
+            <Node Time="28400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-77>
+          <item-78>
+            <Node Time="28800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-78>
+          <item-79>
+            <Node Time="29199999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-79>
+          <item-80>
+            <Node Time="29600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-80>
+          <item-81>
+            <Node Time="30000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-81>
+          <item-82>
+            <Node Time="30400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-82>
+          <item-83>
+            <Node Time="30800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-83>
+          <item-84>
+            <Node Time="31199999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-84>
+          <item-85>
+            <Node Time="31600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-85>
+          <item-86>
+            <Node Time="32000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-86>
+          <item-87>
+            <Node Time="32400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-87>
+          <item-88>
+            <Node Time="32800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-88>
+          <item-89>
+            <Node Time="33199999" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-89>
+          <item-90>
+            <Node Time="33600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-90>
+          <item-91>
+            <Node Time="34000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-91>
+          <item-92>
+            <Node Time="34400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-92>
+          <item-93>
+            <Node Time="34800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-93>
+          <item-94>
+            <Node Time="35200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-94>
+          <item-95>
+            <Node Time="35600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-95>
+          <item-96>
+            <Node Time="36000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-96>
+          <item-97>
+            <Node Time="36400000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-97>
+          <item-98>
+            <Node Time="36800000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-98>
+          <item-99>
+            <Node Time="37200000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-99>
+          <item-100>
+            <Node Time="37600000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-100>
+          <item-101>
+            <Node Time="38000000" Length="200000">
+              <Note>81</Note>
+            </Node>
+          </item-101>
+        </NodeList>
+      </Sequence>
+    </item-0>
+    <item-1>
+      <Sequence>
+        <Name>Bring out the lasers</Name>
+        <SequenceTemplate>
+          <LengthEnabled>false</LengthEnabled>
+          <NoteEnabled>false</NoteEnabled>
+          <LyricsEnabled>false</LyricsEnabled>
+          <TimeUnit>Both</TimeUnit>
+          <PropertiesList count="1">
+            <item-0>
+              <Property>
+                <Name>Hue</Name>
+                <Value>45</Value>
+              </Property>
+            </item-0>
+          </PropertiesList>
+        </SequenceTemplate>
+        <NodeList count="43">
+          <item-0>
+            <Node Time="38400000" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-0>
+          <item-1>
+            <Node Time="40000000" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-1>
+          <item-2>
+            <Node Time="41600000" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-2>
+          <item-3>
+            <Node Time="43200000" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-3>
+          <item-4>
+            <Node Time="44800000" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-4>
+          <item-5>
+            <Node Time="46399999" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-5>
+          <item-6>
+            <Node Time="48000000" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-6>
+          <item-7>
+            <Node Time="49600000" Length="1400000">
+              <Note>69</Note>
+            </Node>
+          </item-7>
+          <item-8>
+            <Node Time="51200000" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-8>
+          <item-9>
+            <Node Time="52000000" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-9>
+          <item-10>
+            <Node Time="52800000" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-10>
+          <item-11>
+            <Node Time="54399999" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-11>
+          <item-12>
+            <Node Time="56000000" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-12>
+          <item-13>
+            <Node Time="56800000" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-13>
+          <item-14>
+            <Node Time="57600000" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-14>
+          <item-15>
+            <Node Time="53600000" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-15>
+          <item-16>
+            <Node Time="55200000" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-16>
+          <item-17>
+            <Node Time="58000000" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-17>
+          <item-18>
+            <Node Time="58399999" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-18>
+          <item-19>
+            <Node Time="58800000" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-19>
+          <item-20>
+            <Node Time="59200000" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-20>
+          <item-21>
+            <Node Time="59600000" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-21>
+          <item-22>
+            <Node Time="60000000" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-22>
+          <item-23>
+            <Node Time="60399999" Length="350000">
+              <Note>69</Note>
+            </Node>
+          </item-23>
+          <item-24>
+            <Node Time="60800000" Length="175000">
+              <Note>69</Note>
+            </Node>
+          </item-24>
+          <item-25>
+            <Node Time="61000000" Length="175000">
+              <Note>69</Note>
+            </Node>
+          </item-25>
+          <item-26>
+            <Node Time="61200000" Length="175000">
+              <Note>69</Note>
+            </Node>
+          </item-26>
+          <item-27>
+            <Node Time="61399999" Length="175000">
+              <Note>69</Note>
+            </Node>
+          </item-27>
+          <item-28>
+            <Node Time="61600000" Length="175000">
+              <Note>69</Note>
+            </Node>
+          </item-28>
+          <item-29>
+            <Node Time="61800000" Length="175000">
+              <Note>69</Note>
+            </Node>
+          </item-29>
+          <item-30>
+            <Node Time="62000000" Length="87500">
+              <Note>69</Note>
+            </Node>
+          </item-30>
+          <item-31>
+            <Node Time="62100000" Length="87500">
+              <Note>69</Note>
+            </Node>
+          </item-31>
+          <item-32>
+            <Node Time="62200000" Length="87500">
+              <Note>69</Note>
+            </Node>
+          </item-32>
+          <item-33>
+            <Node Time="62300000" Length="87500">
+              <Note>69</Note>
+            </Node>
+          </item-33>
+          <item-34>
+            <Node Time="62399999" Length="700000">
+              <Note>69</Note>
+            </Node>
+          </item-34>
+          <item-35>
+            <Node Time="35200000" Length="700000">
+              <Note>68</Note>
+            </Node>
+          </item-35>
+          <item-36>
+            <Node Time="36000000" Length="700000">
+              <Note>68</Note>
+            </Node>
+          </item-36>
+          <item-37>
+            <Node Time="36800000" Length="700000">
+              <Note>68</Note>
+            </Node>
+          </item-37>
+          <item-38>
+            <Node Time="37600000" Length="100000">
+              <Note>68</Note>
+            </Node>
+          </item-38>
+          <item-39>
+            <Node Time="37700000" Length="100000">
+              <Note>68</Note>
+            </Node>
+          </item-39>
+          <item-40>
+            <Node Time="37800000" Length="100000">
+              <Note>68</Note>
+            </Node>
+          </item-40>
+          <item-41>
+            <Node Time="37800000" Length="100000">
+              <Note>68</Note>
+            </Node>
+          </item-41>
+          <item-42>
+            <Node Time="37900000" Length="100000">
+              <Note>68</Note>
+            </Node>
+          </item-42>
+        </NodeList>
+      </Sequence>
+    </item-1>
+  </SequenceList>
+</MuzUData>
