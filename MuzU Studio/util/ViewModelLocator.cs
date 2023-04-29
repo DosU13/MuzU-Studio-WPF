@@ -20,4 +20,5 @@ internal class ViewModelLocator
     public static SequenceListViewModel SequenceListViewModel => App.Current.Services.GetService<SequenceListViewModel>()!;
     public static MediaControlsViewModel MediaControlsViewModel => App.Current.Services.GetService<MediaControlsViewModel>()!;
     public static ToolboxViewModel ToolboxViewModel => App.Current.Services.GetService<ToolboxViewModel>()!;
+    public static LyricsViewModel LyricsViewModel => App.Current.Services.GetService<LyricsViewModel>()!;
 }

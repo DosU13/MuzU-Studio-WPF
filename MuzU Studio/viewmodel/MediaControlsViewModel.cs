@@ -40,29 +40,4 @@ internal class MediaControlsViewModel : BindableBase
         get => pianoRollModel.SnapToGridInterval;
         set => pianoRollModel.SnapToGridInterval = value;
     }
-    public EnumEditMode EditMode { 
-        get => pianoRollModel.EditMode;
-        set
-        {
-            pianoRollModel.EditMode = pianoRollModel.EditMode == value ? EnumEditMode.None : value;
-            OnPropertyChanged(nameof(AddRemoveModeColor));
-            OnPropertyChanged(nameof(ChangeLengthModeColor));
-            OnPropertyChanged(nameof(TranslateModeColor));
-        }
-    }
-
-    private Color disabledColor = Color.FromRgb(0x1c, 0x1c, 0x21); 
-    private Color enabledColor = Color.FromRgb(0xff, 0x54, 0x00);
-    public Color AddRemoveModeColor => EditMode == EnumEditMode.AddRemoveMode ? enabledColor : disabledColor;
-    public Color ChangeLengthModeColor => EditMode == EnumEditMode.ChangeLengthMode ? enabledColor : disabledColor;
-    public Color TranslateModeColor => EditMode == EnumEditMode.TranslateMode ? enabledColor : disabledColor;
-    private ICommand? addRemoveModeCommand;
-    public ICommand AddRemoveModeCommand =>
-        addRemoveModeCommand ??= new RelayCommand(param => EditMode = EnumEditMode.AddRemoveMode);
-    private ICommand? changeLengthModeCommand;
-    public ICommand ChangeLengthModeCommand =>
-        changeLengthModeCommand ??= new RelayCommand(param => EditMode = EnumEditMode.ChangeLengthMode);
-    private ICommand? translateModeCommand;
-    public ICommand TranslateModeCommand =>
-        translateModeCommand ??= new RelayCommand(param => EditMode = EnumEditMode.TranslateMode);
 }

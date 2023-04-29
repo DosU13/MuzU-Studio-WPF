@@ -50,6 +50,12 @@
                     Height="{Binding Height}"
                     Cursor="Hand">
                 </Rectangle>
+                <Thumb Height="{Binding Height}"
+                       Width="50"
+                       Opacity="0"
+                       HorizontalAlignment="Right"
+                       Cursor="SizeWE"
+                       DragDelta="ResizeThumb_DragDelta"/>
             </Grid>
         </DataTemplate>
 

@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace MuzU_Studio.viewmodel;
 
-internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
+public class SequenceViewModel : BindableBase, ISequenceSharedProperty
 {
     private readonly Sequence sequence;
     private bool visible = true;
@@ -27,6 +27,8 @@ internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
                 new Property { Name = HueName, Value = hue.ToString()}); 
         }
         Hue = hue;
+        foreach(var node in sequence.NodeList.List) 
+            Notes.Add(new NoteViewModel(node, this));
     }
 
     public Sequence Data => sequence;
@@ -108,10 +110,40 @@ internal class SequenceViewModel : BindableBase, ISequenceSharedProperty
     public ICommand RemoveCommand =>
         removeCommand ??= new RelayCommand(param => Remove());
 
+    public readonly SortedSet<NoteViewModel> Notes = new(new NoteViewModelComparer());
+
     private void Remove()
     {
         var sequenceListModel = App.Current.Services.GetService<SequenceListModel>()!;
         sequenceListModel.Sequences.Remove(this);
         sequenceListModel.ReinitCollections();
+    }
+
+    internal void AddNote(NoteViewModel note)
+    {
+        Notes.Add(note);
+        Data.NodeList.List.Add(note.Data);
+    }
+
+    internal void RemoveNote(NoteViewModel note)
+    {
+        Notes.Remove(note);
+        Data.NodeList.List.Remove(note.Data);
+    }
+
+    internal void NotifyNoteChanged(NoteViewModel note)
+    {
+        Notes.Remove(note);
+        Notes.Add(note);
+    }
+
+    class NoteViewModelComparer : IComparer<NoteViewModel>
+    {
+        public int Compare(NoteViewModel? x, NoteViewModel? y)
+        {
+            if (y == null) return 1;
+            if (x == null) return -1;
+            return x.X.CompareTo(y.X);
+        }
     }
 }

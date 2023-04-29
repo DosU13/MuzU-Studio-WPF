@@ -73,7 +73,7 @@
             <ComboBoxItem Content="1/6 step"/>
             <ComboBoxItem Content="1/8 step"/>
         </ComboBox>
-        <Button Content=" ± " 
+        <!--<Button Content=" ± " 
                 Background="{Binding AddRemoveModeColor, Mode=OneWay, 
                             Converter={StaticResource colorToBrushConverter}}"
                 Command="{Binding AddRemoveModeCommand}"
@@ -92,6 +92,6 @@
                 Command="{Binding TranslateModeCommand}"
                 Style="{StaticResource buttonHoverStyle}"
                 FontSize="16"
-                Margin="0,0,10,0"/>
+                Margin="0,0,10,0"/>-->
     </StackPanel>
 </UserControl>

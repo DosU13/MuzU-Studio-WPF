@@ -19,7 +19,7 @@ public class NoteViewModel : BindableBase
     /// <summary>
     /// Xml Data of the note
     /// </summary>
-    private readonly Node node;
+    private readonly Node data;
 
     private readonly ISequenceSharedProperty parent;
 
@@ -30,23 +30,23 @@ public class NoteViewModel : BindableBase
 
     #endregion Data Members
 
-    public NoteViewModel(Node node, ISequenceSharedProperty parent)
+    public NoteViewModel(Node data, ISequenceSharedProperty parent)
     {
-        this.node = node;
+        this.data = data;
         this.parent = parent;
     }
 
     /// <summary>
     /// Xml Data repository
     /// </summary>
-    public Node Node { get { return node; } }
+    public Node Data { get { return data; } }
 
     /// <summary>
     /// The X coordinate of the location of the rectangle (in content coordinates).
     /// </summary>
     public double X
     {
-        get => PanAndZoomModel.FromMicroseconds(node.Time);
+        get => PanAndZoomModel.FromMicroseconds(data.Time);
         set
         {
             var snappedValue = App.Current.Services.GetService<PianoRollModel>()!.SnapToGrid(value);
@@ -57,17 +57,18 @@ public class NoteViewModel : BindableBase
     public void ForceSetX(double x)
     {
         var newTime = PanAndZoomModel.ToMicroseconds(x);
-        if (newTime != node.Time)
+        if (newTime != data.Time)
         {
-            node.Time = newTime;
+            data.Time = newTime;
             OnPropertyChanged(nameof(X));
+            (parent as SequenceViewModel)!.NotifyNoteChanged(this);
         }
     }
 
     public MusicalTimeSpan MusicalTimeSpan { get {
             var tempoMap = TempoMap.Create(Melanchall.DryWetMidi.Interaction.Tempo.FromBeatsPerMinute(128));
             return TimeConverter.ConvertTo<MusicalTimeSpan>(
-                new MetricTimeSpan(node.Time), tempoMap);
+                new MetricTimeSpan(data.Time), tempoMap);
         }
     }
 
@@ -76,11 +77,11 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double Y
     {
-        get => (node.Note??64) * NOTE_HEIGHT;
+        get => (data.Note??64) * NOTE_HEIGHT;
         set {
             int newValue = (int)Math.Round(value / NOTE_HEIGHT);
-            if (node.Note == newValue) return;
-            node.Note = newValue;
+            if (data.Note == newValue) return;
+            data.Note = newValue;
             OnPropertyChanged();
         }
     }
@@ -90,7 +91,7 @@ public class NoteViewModel : BindableBase
     /// </summary>
     public double Width
     {
-        get => PanAndZoomModel.FromMicroseconds(node.Length ?? 500_000L / 8);
+        get => PanAndZoomModel.FromMicroseconds(data.Length ?? 500_000L / 8);
         set
         {
             var snappedValue = App.Current.Services.GetService<PianoRollModel>()!.SnapToGrid(value);
@@ -101,9 +102,9 @@ public class NoteViewModel : BindableBase
     public void ForceSetWidth(double width)
     {
         var newLength = PanAndZoomModel.ToMicroseconds(width);
-        if (newLength != node.Length)
+        if (newLength != data.Length)
         {
-            node.Length = newLength;
+            data.Length = newLength;
             OnPropertyChanged(nameof(Width));
         }
     }
@@ -132,4 +133,6 @@ public class NoteViewModel : BindableBase
             Console.WriteLine(X);
         }
     }
+
+    public string Lyrics => X.ToString();
 }

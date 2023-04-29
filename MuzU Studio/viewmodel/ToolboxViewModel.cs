@@ -50,9 +50,9 @@ internal class ToolboxViewModel : BindableBase
             if (note.Parent.Visible)
             {
                 var newX = PianoRollModel.SnapToGrid(note.X, SnapAllInterval);
-                var oldTime = note.Node.Time;
+                var oldTime = note.Data.Time;
                 note.ForceSetX(newX);
-                var newTime = note.Node.Time;
+                var newTime = note.Data.Time;
                 if (oldTime != newTime) count++;
             }
         }

@@ -46,17 +46,6 @@ public class PianoRollModel
     public double SnapToGridByFloor(double value) =>
         Utils.FloorWithInterval(value, BeatLength * SnapToGridInterval);
 
-    public enum EnumEditMode
-    {
-        None,
-        AddRemoveMode,
-        ChangeLengthMode,
-        TranslateMode,
-    }
-
-    private EnumEditMode editMode = EnumEditMode.None;
-    public EnumEditMode EditMode { get => editMode; set => editMode = value; }
-
     #region Piano Keys
 
     private List<PianoKeyViewModel>? pianoKeys;

@@ -87,6 +87,4 @@ internal class PianoRollViewModel: BindableBase
             AudioService.PlayheadPosition = newPlayheadPosition;
         }
     }
-
-    public EnumEditMode EditMode => pianoRollModel.EditMode;
 }

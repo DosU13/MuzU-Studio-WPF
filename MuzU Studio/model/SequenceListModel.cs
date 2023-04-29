@@ -1,13 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MuzU_Studio.service;
 using MuzU_Studio.viewmodel;
+using MuzUHub;
 using MuzUStandard.data;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Configuration;
 
 namespace MuzU_Studio.model;
 
-internal class SequenceListModel
+public class SequenceListModel: BindableBase
 {
     private readonly ProjectRepository projectRepository;
 
@@ -42,21 +44,21 @@ internal class SequenceListModel
         }
     }
 
-    private void Notes_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    private void Notes_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         if (!isCollectionChangedEventEnabled) return;
         if (e.NewItems != null)
         {
             foreach (NoteViewModel note in e.NewItems)
             {
-                ((SequenceViewModel)note.Parent).Data.NodeList.List.Add(note.Node);
+                ((SequenceViewModel)note.Parent).AddNote(note);
             }
         }
         if (e.OldItems != null)
         {
             foreach (NoteViewModel note in e.OldItems)
             {
-                ((SequenceViewModel)note.Parent).Data.NodeList.List.Remove(note.Node);
+                ((SequenceViewModel)note.Parent).RemoveNote(note);
             }
         }
     }
@@ -74,8 +76,8 @@ internal class SequenceListModel
             {
                 SequenceViewModel sequenceViewModel = new(sequenceData);
                 sequences.Add(sequenceViewModel);
-                foreach (var note in sequenceData.NodeList.List)
-                    notes.Add(new NoteViewModel(note, sequenceViewModel));
+                foreach (NoteViewModel note in sequenceViewModel.Notes)
+                    notes.Add(note);
             }
             App.Current.Services.GetService<PianoRollModel>()!.UpdateWidth();
             SelectedSequence = Sequences.FirstOrDefault();
@@ -93,6 +95,14 @@ internal class SequenceListModel
     /// The list of rectangles that is displayed both in the main window and in the overview window.
     /// </summary>
     public ObservableCollection<SequenceViewModel> Sequences => sequences;
-    public SequenceViewModel? SelectedSequence;
+
+    public static string Nameof_SelectedSequence => nameof(SelectedSequence);
+
+    private SequenceViewModel? selectedSequence;
+    public SequenceViewModel? SelectedSequence
+    {
+        get => selectedSequence ??= Sequences.FirstOrDefault();
+        set => SetProperty(ref selectedSequence, value);
+    }
     public ObservableCollection<NoteViewModel> Notes => notes;
 }

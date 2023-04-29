@@ -85,6 +85,13 @@
                 </TextBox>
             </Grid>
         </DataTemplate>
+
+        <Style x:Key="listBoxSelectedItemStyle" TargetType="ListBoxItem">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                             Color="Transparent"/>
+            </Style.Resources>
+        </Style>
     </UserControl.Resources>
     
     <Grid>
@@ -94,6 +101,7 @@
         </Grid.RowDefinitions>
         <ListBox Grid.Row="0"
                  ItemTemplate="{StaticResource SequenceItemTemplate}"
+                 ItemContainerStyle="{StaticResource listBoxSelectedItemStyle}"
                  ItemsSource="{Binding Sequences}"
                  SelectedItem="{Binding SelectedSequence, Mode=OneWayToSource}"
                  HorizontalContentAlignment="Stretch"/>

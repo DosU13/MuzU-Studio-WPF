@@ -3,6 +3,7 @@ using MuzU_Studio.model;
 using MuzU_Studio.service;
 using MuzU_Studio.viewmodel;
 using System;
+using System.Diagnostics;
 using System.Runtime.ConstrainedExecution;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,7 +32,6 @@ public sealed partial class PianoRoll : UserControl
     }
 
     private PianoRollViewModel pianoRollViewModel => (PianoRollViewModel)DataContext;
-    private EnumEditMode editMode => pianoRollViewModel.EditMode;
 
     private void zoomAndPanControl_MouseWheel(object sender, MouseWheelEventArgs e)
     {
@@ -67,8 +67,7 @@ public sealed partial class PianoRoll : UserControl
     {
         if (e.ChangedButton == MouseButton.Middle) isPanningMode = true;
         mouseDownPointRelativeToContent = e.GetPosition(content);
-        if (editMode == EnumEditMode.AddRemoveMode &&
-            e.ChangedButton == MouseButton.Left)
+        if (e.ChangedButton == MouseButton.Left)
         {
             pianoRollViewModel.AddNote(mouseDownPointRelativeToContent, NewNoteWidth);
         }
@@ -121,7 +120,6 @@ public sealed partial class PianoRoll : UserControl
     private bool draggingNoteMode = false;
     private Point notePosRelativeToContentWhenPressed;
     private Point noteXYWhenPressed;
-    private double noteWidthWhenPressed;
     private double? _newNoteWidth = null;
     private double NewNoteWidth
     {
@@ -142,28 +140,17 @@ public sealed partial class PianoRoll : UserControl
 
         note.IsSelected = true;
 
-        switch (editMode)
+        if(e.ChangedButton == MouseButton.Right)
         {
-            case EnumEditMode.None: break;
-            case EnumEditMode.AddRemoveMode: 
-                if(e.ChangedButton == MouseButton.Left)
-                {
-                    pianoRollViewModel.AddNote(e.GetPosition(content), NewNoteWidth);
-                }
-                else if(e.ChangedButton == MouseButton.Right)
-                {
-                    pianoRollViewModel.Notes.Remove(note);
-                }
-                break;
-            case EnumEditMode.ChangeLengthMode: 
-            case EnumEditMode.TranslateMode:
-                if (e.ChangedButton != MouseButton.Left) return;
-                draggingNoteMode = true;
-                notePosRelativeToContentWhenPressed = e.GetPosition(content);
-                noteXYWhenPressed = new Point(note.X, note.Y);
-                noteWidthWhenPressed = note.Width;
-                noteFrame.CaptureMouse();
-                break;
+            pianoRollViewModel.Notes.Remove(note);
+        }
+        else
+        {
+            if (e.ChangedButton != MouseButton.Left) return;
+            draggingNoteMode = true;
+            notePosRelativeToContentWhenPressed = e.GetPosition(content);
+            noteXYWhenPressed = new Point(note.X, note.Y);
+            noteFrame.CaptureMouse();
         }
 
         e.Handled = true;
@@ -189,23 +176,10 @@ public sealed partial class PianoRoll : UserControl
             return;
         }
 
-        switch (editMode) {
-            case EnumEditMode.None: break;
-            case EnumEditMode.AddRemoveMode: break;
-            case EnumEditMode.ChangeLengthMode:
-                if (draggingNoteMode)
-                {
-                    note.Width = noteWidthWhenPressed + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
-                    NewNoteWidth = note.Width;
-                }
-                break;
-            case EnumEditMode.TranslateMode:
-                if (draggingNoteMode)
-                {
-                    note.X = noteXYWhenPressed.X + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
-                    note.Y = Convert.ToInt32(noteXYWhenPressed.Y + curContentPoint.Y - notePosRelativeToContentWhenPressed.Y);
-                }
-                break;
+        if (draggingNoteMode)
+        {
+            note.X = noteXYWhenPressed.X + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
+            note.Y = Convert.ToInt32(noteXYWhenPressed.Y + curContentPoint.Y - notePosRelativeToContentWhenPressed.Y);
         }
         e.Handled = true;
     }
@@ -220,5 +194,21 @@ public sealed partial class PianoRoll : UserControl
     {
         var audioService = App.Current.Services.GetService<AudioService>()!;
         audioService.PlayheadPosition = e.GetPosition(sender as Rectangle).X;
+    }
+
+    private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
+    {
+        if (sender is not FrameworkElement noteFrame ||
+            noteFrame.DataContext is not NoteViewModel note)
+        {
+            e.Handled = true;
+            return;
+        }
+
+        note.Width += e.HorizontalChange;
+        Debug.WriteLine(note.Width + ":" + e.HorizontalChange);
+        NewNoteWidth = note.Width;
+            
+        e.Handled = true;
     }
 }

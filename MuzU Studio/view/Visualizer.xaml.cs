@@ -40,7 +40,7 @@ public sealed partial class Visualizer : UserControl
         foreach (var note in sequenceList.Notes.Where(x => x.Parent.Visible && 
                                 x.X <= musicPos && musicPos <= x.X + x.Width))
         {
-            double width = 50 + 50 * (((musicPos % 10 / 10.0) + note.Node.Note!.Value/128.0) % 1.0);
+            double width = 50 + 50 * (((musicPos % 10 / 10.0) + note.Data.Note!.Value/128.0) % 1.0);
             double tempFlashFactor = Math.Max(100_000D - PanAndZoomModel.ToMicroseconds(musicPos - note.X), 0) / 100_000;
             if (backFlashFactor < tempFlashFactor) backFlashFactor = tempFlashFactor;
             Rectangle rect = new()
@@ -51,7 +51,7 @@ public sealed partial class Visualizer : UserControl
             };
             MainCanvas.Children.Add(rect);
             Canvas.SetLeft(rect, (MainCanvas.ActualWidth - 100) * 
-                (note.Node.Note!.Value/128.0) + 50 - width / 2);
+                (note.Data.Note!.Value/128.0) + 50 - width / 2);
         }
         MainCanvas.Background = BackBrushFrom(backFlashFactor);
     }

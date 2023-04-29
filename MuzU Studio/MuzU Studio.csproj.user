@@ -7,11 +7,17 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="view\LyricsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="view\Toolbox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="view\LyricsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="view\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
