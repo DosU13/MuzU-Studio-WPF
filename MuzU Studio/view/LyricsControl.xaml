@@ -62,12 +62,14 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <ListBox ScrollViewer.VerticalScrollBarVisibility="Hidden"
+        <ListBox x:Name="myListBox" 
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
                  ItemContainerStyle="{StaticResource LyricsItemStyle}"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
                  ItemsSource="{Binding Lyrics}"
+                 SelectionChanged="myListBox_SelectionChanged"
         >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
