@@ -134,5 +134,8 @@ public class NoteViewModel : BindableBase
         }
     }
 
-    public string Lyrics => X.ToString();
+    public string Lyrics {
+        get => X.ToString();
+        set => value = value;
+    }
 }

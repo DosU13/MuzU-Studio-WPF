@@ -13,7 +13,8 @@
     <UserControl.Resources>
         <util:ColorToBrushConverter x:Key="colorToBrushConverter"/>
 
-        <DataTemplate DataType="{x:Type vm:NoteViewModel}">
+        <DataTemplate x:Key="LyricsItemDataTemplate" 
+                      DataType="{x:Type vm:NoteViewModel}">
             <Grid Margin="5" Width="100">
                 <Grid HorizontalAlignment="Center">
                     <TextBlock Text="{Binding Lyrics}"/>
@@ -42,10 +43,15 @@
                             <ContentPresenter.Style>
                                 <Style TargetType="{x:Type ContentPresenter}">
                                     <Setter Property="ContentTemplate"
-                                            Value="{StaticResource {x:Type vm:NoteViewModel}}"/>
+                                            Value="{StaticResource LyricsItemDataTemplate}"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsSelected, 
-                                                               RelativeSource={RelativeSource AncestorType={x:Type}}}"
+                                                               RelativeSource={RelativeSource AncestorType={
+                                                               x:Type ListBoxItem}}}"
+                                                     Value="True">
+                                            <Setter Property="ContentTemplate"
+                                                    Value="{StaticResource SelectedLyricsItemDataTemplate}"/>
+                                        </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </ContentPresenter.Style>
