@@ -17,7 +17,7 @@ internal partial class AudioService
         try
         {
             mediaPlayer.Open(new Uri(audioFilePath));
-            App.Current.Services.GetService<PianoRollModel>()!.UpdateWidth();
+            App.Current.Services.GetService<PanAndZoomModel>()!.UpdateWidth();
         }
         catch (Exception) { }
     }

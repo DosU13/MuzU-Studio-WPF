@@ -79,7 +79,7 @@ public class SequenceListModel: BindableBase
                 foreach (NoteViewModel note in sequenceViewModel.Notes)
                     notes.Add(note);
             }
-            App.Current.Services.GetService<PianoRollModel>()!.UpdateWidth();
+            App.Current.Services.GetService<PanAndZoomModel>()!.UpdateWidth();
             SelectedSequence = Sequences.FirstOrDefault();
             isCollectionChangedEventEnabled = true;
         }));

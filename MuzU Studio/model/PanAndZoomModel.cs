@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MuzU_Studio.service;
 using MuzU_Studio.util;
 using System;
 using System.Collections.Generic;
@@ -202,4 +203,13 @@ public class PanAndZoomModel : BindableBase
     }
     public const string Nameof_ContentWidth = nameof(ContentWidth);
     public const string Nameof_ContentViewportWidth = nameof(ContentViewportWidth);
+
+    public void UpdateWidth()
+    {
+        var audioService = App.Current.Services.GetService<AudioService>()!;
+        double max = FromMicroseconds((long)audioService.AudioDurationMicroseconds);
+        var notes = App.Current.Services.GetService<SequenceListModel>()!.Notes;
+        foreach (var n in notes) if (max < n.Width + n.X) max = n.Width + n.X;
+        ContentWidth = max;
+    }
 }

@@ -16,6 +16,8 @@
             x:Key="musicalNameRule"/>
         <util:ColorToBrushConverter
             x:Key="colorToBrushConverter"/>
+        <util:ToggleButtonBrushConverter 
+            x:Key="toggleButtonBrushConverter"/>
         
         <Style x:Key="buttonHoverStyle" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -23,11 +25,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Name="border" 
-                        BorderThickness="1"
-                        Padding="4,2" 
-                        BorderBrush="DarkGray" 
-                        CornerRadius="3" 
-                        Background="{TemplateBinding Background}">
+                                BorderThickness="1"
+                                Padding="4,2" 
+                                BorderBrush="DarkGray" 
+                                CornerRadius="3" 
+                                Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
@@ -73,25 +75,12 @@
             <ComboBoxItem Content="1/6 step"/>
             <ComboBoxItem Content="1/8 step"/>
         </ComboBox>
-        <!--<Button Content=" ± " 
-                Background="{Binding AddRemoveModeColor, Mode=OneWay, 
-                            Converter={StaticResource colorToBrushConverter}}"
-                Command="{Binding AddRemoveModeCommand}"
+        <Button Content="🔒" 
+                Background="{Binding EditingLocked, Mode=OneWay, 
+                            Converter={StaticResource toggleButtonBrushConverter}}"
+                Command="{Binding ToggleEditableCommand}"
                 Style="{StaticResource buttonHoverStyle}"
-                FontSize="17"
-                Margin="0,0,10,0"/>
-        <Button Content="📏"
-                Background="{Binding ChangeLengthModeColor, Mode=OneWay, 
-                            Converter={StaticResource colorToBrushConverter}}"
-                Command="{Binding ChangeLengthModeCommand}"
-                Style="{StaticResource buttonHoverStyle}"
-                Margin="0,0,10,0"/>
-        <Button Content="↔↨" 
-                Background="{Binding TranslateModeColor, Mode=OneWay, 
-                            Converter={StaticResource colorToBrushConverter}}"
-                Command="{Binding TranslateModeCommand}"
-                Style="{StaticResource buttonHoverStyle}"
-                FontSize="16"
-                Margin="0,0,10,0"/>-->
+                Margin="0,0,10,0"
+                Width="50"/>
     </StackPanel>
 </UserControl>

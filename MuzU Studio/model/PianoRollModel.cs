@@ -63,6 +63,8 @@ public class PianoRollModel
     }
     #endregion
 
+    public bool EditingLocked = true;
+
     #region TimeLine
     private readonly ObservableCollection<TimelineItemViewModel> timelineItems = new();
     public ObservableCollection<TimelineItemViewModel> TimelineItems => timelineItems;
@@ -118,13 +120,4 @@ public class PianoRollModel
     private readonly ThicknessSharedProperty _sectionsThickness = new(8);
 
     #endregion
-
-    public void UpdateWidth()
-    {
-        var audioService = App.Current.Services.GetService<AudioService>()!;
-        double max = PanAndZoomModel.FromMicroseconds((long)audioService.AudioDurationMicroseconds);
-        var notes = App.Current.Services.GetService<SequenceListModel>()!.Notes;
-        foreach (var n in notes) if (max < n.Width + n.X) max = n.Width + n.X;
-        App.Current.Services.GetService<PanAndZoomModel>()!.ContentWidth = max;
-    }
 }

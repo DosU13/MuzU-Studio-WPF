@@ -40,4 +40,17 @@ internal class MediaControlsViewModel : BindableBase
         get => pianoRollModel.SnapToGridInterval;
         set => pianoRollModel.SnapToGridInterval = value;
     }
+
+    public bool EditingLocked
+    {
+        get => pianoRollModel.EditingLocked;
+        set
+        {
+            pianoRollModel.EditingLocked = value;
+            OnPropertyChanged();
+        }
+    }
+    private ICommand? toggleEditableCommand;
+    public ICommand ToggleEditableCommand =>
+            toggleEditableCommand ??= new RelayCommand(param => EditingLocked = !EditingLocked);
 }

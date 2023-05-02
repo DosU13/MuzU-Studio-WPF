@@ -32,11 +32,6 @@ namespace MuzU_Studio.view
 
             if (selectedItem != null)
             {
-                double targetHorizontalOffset = selectedItem.TranslatePoint(new Point(0, 0), myListBox).X - myListBox.ActualWidth / 2 + selectedItem.ActualWidth / 2;
-                double maxHorizontalOffset = myListBox.Items.Count * ((FrameworkElement)myListBox.ItemContainerGenerator.ContainerFromItem(myListBox.Items[0])).ActualWidth - myListBox.ActualWidth;
-                double newHorizontalOffset = targetHorizontalOffset < 0 ? 0 : targetHorizontalOffset > maxHorizontalOffset ? maxHorizontalOffset : targetHorizontalOffset;
-                myListBox.ScrollIntoView(myListBox.SelectedItem);
-                ((ScrollViewer)VisualTreeHelper.GetChild(myListBox, 0)).ScrollToHorizontalOffset(newHorizontalOffset);
             }
         }
     }

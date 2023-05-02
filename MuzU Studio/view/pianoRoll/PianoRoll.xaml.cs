@@ -32,6 +32,7 @@ public sealed partial class PianoRoll : UserControl
     }
 
     private PianoRollViewModel pianoRollViewModel => (PianoRollViewModel)DataContext;
+    private bool EditingLocked => App.Current.Services.GetService<PianoRollModel>()!.EditingLocked;
 
     private void zoomAndPanControl_MouseWheel(object sender, MouseWheelEventArgs e)
     {
@@ -69,7 +70,8 @@ public sealed partial class PianoRoll : UserControl
         mouseDownPointRelativeToContent = e.GetPosition(content);
         if (e.ChangedButton == MouseButton.Left)
         {
-            pianoRollViewModel.AddNote(mouseDownPointRelativeToContent, NewNoteWidth);
+            if(!EditingLocked)
+                pianoRollViewModel.AddNote(mouseDownPointRelativeToContent, NewNoteWidth);
         }
     }
 
@@ -99,14 +101,19 @@ public sealed partial class PianoRoll : UserControl
     {
         if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
         {
-            e.Handled = true;
             bool isHor = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
 
             double hor = isHor ? 1.3 : 1.0;
             double ver = isHor ? 1.0 : 1.3;
             Point zoomPoint = new Point(zoomAndPanControl.ContentZoomFocusX, zoomAndPanControl.ContentZoomFocusY);
-            if (e.Key == Key.OemPlus) Zoom(zoomPoint, hor, ver);
-            else if (e.Key == Key.OemMinus) Zoom(zoomPoint, 1 / hor, 1 / ver);
+            if (e.Key == Key.OemPlus) {
+                Zoom(zoomPoint, hor, ver);
+                e.Handled = true;
+            }
+            else if(e.Key == Key.OemMinus) {
+                Zoom(zoomPoint, 1 / hor, 1 / ver);
+                e.Handled = true;
+            }
         }
     }
 
@@ -128,13 +135,14 @@ public sealed partial class PianoRoll : UserControl
     }
     private void Note_MouseDown(object sender, MouseButtonEventArgs e)
     {
+        if (EditingLocked) return;
+
         content.Focus();
         Keyboard.Focus(content);
 
         if (sender is not FrameworkElement noteFrame ||
             noteFrame.DataContext is not NoteViewModel note)
         {
-            e.Handled = true;
             return;
         }
 
@@ -143,36 +151,36 @@ public sealed partial class PianoRoll : UserControl
         if(e.ChangedButton == MouseButton.Right)
         {
             pianoRollViewModel.Notes.Remove(note);
+            e.Handled = true;
         }
-        else
+        else if(e.ChangedButton == MouseButton.Left)
         {
-            if (e.ChangedButton != MouseButton.Left) return;
             draggingNoteMode = true;
             notePosRelativeToContentWhenPressed = e.GetPosition(content);
             noteXYWhenPressed = new Point(note.X, note.Y);
             noteFrame.CaptureMouse();
+            e.Handled = true;
         }
-
-        e.Handled = true;
     }
 
     private void Note_MouseUp(object sender, MouseButtonEventArgs e)
     {
         draggingNoteMode = false;
 
+        if (EditingLocked) return;
+
         FrameworkElement? noteFrame = (FrameworkElement)sender;
         noteFrame?.ReleaseMouseCapture();
-
-        e.Handled = true;
     }
 
     private void Note_MouseMove(object sender, MouseEventArgs e)
     {
+        if (EditingLocked) return;
+
         Point curContentPoint = e.GetPosition(content);
         if (sender is not FrameworkElement noteFrame ||
             noteFrame.DataContext is not NoteViewModel note)
         {
-            e.Handled = true;
             return;
         }
 
@@ -180,8 +188,8 @@ public sealed partial class PianoRoll : UserControl
         {
             note.X = noteXYWhenPressed.X + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
             note.Y = Convert.ToInt32(noteXYWhenPressed.Y + curContentPoint.Y - notePosRelativeToContentWhenPressed.Y);
+            e.Handled = true;
         }
-        e.Handled = true;
     }
 
     private void PlayheadThumb_DragDelta(object sender, DragDeltaEventArgs e)
