@@ -26,13 +26,8 @@ namespace MuzU_Studio.view
             InitializeComponent();
         }
 
-        private void myListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LyricsMapper_Click(object sender, RoutedEventArgs e)
         {
-            ListBoxItem selectedItem = (ListBoxItem)myListBox.ItemContainerGenerator.ContainerFromItem(myListBox.SelectedItem);
-
-            if (selectedItem != null)
-            {
-            }
         }
     }
 }
