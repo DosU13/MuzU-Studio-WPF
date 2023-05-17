@@ -26,8 +26,19 @@ namespace MuzU_Studio.view
             InitializeComponent();
         }
 
+        private LyricsMapper? lyricsMapper = null;
         private void LyricsMapper_Click(object sender, RoutedEventArgs e)
         {
+            if (lyricsMapper == null)
+            {
+                lyricsMapper = new LyricsMapper();
+                lyricsMapper.Show();
+                lyricsMapper.Closed += (_, _) =>
+                {
+                    lyricsMapper = null;
+                };
+            }
+            else lyricsMapper.Focus();
         }
     }
 }

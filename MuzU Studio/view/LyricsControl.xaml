@@ -12,12 +12,14 @@
                                    Path=LyricsViewModel}">
     <UserControl.Resources>
         <util:ColorToBrushConverter x:Key="colorToBrushConverter"/>
+        <util:WhiteSpaceConverter x:Key="whiteSpaceConverter"/>
 
         <DataTemplate x:Key="LyricsItemDataTemplate" 
                       DataType="{x:Type vm:NoteViewModel}">
             <Grid Margin="5" Width="100">
                 <Grid HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding Lyrics}"/>
+                    <TextBlock Text="{Binding Lyrics, Mode=OneWay,
+                                      Converter={StaticResource whiteSpaceConverter}}"/>
                 </Grid>
             </Grid>
         </DataTemplate>
@@ -26,7 +28,8 @@
                       DataType="{x:Type vm:NoteViewModel}">
             <Grid Margin="5" Width="100">
                 <Grid HorizontalAlignment="Center">
-                    <TextBox Text="{Binding Lyrics}"
+                    <TextBox Text="{Binding Lyrics, Mode=TwoWay,
+                             Converter={StaticResource whiteSpaceConverter}}"
                              FontWeight="Bold"/>
                 </Grid>
             </Grid>
@@ -74,7 +77,7 @@
                  ItemContainerStyle="{StaticResource LyricsItemStyle}"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 ItemsSource="{Binding Lyrics}"
+                 ItemsSource="{Binding LyricsItems}"
         >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

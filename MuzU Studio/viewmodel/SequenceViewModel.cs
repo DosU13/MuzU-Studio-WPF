@@ -29,6 +29,8 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
         Hue = hue;
         foreach(var node in sequence.NodeList.List) 
             Notes.Add(new NoteViewModel(node, this));
+
+        var list = Notes.Select(x => x.X).ToList();
     }
 
     public Sequence Data => sequence;

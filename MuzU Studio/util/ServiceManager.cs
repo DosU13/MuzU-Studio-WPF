@@ -48,6 +48,7 @@ namespace MuzU_Studio.util
             _services.AddTransient<MediaControlsViewModel>();
             _services.AddTransient<ToolboxViewModel>();
             _services.AddTransient<LyricsViewModel>();
+            _services.AddTransient<LyricsMapperViewModel>();
 
             Services = _services.BuildServiceProvider();
 

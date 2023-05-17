@@ -116,3 +116,7 @@ E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU
 E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\ref\MuzU Studio.dll
 E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsControl.g.cs
 E:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsControl.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsControl.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsMapper.g.cs
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsControl.baml
+D:\DosU\DevU\Visual Studio\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsMapper.baml

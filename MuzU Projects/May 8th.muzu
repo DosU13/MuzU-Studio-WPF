@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MuzUData>
+  <Identity>
+    <Name>May 8th</Name>
+    <Creator>DosU</Creator>
+    <Description></Description>
+  </Identity>
+  <Music>
+    <Name>May 8th</Name>
+    <Author>Slushii &amp; sapientdream</Author>
+    <Version>Original</Version>
+  </Music>
+  <MusicLocal>
+    <MusicPath>D:\DosU\Music\Selected\2022 12\Slushii &amp; sapientdream - May 8th_256k.mp3</MusicPath>
+    <MusicOffsetMicroseconds>121000</MusicOffsetMicroseconds>
+  </MusicLocal>
+  <Tempo>
+    <MicrosecondsPerQuarterNote>387096</MicrosecondsPerQuarterNote>
+    <TimeSignature>
+      <Numerator>3</Numerator>
+      <Denominator>4</Denominator>
+    </TimeSignature>
+  </Tempo>
+  <SequenceList count="1">
+    <item-0>
+      <Sequence>
+        <Name>Lyrics</Name>
+        <SequenceTemplate>
+          <LengthEnabled>false</LengthEnabled>
+          <NoteEnabled>false</NoteEnabled>
+          <LyricsEnabled>false</LyricsEnabled>
+          <TimeUnit>Both</TimeUnit>
+          <PropertiesList count="1">
+            <item-0>
+              <Property>
+                <Name>Hue</Name>
+                <Value>94</Value>
+              </Property>
+            </item-0>
+          </PropertiesList>
+        </SequenceTemplate>
+        <NodeList count="44">
+          <item-0>
+            <Node Time="18158403" Length="0">
+              <Note>66</Note>
+              <Lyrics>May </Lyrics>
+            </Node>
+          </item-0>
+          <item-1>
+            <Node Time="18544752" Length="0">
+              <Note>72</Note>
+              <Lyrics>Day, </Lyrics>
+            </Node>
+          </item-1>
+          <item-2>
+            <Node Time="18544752" Length="0">
+              <Note>73</Note>
+            </Node>
+          </item-2>
+          <item-3>
+            <Node Time="18544752" Length="0">
+              <Note>73</Note>
+            </Node>
+          </item-3>
+          <item-4>
+            <Node Time="18544752" Length="0">
+              <Note>73</Note>
+            </Node>
+          </item-4>
+          <item-5>
+            <Node Time="18544752" Length="386348">
+              <Note>73</Note>
+            </Node>
+          </item-5>
+          <item-6>
+            <Node Time="18774156" Length="580644">
+              <Note>69</Note>
+              <Lyrics>the </Lyrics>
+            </Node>
+          </item-6>
+          <item-7>
+            <Node Time="18931101" Length="0">
+              <Note>73</Note>
+              <Lyrics>day </Lyrics>
+            </Node>
+          </item-7>
+          <item-8>
+            <Node Time="18931101" Length="0">
+              <Note>73</Note>
+            </Node>
+          </item-8>
+          <item-9>
+            <Node Time="18931101" Length="0">
+              <Note>73</Note>
+            </Node>
+          </item-9>
+          <item-10>
+            <Node Time="18931101" Length="0">
+              <Note>73</Note>
+            </Node>
+          </item-10>
+          <item-11>
+            <Node Time="18931101" Length="386348">
+              <Note>73</Note>
+            </Node>
+          </item-11>
+          <item-12>
+            <Node Time="18931101" Length="0">
+              <Note>72</Note>
+            </Node>
+          </item-12>
+          <item-13>
+            <Node Time="19741896" Length="774192">
+              <Note>69</Note>
+              <Lyrics>a</Lyrics>
+            </Node>
+          </item-13>
+          <item-14>
+            <Node Time="20903184" Length="290322">
+              <Note>69</Note>
+              <Lyrics>ken
+</Lyrics>
+            </Node>
+          </item-14>
+          <item-15>
+            <Node Time="21290280" Length="677418">
+              <Note>69</Note>
+              <Lyrics>May </Lyrics>
+            </Node>
+          </item-15>
+          <item-16>
+            <Node Time="22064472" Length="387096">
+              <Note>69</Note>
+              <Lyrics>8th </Lyrics>
+            </Node>
+          </item-16>
+          <item-17>
+            <Node Time="23419308" Length="387096">
+              <Note>69</Note>
+              <Lyrics>was </Lyrics>
+            </Node>
+          </item-17>
+          <item-18>
+            <Node Time="24387047" Length="290322">
+              <Note>69</Note>
+              <Lyrics>the </Lyrics>
+            </Node>
+          </item-18>
+          <item-19>
+            <Node Time="24774144" Length="290322">
+              <Note>69</Note>
+              <Lyrics>day </Lyrics>
+            </Node>
+          </item-19>
+          <item-20>
+            <Node Time="25161240" Length="290322">
+              <Note>69</Note>
+              <Lyrics>that </Lyrics>
+            </Node>
+          </item-20>
+          <item-21>
+            <Node Time="25548336" Length="290322">
+              <Note>69</Note>
+              <Lyrics>it </Lyrics>
+            </Node>
+          </item-21>
+          <item-22>
+            <Node Time="25935432" Length="290322">
+              <Note>69</Note>
+              <Lyrics>went </Lyrics>
+            </Node>
+          </item-22>
+          <item-23>
+            <Node Time="26322528" Length="290322">
+              <Note>69</Note>
+              <Lyrics>up </Lyrics>
+            </Node>
+          </item-23>
+          <item-24>
+            <Node Time="26709624" Length="290322">
+              <Note>69</Note>
+              <Lyrics>in </Lyrics>
+            </Node>
+          </item-24>
+          <item-25>
+            <Node Time="27096720" Length="290322">
+              <Note>69</Note>
+              <Lyrics>flames
+</Lyrics>
+            </Node>
+          </item-25>
+          <item-26>
+            <Node Time="27483816" Length="290322">
+              <Note>69</Note>
+              <Lyrics>But </Lyrics>
+            </Node>
+          </item-26>
+          <item-27>
+            <Node Time="27870912" Length="1064514">
+              <Note>69</Note>
+              <Lyrics>you </Lyrics>
+            </Node>
+          </item-27>
+          <item-28>
+            <Node Time="29903165" Length="193548">
+              <Note>69</Note>
+              <Lyrics>were </Lyrics>
+            </Node>
+          </item-28>
+          <item-29>
+            <Node Time="30193488" Length="290322">
+              <Note>69</Note>
+              <Lyrics>the </Lyrics>
+            </Node>
+          </item-29>
+          <item-30>
+            <Node Time="30580584" Length="290322">
+              <Note>69</Note>
+              <Lyrics>one </Lyrics>
+            </Node>
+          </item-30>
+          <item-31>
+            <Node Time="30967680" Length="290322">
+              <Note>69</Note>
+              <Lyrics>with </Lyrics>
+            </Node>
+          </item-31>
+          <item-32>
+            <Node Time="31354776" Length="290322">
+              <Note>69</Note>
+              <Lyrics>the </Lyrics>
+            </Node>
+          </item-32>
+          <item-33>
+            <Node Time="31741872" Length="290322">
+              <Note>69</Note>
+              <Lyrics>ma</Lyrics>
+            </Node>
+          </item-33>
+          <item-34>
+            <Node Time="32128968" Length="290322">
+              <Note>69</Note>
+              <Lyrics>tches
+</Lyrics>
+            </Node>
+          </item-34>
+          <item-35>
+            <Node Time="32516064" Length="1064514">
+              <Note>69</Note>
+              <Lyrics>And </Lyrics>
+            </Node>
+          </item-35>
+          <item-36>
+            <Node Time="33677352" Length="677418">
+              <Note>69</Note>
+              <Lyrics>since </Lyrics>
+            </Node>
+          </item-36>
+          <item-37>
+            <Node Time="34838640" Length="290322">
+              <Note>69</Note>
+              <Lyrics>then, </Lyrics>
+            </Node>
+          </item-37>
+          <item-38>
+            <Node Time="35225736" Length="290322">
+              <Note>69</Note>
+              <Lyrics>no</Lyrics>
+            </Node>
+          </item-38>
+          <item-39>
+            <Node Time="35612832" Length="290322">
+              <Note>69</Note>
+              <Lyrics>thing </Lyrics>
+            </Node>
+          </item-39>
+          <item-40>
+            <Node Time="35999928" Length="290322">
+              <Note>69</Note>
+              <Lyrics></Lyrics>
+            </Node>
+          </item-40>
+          <item-41>
+            <Node Time="36387024" Length="290322">
+              <Note>69</Note>
+              <Lyrics></Lyrics>
+            </Node>
+          </item-41>
+          <item-42>
+            <Node Time="36774120" Length="290322">
+              <Note>69</Note>
+              <Lyrics></Lyrics>
+            </Node>
+          </item-42>
+          <item-43>
+            <Node Time="37161216" Length="1064514">
+              <Note>69</Note>
+              <Lyrics></Lyrics>
+            </Node>
+          </item-43>
+        </NodeList>
+      </Sequence>
+    </item-0>
+  </SequenceList>
+</MuzUData>

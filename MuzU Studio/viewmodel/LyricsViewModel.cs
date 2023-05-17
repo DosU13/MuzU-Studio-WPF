@@ -21,9 +21,9 @@ namespace MuzU_Studio.viewmodel
         private void SequenceListModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == SequenceListModel.Nameof_SelectedSequence) 
-                OnPropertyChanged(nameof(Lyrics));
+                OnPropertyChanged(nameof(LyricsItems));
         }
 
-        public SortedSet<NoteViewModel> Lyrics => sequenceListModel?.SelectedSequence?.Notes??new();
+        public SortedSet<NoteViewModel> LyricsItems => sequenceListModel?.SelectedSequence?.Notes??new();
     }
 }

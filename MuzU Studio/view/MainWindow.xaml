@@ -34,8 +34,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Width="200" Grid.Column="0" FontSize="17" FontWeight="Bold"
-                           Text="{Binding ProjectName, Mode=OneWay}"
-                           />
+                       Text="{Binding ProjectName, Mode=OneWay}"
+                       VerticalAlignment="Center"
+                       ToolTip="{Binding ProjectPath, Mode=OneWay}"/>
             <Menu Grid.Column="1" Margin="5"
                   Background="Transparent">
                 <Menu.ItemsPanel>

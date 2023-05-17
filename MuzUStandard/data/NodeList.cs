@@ -9,6 +9,7 @@ namespace MuzUStandard.data
 
         internal override XElement ToXElement()
         {
+            List.Sort((x,y) => x.Time.CompareTo(y.Time));
             return base.ToXElement();
         }
 

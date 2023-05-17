@@ -1,0 +1,28 @@
+﻿<Window x:Class="MuzU_Studio.view.LyricsMapper"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MuzU_Studio.view"
+        mc:Ignorable="d"
+        Style="{DynamicResource MainWindowStyle}"
+        DataContext="{Binding Source={StaticResource Locator},
+                              Path=LyricsMapperViewModel}"
+        Title="LyricsMapper" 
+        Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="LyricsBox"
+                 Text="{Binding Lyrics, Mode=TwoWay}"/>
+        <Button Grid.Row="1" 
+                HorizontalAlignment="Right"
+                Content="OK"
+                Width="100"
+                Margin="0,5,80,5"
+                Click="Submit_Click"/>
+    </Grid>
+</Window>

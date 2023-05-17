@@ -78,9 +78,8 @@ public class PianoRollModel
         {
             ThicknessSharedProperty thickness;
             if (ind % StepsPerSection == 0) thickness = _sectionsThickness;
-            else if (ind % StepsPerWhole == 0) thickness = _wholesThickness;
+            else if (ind % StepsPerBar == 0) thickness = _barsThickness;
             else if(ind % StepsPerBeat == 0) thickness = _beatsThickness;
-            else if(ind % StepsPerSubbeat == 0) thickness = _subbeatThickness;
             else thickness = _stepsThickness;
             timelineItems.Add(new TimelineItemViewModel(ind, ind * StepLength, thickness));
         }
@@ -90,33 +89,29 @@ public class PianoRollModel
     private void UpdateTimelineItemThickness(PanAndZoomModel panAndZoomModel)
     {
         var selectionsCount = panAndZoomModel.ContentViewportWidth / (StepLength * StepsPerSection);
-        var wholesCount = panAndZoomModel.ContentViewportWidth / (StepLength * StepsPerWhole);
+        var barsCount = panAndZoomModel.ContentViewportWidth / (StepLength * StepsPerBar);
         var beatsCount = panAndZoomModel.ContentViewportWidth / BeatLength;
-        var subbeatsCount = panAndZoomModel.ContentViewportWidth / (StepLength * StepsPerSubbeat);
         var stepsCount = panAndZoomModel.ContentViewportWidth / StepLength;
         int[] factors;
-        if (stepsCount <= MAX_VISIBLE_LINES) factors = new[] {1, 2, 4, 8, 16};
-        else if (subbeatsCount <= MAX_VISIBLE_LINES) factors = new[] {0, 1, 2, 4, 8};
-        else if (beatsCount <= MAX_VISIBLE_LINES) factors = new[] {0, 0, 1, 2, 4};
-        else if (wholesCount <= MAX_VISIBLE_LINES) factors = new[] {0, 0, 0, 1, 2};
-        else if (selectionsCount <= MAX_VISIBLE_LINES) factors = new[] {0, 0, 0, 0, 1};
+        if (stepsCount <= MAX_VISIBLE_LINES) factors = new[] {1, 4, 8, 16};
+        else if (beatsCount <= MAX_VISIBLE_LINES) factors = new[] {0, 1, 4, 8};
+        else if (barsCount <= MAX_VISIBLE_LINES) factors = new[] {0, 0, 1, 4};
+        else if (selectionsCount <= MAX_VISIBLE_LINES) factors = new[] {0, 0, 0, 1};
         else factors = new[] { 0, 0, 0, 0, 0};
         _stepsThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[0];
-        _subbeatThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[1];
-        _beatsThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[2];
-        _wholesThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[3];
-        _sectionsThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[4];
+        _beatsThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[1];
+        _barsThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[2];
+        _sectionsThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[3];
     }
 
     private MuzUData MuzUData => App.Current.Services.GetService<ProjectRepository>()!.ProjectModel.MuzUProject.MuzUData;
-    private int StepsPerBeat = 8;
-    private int StepsPerSubbeat = 2;
-    private int StepsPerWhole => MuzUData.Tempo.TimeSignature.Denominator * StepsPerBeat;
-    private int StepsPerSection => 4 * StepsPerWhole;
+    private int StepsPerBeat => 16 / MuzUData.Tempo.TimeSignature.Denominator;
+    private int StepsPerBar => MuzUData.Tempo.TimeSignature.Numerator * StepsPerBeat;
+    private int StepsPerSection => 4 * StepsPerBar;
+
     private readonly ThicknessSharedProperty _stepsThickness = new(1);
-    private readonly ThicknessSharedProperty _subbeatThickness = new(1);
     private readonly ThicknessSharedProperty _beatsThickness = new(2);
-    private readonly ThicknessSharedProperty _wholesThickness = new(4);
+    private readonly ThicknessSharedProperty _barsThickness = new(4);
     private readonly ThicknessSharedProperty _sectionsThickness = new(8);
 
     #endregion

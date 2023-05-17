@@ -25,7 +25,8 @@ namespace MuzUStandard.data
             xElement.Add(new XAttribute(nameof(Time), Time));
             if (Length != null) xElement.Add(new XAttribute(nameof(Length), Length));
             if (Note != null) xElement.Add(new XElement(nameof(Note), Note));
-            if (Lyrics != null) xElement.Add(new XElement(nameof(Lyrics), Lyrics));
+            if (Lyrics != null) 
+                xElement.Add(new XElement(nameof(Lyrics), Lyrics));
             return xElement;
         }
 

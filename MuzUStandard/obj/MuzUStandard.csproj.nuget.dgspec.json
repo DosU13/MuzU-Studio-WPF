@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\MuzUStandard.csproj": {}
+    "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUStandard\\MuzUStandard.csproj": {}
   },
   "projects": {
-    "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\MuzUStandard.csproj": {
+    "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUStandard\\MuzUStandard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\MuzUStandard.csproj",
+        "projectUniqueName": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUStandard\\MuzUStandard.csproj",
         "projectName": "MuzUStandard",
-        "projectPath": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\MuzUStandard.csproj",
-        "packagesPath": "C:\\Users\\djeksheev\\.nuget\\packages\\",
-        "outputPath": "E:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\obj\\",
+        "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUStandard\\MuzUStandard.csproj",
+        "packagesPath": "C:\\Users\\dosla\\.nuget\\packages\\",
+        "outputPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUStandard\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\djeksheev\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dosla\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -51,7 +51,7 @@
               "autoReferenced": true
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

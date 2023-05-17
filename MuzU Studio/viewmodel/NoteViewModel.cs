@@ -136,6 +136,11 @@ public class NoteViewModel : BindableBase
 
     public string Lyrics {
         get => data.Lyrics;
-        set => data.Lyrics = value;
+        set
+        {
+            if (data.Lyrics == value) return;
+            data.Lyrics = value;
+            OnPropertyChanged();
+        }
     }
 }

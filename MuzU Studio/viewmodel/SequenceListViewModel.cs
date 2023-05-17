@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace MuzU_Studio.viewmodel;
 
-internal class SequenceListViewModel
+public class SequenceListViewModel
 {
     private readonly SequenceListModel sequenceModel;
 
