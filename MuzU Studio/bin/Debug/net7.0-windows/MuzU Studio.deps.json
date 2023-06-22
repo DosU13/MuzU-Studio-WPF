@@ -12,7 +12,6 @@
           "Melanchall.DryWetMidi": "6.1.4",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.VisualStudio.Modeling.Sdk": "17.4.33103.184",
-          "MuzUHub": "1.0.0",
           "MuzUStandard": "1.0.0",
           "ResourceLibrary": "1.0.0",
           "ZoomAndPan": "1.0.0.0"
@@ -730,14 +729,6 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "MuzUHub/1.0.0": {
-        "dependencies": {
-          "ResourceLibrary": "1.0.0"
-        },
-        "runtime": {
-          "MuzUHub.dll": {}
-        }
-      },
       "MuzUStandard/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -1312,11 +1303,6 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
-    },
-    "MuzUHub/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "MuzUStandard/1.0.0": {
       "type": "project",

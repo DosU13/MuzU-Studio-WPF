@@ -28,34 +28,47 @@
 
         <DataTemplate 
                 DataType="{x:Type viewmodel:NoteViewModel}">
-            <Grid
-                MouseDown="Note_MouseDown"
-                MouseUp="Note_MouseUp"
-                MouseMove="Note_MouseMove"
-                Visibility="{Binding Parent.Visible, 
-                    Converter={StaticResource visibilityConverter}}"
+            <Grid>
+                <Grid
+                    MouseDown="Note_MouseDown"
+                    MouseUp="Note_MouseUp"
+                    MouseMove="Note_MouseMove"
+                    HorizontalAlignment="Left"
+                    Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    Visibility="{Binding Parent.Visible, 
+                        Converter={StaticResource visibilityConverter}}"
                 >
-                <Rectangle
-                    Width="{Binding Width}"
-                    Height="{Binding Height}"
-                    Fill="{Binding Parent.Color, 
-                        Converter={StaticResource colorToBrushConverter}}"
-                    Cursor="Hand"/>
-                <Rectangle
-                    Name="Border"
-                    Stroke="{Binding BorderColor, 
-                        Converter={StaticResource colorToBrushConverter}}"
-                    StrokeThickness="10"
-                    Width="{Binding Width}"
-                    Height="{Binding Height}"
-                    Cursor="Hand">
-                </Rectangle>
-                <Thumb Height="{Binding Height}"
-                       Width="50"
-                       Opacity="0"
-                       HorizontalAlignment="Right"
-                       Cursor="SizeWE"
-                       DragDelta="ResizeThumb_DragDelta"/>
+                    <Rectangle
+                        Fill="{Binding Parent.Color, 
+                            Converter={StaticResource colorToBrushConverter}}"
+                        Cursor="Hand"/>
+                    <Rectangle
+                        Name="Border"
+                        Stroke="{Binding BorderColor, 
+                            Converter={StaticResource colorToBrushConverter}}"
+                        StrokeThickness="10"
+                        Cursor="Hand">
+                    </Rectangle>
+                    <Thumb Height="{Binding Height}"
+                           Width="50"
+                           Opacity="0"
+                           HorizontalAlignment="Right"
+                           Cursor="SizeWE"
+                           DragDelta="ResizeThumb_DragDelta"/>
+                </Grid>
+                <TextBlock Text="{Binding Lyrics}" 
+                           Foreground="Black"
+                           FontSize="45"
+                           HorizontalAlignment="Left"
+                           Width="NaN">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform
+                        ScaleX="{Binding DataContext.PanAndZoomModel.ContentScaleXAspectReverser, Mode=OneWay,
+                                            RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                        ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
             </Grid>
         </DataTemplate>
 
@@ -67,13 +80,15 @@
                 <Rectangle
                     Fill="{Binding FillColor}"
                     />
-                <TextBlock
-                    Text="{Binding KeyName}"
-                    Foreground="IndianRed"
-                    VerticalAlignment="Center"
-                    FontWeight="Black"
-                    FontSize="15"
-                    />
+                <Viewbox>
+                    <TextBlock
+                        Text="{Binding KeyName}"
+                        Foreground="IndianRed"
+                        VerticalAlignment="Center"
+                        FontWeight="Black"
+                        FontSize="15"
+                        />
+                </Viewbox>
             </Grid>
         </DataTemplate>
 

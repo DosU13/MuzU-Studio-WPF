@@ -1364,22 +1364,6 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "MuzUHub/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "ResourceLibrary": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/MuzUHub.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MuzUHub.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
-        ]
-      },
       "MuzUStandard/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.4",
@@ -4803,11 +4787,6 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "MuzUHub/1.0.0": {
-      "type": "project",
-      "path": "../MuzUHub/MuzUHub.csproj",
-      "msbuildProject": "../MuzUHub/MuzUHub.csproj"
-    },
     "MuzUStandard/1.0.0": {
       "type": "project",
       "path": "../MuzUStandard/MuzUStandard.csproj",
@@ -4825,29 +4804,28 @@
       "Melanchall.DryWetMidi >= 6.1.4",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
       "Microsoft.VisualStudio.Modeling.Sdk >= 17.4.33103.184",
-      "MuzUHub >= 1.0.0",
       "MuzUStandard >= 1.0.0",
       "ResourceLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dosla\\.nuget\\packages\\": {},
-    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzU Studio\\MuzU Studio.csproj",
+      "projectUniqueName": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\MuzU Studio.csproj",
       "projectName": "MuzU Studio",
-      "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzU Studio\\MuzU Studio.csproj",
-      "packagesPath": "C:\\Users\\dosla\\.nuget\\packages\\",
-      "outputPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzU Studio\\obj\\",
+      "projectPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\MuzU Studio.csproj",
+      "packagesPath": "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\",
+      "outputPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\dosla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\djeksheev.SRS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4856,21 +4834,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUHub\\MuzUHub.csproj": {
-              "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUHub\\MuzUHub.csproj"
+            "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\MuzUStandard.csproj": {
+              "projectPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\MuzUStandard.csproj"
             },
-            "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUStandard\\MuzUStandard.csproj": {
-              "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\MuzUStandard\\MuzUStandard.csproj"
-            },
-            "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\ResourceLibrary\\ResourceLibrary.csproj": {
-              "projectPath": "D:\\DosU\\DevU\\Visual Studio\\MuzU-Studio-WPF\\ResourceLibrary\\ResourceLibrary.csproj"
+            "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\ResourceLibrary\\ResourceLibrary.csproj": {
+              "projectPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\ResourceLibrary\\ResourceLibrary.csproj"
             }
           }
         }
@@ -4921,7 +4895,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

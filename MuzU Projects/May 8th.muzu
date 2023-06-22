@@ -11,7 +11,7 @@
     <Version>Original</Version>
   </Music>
   <MusicLocal>
-    <MusicPath>D:\DosU\Music\Selected\2022 12\Slushii &amp; sapientdream - May 8th_256k.mp3</MusicPath>
+    <MusicPath>D:\Music\2022 12\Slushii &amp; sapientdream - May 8th_256k.mp3</MusicPath>
     <MusicOffsetMicroseconds>121000</MusicOffsetMicroseconds>
   </MusicLocal>
   <Tempo>
@@ -81,12 +81,12 @@
           <item-7>
             <Node Time="18931101" Length="0">
               <Note>73</Note>
-              <Lyrics>day </Lyrics>
             </Node>
           </item-7>
           <item-8>
             <Node Time="18931101" Length="0">
               <Note>73</Note>
+              <Lyrics>day </Lyrics>
             </Node>
           </item-8>
           <item-9>
@@ -95,18 +95,18 @@
             </Node>
           </item-9>
           <item-10>
-            <Node Time="18931101" Length="0">
+            <Node Time="18931101" Length="386348">
               <Note>73</Note>
             </Node>
           </item-10>
           <item-11>
-            <Node Time="18931101" Length="386348">
-              <Note>73</Note>
+            <Node Time="18931101" Length="0">
+              <Note>72</Note>
             </Node>
           </item-11>
           <item-12>
             <Node Time="18931101" Length="0">
-              <Note>72</Note>
+              <Note>73</Note>
             </Node>
           </item-12>
           <item-13>

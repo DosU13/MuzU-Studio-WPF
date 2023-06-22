@@ -78,21 +78,7 @@ public class ProjectRepository
             if(value != null && !File.Exists(value)) throw new FileNotFoundException(value);
             projectPath = value;
             SetLastProjectPath(value);
-            if(value!=null) AddProjectPathToRecents(value);
         } 
-    }
-
-    /// <summary>
-    /// Updates MuzUHub User Settings
-    /// </summary>
-    /// <param name="path"></param>
-    private void AddProjectPathToRecents(string path)
-    {
-        var _projectUrls = MuzUHub.Properties.Settings.Default.ProjectsURLs!;
-        if(_projectUrls.Contains(path)) return; 
-        _projectUrls.Add(path);
-        MuzUHub.Properties.Settings.Default.ProjectsURLs = _projectUrls;
-        MuzUHub.Properties.Settings.Default.Save();
     }
 
     /// <summary>

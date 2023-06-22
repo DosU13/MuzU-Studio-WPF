@@ -34,6 +34,12 @@ public class NoteViewModel : BindableBase
     {
         this.data = data;
         this.parent = parent;
+        App.Current.Services.GetService<PanAndZoomModel>()!.PropertyChanged += PanAndZoom_PropertyChanged;
+    }
+
+    private void PanAndZoom_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        OnPropertyChanged(nameof(ReversedWidth));
     }
 
     /// <summary>
@@ -97,6 +103,11 @@ public class NoteViewModel : BindableBase
             var snappedValue = App.Current.Services.GetService<PianoRollModel>()!.SnapToGrid(value);
             ForceSetWidth(snappedValue);
         }
+    }
+
+    public double ReversedWidth
+    {
+        get => Width / App.Current.Services.GetService<PanAndZoomModel>()!.ContentScaleXAspectReverser;
     }
 
     public void ForceSetWidth(double width)

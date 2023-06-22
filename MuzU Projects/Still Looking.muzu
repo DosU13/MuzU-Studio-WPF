@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MuzUData>
+  <Identity>
+    <Name>Still looking</Name>
+    <Creator>DosU</Creator>
+    <Description></Description>
+  </Identity>
+  <Music>
+    <Name>Still looking</Name>
+    <Author>San holo</Author>
+    <Version>CESQEAUX Remix</Version>
+  </Music>
+  <MusicLocal>
+    <MusicPath>D:\Music\2021 01\San Holo - Still Looking (CESQEAUX Remix)_256k.mp3</MusicPath>
+    <MusicOffsetMicroseconds>3330000</MusicOffsetMicroseconds>
+  </MusicLocal>
+  <Tempo>
+    <MicrosecondsPerQuarterNote>400000</MicrosecondsPerQuarterNote>
+    <TimeSignature>
+      <Numerator>4</Numerator>
+      <Denominator>4</Denominator>
+    </TimeSignature>
+  </Tempo>
+  <SequenceList count="1">
+    <item-0>
+      <Sequence>
+        <Name>New Sequence</Name>
+        <SequenceTemplate>
+          <LengthEnabled>false</LengthEnabled>
+          <NoteEnabled>false</NoteEnabled>
+          <LyricsEnabled>false</LyricsEnabled>
+          <TimeUnit>Both</TimeUnit>
+          <PropertiesList count="1">
+            <item-0>
+              <Property>
+                <Name>Hue</Name>
+                <Value>227</Value>
+              </Property>
+            </item-0>
+          </PropertiesList>
+        </SequenceTemplate>
+        <NodeList count="30">
+          <item-0>
+            <Node Time="0" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-0>
+          <item-1>
+            <Node Time="6400000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-1>
+          <item-2>
+            <Node Time="12800000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-2>
+          <item-3>
+            <Node Time="19200000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-3>
+          <item-4>
+            <Node Time="25600000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-4>
+          <item-5>
+            <Node Time="32000000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-5>
+          <item-6>
+            <Node Time="38400000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-6>
+          <item-7>
+            <Node Time="44800000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-7>
+          <item-8>
+            <Node Time="51200000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-8>
+          <item-9>
+            <Node Time="57600000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-9>
+          <item-10>
+            <Node Time="64000000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-10>
+          <item-11>
+            <Node Time="70400000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-11>
+          <item-12>
+            <Node Time="76800000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-12>
+          <item-13>
+            <Node Time="83200000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-13>
+          <item-14>
+            <Node Time="89600000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-14>
+          <item-15>
+            <Node Time="96000000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-15>
+          <item-16>
+            <Node Time="102400000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-16>
+          <item-17>
+            <Node Time="108799999" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-17>
+          <item-18>
+            <Node Time="115200000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-18>
+          <item-19>
+            <Node Time="121600000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-19>
+          <item-20>
+            <Node Time="128000000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-20>
+          <item-21>
+            <Node Time="134400000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-21>
+          <item-22>
+            <Node Time="140800000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-22>
+          <item-23>
+            <Node Time="147200000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-23>
+          <item-24>
+            <Node Time="153600000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-24>
+          <item-25>
+            <Node Time="160000000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-25>
+          <item-26>
+            <Node Time="166400000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-26>
+          <item-27>
+            <Node Time="172800000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-27>
+          <item-28>
+            <Node Time="179200000" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-28>
+          <item-29>
+            <Node Time="185599999" Length="1600000">
+              <Note>58</Note>
+            </Node>
+          </item-29>
+        </NodeList>
+      </Sequence>
+    </item-0>
+  </SequenceList>
+</MuzUData>

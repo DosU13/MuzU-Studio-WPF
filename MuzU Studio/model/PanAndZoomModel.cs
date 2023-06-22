@@ -82,7 +82,11 @@ public class PanAndZoomModel : BindableBase
         }
         set
         {
-            SetProperty(ref contentScaleX, value);
+            if (SetProperty(ref contentScaleX, value))
+            {
+                OnPropertyChanged(nameof(ContentScaleXAspectReverser));
+                OnPropertyChanged(nameof(ContentScaleYAspectReverser));
+            }
         }
     }
 
@@ -94,8 +98,28 @@ public class PanAndZoomModel : BindableBase
         }
         set
         {
-            SetProperty(ref contentScaleY, value);
+            if (SetProperty(ref contentScaleY, value))
+            {
+                OnPropertyChanged(nameof(ContentScaleXAspectReverser));
+                OnPropertyChanged(nameof(ContentScaleYAspectReverser));
+            }
         }
+    }
+
+    /// <summary>
+    /// Apply this to a child of PanAndZoom which needs to keep original aspect ratio. It reveres back the scale changes. Useful for Texts for keeping readability
+    /// </summary>
+    public double ContentScaleXAspectReverser
+    {
+        get => ContentScaleY / ContentScaleX;
+    }
+
+    /// <summary>
+    /// Apply this to a child of PanAndZoom which needs to keep original aspect ratio. It reveres back the scale changes. Useful for Texts for keeping readability
+    /// </summary>
+    public double ContentScaleYAspectReverser
+    {
+        get => ContentScaleX / ContentScaleY;
     }
 
     ///
