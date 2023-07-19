@@ -12,8 +12,13 @@ namespace MuzU_Studio.model;
 
 public class PianoRollModel
 {
-    public PianoRollModel() {
-        App.Current.Services.GetService<PanAndZoomModel>()!.PropertyChanged += PanAndZoom_PropertyChanged;
+    private ProjectRepository _projectRepository;
+    private PanAndZoomModel _panAndZoomModel;
+
+    public PianoRollModel(ProjectRepository projectRepository, PanAndZoomModel panAndZoomModel) {
+        _projectRepository = projectRepository;
+        _panAndZoomModel = panAndZoomModel;
+        _panAndZoomModel.PropertyChanged += PanAndZoom_PropertyChanged;
     }
 
     private void PanAndZoom_PropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -24,8 +29,8 @@ public class PianoRollModel
             UpdateTimelineItemThickness(panAndZoomModel);
     }
 
-    public static double BeatLength { get {
-            var muzuData = App.Current.Services.GetService<ProjectRepository>()!.ProjectModel.MuzUProject.MuzUData;
+    public double BeatLength { get {
+            var muzuData = _projectRepository.ProjectModel.MuzUProject.MuzUData;
             return PanAndZoomModel.FromMicroseconds(60_000_000) / muzuData.Tempo.BPM;
         } }
     public double StepLength => BeatLength / StepsPerBeat;
@@ -40,7 +45,7 @@ public class PianoRollModel
             snapToGridInterval = value;
         }
     }
-    public static double SnapToGrid(double value, double intervalInBeats) =>
+    public double SnapToGrid(double value, double intervalInBeats) =>
         Utils.RoundWithInterval(value, BeatLength * intervalInBeats);
     public double SnapToGrid(double value) => SnapToGrid(value, SnapToGridInterval);
     public double SnapToGridByFloor(double value) =>
@@ -73,8 +78,7 @@ public class PianoRollModel
     {
         // Populate the collection with PianoKeyViewModels for all 128 MIDI keys
         timelineItems.Clear();
-        var panAndZoomModel = App.Current.Services.GetService<PanAndZoomModel>()!;
-        for (int ind = 0; ind * StepLength < panAndZoomModel.ContentWidth; ind++)
+        for (int ind = 0; ind * StepLength < _panAndZoomModel.ContentWidth; ind++)
         {
             ThicknessSharedProperty thickness;
             if (ind % StepsPerSection == 0) thickness = _sectionsThickness;
@@ -104,7 +108,7 @@ public class PianoRollModel
         _sectionsThickness.Value = panAndZoomModel.ContentViewportWidthUnit * factors[3];
     }
 
-    private MuzUData MuzUData => App.Current.Services.GetService<ProjectRepository>()!.ProjectModel.MuzUProject.MuzUData;
+    private MuzUData MuzUData => _projectRepository.ProjectModel.MuzUProject.MuzUData;
     private int StepsPerBeat => 16 / MuzUData.Tempo.TimeSignature.Denominator;
     private int StepsPerBar => MuzUData.Tempo.TimeSignature.Numerator * StepsPerBeat;
     private int StepsPerSection => 4 * StepsPerBar;

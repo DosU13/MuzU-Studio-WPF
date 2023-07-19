@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Xml.Linq;
+﻿using System;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+using System.Collections.Generic;
 
 namespace MuzUStandard.data
 {
-    public class MuzUData: XmlBase
+    public class MuzUData
     {
         public MuzUData() { }
-        internal MuzUData(XElement xElement) : base(xElement) { }
 
         private Identity _identity;
         public Identity Identity { 
@@ -37,90 +38,36 @@ namespace MuzUStandard.data
                 return _tempo;
             } set => _tempo = value;}
 
-        private SequenceList _sequenceList;
-        public SequenceList SequenceList {
+        private List<Sequence> _sequenceList;
+        public List<Sequence> SequenceList {
             get
             {
-                if (_sequenceList == null) _sequenceList = new SequenceList();
+                if (_sequenceList == null) _sequenceList = new List<Sequence>();
                 return _sequenceList;
             } set => _sequenceList = value;}
-
-        internal override XElement ToXElement()
-        {
-            var xElement = base.ToXElement();
-            xElement.Add(Identity.ToXElement());
-            xElement.Add(Music.ToXElement());
-            xElement.Add(MusicLocal.ToXElement());
-            xElement.Add(Tempo.ToXElement());
-            xElement.Add(SequenceList.ToXElement());
-            return xElement;
-        }
-
-        internal override XElement LoadFromXElement(XElement xElement)
-        {
-            var thisElement = xElement;
-            Identity = new Identity(thisElement);
-            Music = new Music(thisElement);
-            MusicLocal = new MusicLocal(thisElement);
-            Tempo = new Tempo(thisElement);
-            SequenceList = new SequenceList(thisElement);
-            return thisElement;
-        }
     }
 
-    public class Identity : XmlInfo
+    public class Identity
     {
-        internal Identity() : base() {
-            Infos[nameof(Name)] = "";
-            Infos[nameof(Creator)] = "";
-            Infos[nameof(Description)] = "";
-        }
-        internal Identity(XElement xElement) : base(xElement) { }
 
-        public string Name { get => Infos[nameof(Name)]; set => Infos[nameof(Name)] = value; }
-        public string Creator { get => Infos[nameof(Creator)]; set => Infos[nameof(Creator)] = value; }
-        public string Description { get => Infos[nameof(Description)]; set => Infos[nameof(Description)] = value; }
+        public string Name { get; set; }
+        public string Creator { get; set; }
+        public string Description { get; set; }
     }
 
-    public class Music : XmlInfo
+    public class Music
     {
-        internal Music() : base() {
-            Infos[nameof(Name)] = "";
-            Infos[nameof(Author)] = "";
-            Infos[nameof(Version)] = "";
-        }
-        internal Music(XElement xElement) : base(xElement) { }
-
-        public string Name { get => Infos[nameof(Name)]; set => Infos[nameof(Name)] = value; }
-        public string Author { get => Infos[nameof(Author)]; set => Infos[nameof(Author)] = value; }
-        public string Version { get => Infos[nameof(Version)]; set => Infos[nameof(Version)] = value; }
+        public string Name { get; set; }
+        public string Author { get; set; }
+        public string Version { get; set; }
     }
 
-    public class MusicLocal : XmlBase
+    public class MusicLocal
     {
-        internal MusicLocal() { }
-        internal MusicLocal(XElement xElement): base(xElement) {}
-
         public string MusicPath { get; set; } = "";
         /// <summary>
         /// if positive audio has excess part
         /// </summary>
         public long MusicOffsetMicroseconds { get; set; } = 0;
-        
-        internal override XElement ToXElement()
-        {
-            var xElement = base.ToXElement();
-            xElement.Add(new XElement(nameof(MusicPath), MusicPath),
-                         new XElement(nameof(MusicOffsetMicroseconds), MusicOffsetMicroseconds));
-            return xElement;
-        }
-
-        internal override XElement LoadFromXElement(XElement xElement)
-        {
-            var thisElement = base.LoadFromXElement(xElement);
-            MusicPath = thisElement.Element(nameof(MusicPath)).Value;
-            MusicOffsetMicroseconds = long.Parse(thisElement.Element(nameof(MusicOffsetMicroseconds))?.Value ?? "0");
-            return thisElement;
-        }
     }
 }

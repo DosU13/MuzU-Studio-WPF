@@ -12,28 +12,28 @@ namespace MuzU_Studio.viewmodel;
 
 public class SequenceViewModel : BindableBase, ISequenceSharedProperty
 {
-    private readonly Sequence sequence;
+    public readonly Sequence Sequence;
     private bool visible = true;
 
     private static readonly Random random = new();
     public SequenceViewModel(Sequence sequence)
     {
-        this.sequence = sequence;
-        var hueProperty = sequence.SequenceTemplate.PropertiesList.List.
+        this.Sequence = sequence;
+        var hueProperty = sequence.SequenceTemplate.PropertiesList.
             FirstOrDefault(x => x.Name == HueName);
         if (hueProperty == null || !int.TryParse(hueProperty.Value, out int hue)) {
             hue = random.Next(256);
-            sequence.SequenceTemplate.PropertiesList.List.Add(
+            sequence.SequenceTemplate.PropertiesList.Add(
                 new Property { Name = HueName, Value = hue.ToString()}); 
         }
         Hue = hue;
-        foreach(var node in sequence.NodeList.List) 
+        foreach(var node in sequence.NodeList) 
             Notes.Add(new NoteViewModel(node, this));
 
         var list = Notes.Select(x => x.X).ToList();
     }
 
-    public Sequence Data => sequence;
+    public Sequence Data => Sequence;
     private Color color;
     private Color darkerColor;
     private Color reverseColor;
@@ -65,7 +65,7 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
         {
             if (SetProperty(ref _hue, value))
             {
-                sequence.SequenceTemplate.PropertiesList.List.
+                Sequence.SequenceTemplate.PropertiesList.
                     First(x => x.Name == HueName).Value = value.ToString();
                 HslColor hslColor = new(value, 240, 176);
                 var drColor = hslColor.ToRgbColor();
@@ -89,10 +89,10 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
 
     public string Name
     {
-        get => sequence.Name;
+        get => Sequence.Name;
         set
         {
-            sequence.Name = value;
+            Sequence.Name = value;
             OnPropertyChanged();
         }
     }
@@ -112,6 +112,19 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
     public ICommand RemoveCommand =>
         removeCommand ??= new RelayCommand(param => Remove());
 
+    public bool LyricsEnabled
+    {
+        get => Sequence.SequenceTemplate.LyricsEnabled;
+        set
+        {
+            if (Sequence.SequenceTemplate.LyricsEnabled == value) return;
+            Sequence.SequenceTemplate.LyricsEnabled = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public static readonly string Nameof_LyricsEnabled = nameof(LyricsEnabled);
+
     public readonly SortedSet<NoteViewModel> Notes = new(new NoteViewModelComparer());
 
     private void Remove()
@@ -124,13 +137,13 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
     internal void AddNote(NoteViewModel note)
     {
         Notes.Add(note);
-        Data.NodeList.List.Add(note.Data);
+        Data.NodeList.Add(note.Data);
     }
 
     internal void RemoveNote(NoteViewModel note)
     {
         Notes.Remove(note);
-        Data.NodeList.List.Remove(note.Data);
+        Data.NodeList.Remove(note.Data);
     }
 
     internal void NotifyNoteChanged(NoteViewModel note)

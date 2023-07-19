@@ -87,4 +87,8 @@ internal class PianoRollViewModel: BindableBase
             AudioService.PlayheadPosition = newPlayheadPosition;
         }
     }
+
+    public double BeatLength => PianoRollModel.BeatLength;
+
+    public bool EditingLocked => PianoRollModel.EditingLocked;
 }

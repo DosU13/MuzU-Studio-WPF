@@ -5,9 +5,10 @@ using MediaPlayer = System.Windows.Media.MediaPlayer;
 
 namespace MuzU_Studio.service;
 
-internal partial class AudioService
+public partial class AudioService
 {
-    private readonly MediaPlayer mediaPlayer = new();
+    private MediaPlayer mediaPlayer = new();
+    private ProjectRepository _projectRepository;
 
     public void UpdateAudio(string audioFilePath)
     {
@@ -17,7 +18,7 @@ internal partial class AudioService
         try
         {
             mediaPlayer.Open(new Uri(audioFilePath));
-            App.Current.Services.GetService<PanAndZoomModel>()!.UpdateWidth();
+            App.Current.Services.GetService<PanAndZoomModel>()!.ResetWidth();
         }
         catch (Exception) { }
     }
@@ -60,6 +61,9 @@ internal partial class AudioService
 
     internal void Update(ProjectRepository projectRepository)
     {
+        _projectRepository = projectRepository;
+        mediaPlayer.Stop();
+        mediaPlayer = new MediaPlayer();
         if (!projectRepository.ProjectExists) return;
         UpdateAudio(projectRepository.ProjectModel.MuzUProject.MuzUData.MusicLocal.MusicPath);
     }

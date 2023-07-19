@@ -31,11 +31,6 @@ public sealed partial class MainWindow : Window
 
     private ProjectViewModel ProjectVM => (ProjectViewModel)DataContext;
 
-    private void OpenMuzUHub_Click(object sender, RoutedEventArgs e)
-    {
-        MuzUHubRunner.Run();
-    } 
-
     private async void Save_Click(object sender, RoutedEventArgs e)
     {
         if (ProjectVM.ProjectPathExists) await ProjectVM.SaveProject();
@@ -49,9 +44,12 @@ public sealed partial class MainWindow : Window
 
     private async Task<bool> SaveWithFilePicker()
     {
-        var picker = new SaveFileDialog();
-        picker.DefaultExt = ".muzu";
-        picker.Filter = "MuzU file (*.muzu)|*.muzu";
+        var picker = new SaveFileDialog
+        {
+            FileName = ProjectVM.ProjectName,
+            DefaultExt = ".muzu",
+            Filter = "MuzU file (*.muzu)|*.muzu"
+        };
         if (picker.ShowDialog() ?? false)
         {
             if (await ProjectVM.SaveToFile(picker.FileName))

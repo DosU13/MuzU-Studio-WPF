@@ -1,6 +1,6 @@
 ﻿using MuzUStandard.data;
 using System.IO;
-using System.Xml.Linq;
+using System.Text.Json;
 
 namespace MuzUStandard
 {
@@ -10,30 +10,22 @@ namespace MuzUStandard
         public MuzUProject() => MuzUData = new MuzUData();
 
         public MuzUProject(Stream stream) => MuzUData = LoadFromStream(stream);
-        public MuzUProject(TextReader txtReader) => MuzUData = LoadFromStream(txtReader);
 
-        private MuzUData LoadFromStream(Stream stream) 
+        private MuzUData LoadFromStream(Stream stream)
         {
-            var x = XDocument.Load(stream);
-            return new MuzUData(x.Root);
-        }
-        private MuzUData LoadFromStream(TextReader txtReader)
-        {
-            var x = XDocument.Load(txtReader);
-            return new MuzUData(x.Root);
+            using var reader = new StreamReader(stream);
+            var json = reader.ReadToEnd();
+            return JsonSerializer.Deserialize<MuzUData>(json);
         }
 
         public void Save(Stream stream)
-        { 
-            stream.SetLength(0);
-            ToXDocument().Save(stream);
-        }
-
-        private XDocument ToXDocument()
         {
-            XDocument doc = new XDocument(MuzUData.ToXElement());
-            doc.Declaration = new XDeclaration("1.0", "utf-8", "true");
-            return doc;
+            var json = JsonSerializer.Serialize(MuzUData);
+            stream.SetLength(0);
+            using var writer = new StreamWriter(stream);
+            writer.Write(json);
+            writer.Flush();
+            writer.Close();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MuzU_Studio.model;
@@ -37,12 +38,13 @@ public class ProjectRepository
         try
         {
             using var stream = File.OpenText(path);
-            var muzUProject = await Task.FromResult(new MuzUProject(stream));
+            var muzUProject = await Task.FromResult(new MuzUProject(stream.BaseStream));
             stream.Close();
             return new ProjectRepository(new ProjectModel(muzUProject), path);
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             return InitEmpty();
         }
     }
@@ -52,7 +54,7 @@ public class ProjectRepository
         try
         {
             using var stream = File.OpenRead(path);
-            var muzUProject = await Task.FromResult(MidiImporter.Import(stream, path));
+            var muzUProject = await Task.FromResult(MidiImporter.Import(stream, Path.GetFileName(path)));
             stream.Close();
             return new ProjectRepository(new ProjectModel(muzUProject));
         }

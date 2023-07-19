@@ -12,75 +12,107 @@
     <UserControl.Resources>
         <util:BeatToMusicalNameConverter
             x:Key="beatToMusicalNameConverter"/>
+        <util:VisibilityConverter
+            x:Key="visibilityConverter"/>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
-        <GroupBox Header="Apply 🧲 for all visible notes">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox x:Name="SnapAllComboBox"
-                          Grid.Column="0" 
-                          IsEditable="True"
-                          SelectedIndex="0"
-                          Margin="0,0,5,0"
-                        >
-                    <ComboBox.Text>
-                        <Binding Path="SnapAllInterval" Mode="TwoWay"
-                                Converter="{StaticResource beatToMusicalNameConverter}">
-                            <Binding.ValidationRules>
-                                <util:MusicalNameRule/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                    <ComboBoxItem Content="none"/>
-                    <ComboBoxItem Content="bar"/>
-                    <ComboBoxItem Content="beat"/>
-                    <ComboBoxItem Content="1/2 beat"/>
-                    <ComboBoxItem Content="1/3 beat"/>
-                    <ComboBoxItem Content="1/4 beat"/>
-                    <ComboBoxItem Content="1/6 beat"/>
-                    <ComboBoxItem Content="step"/>
-                    <ComboBoxItem Content="1/2 step"/>
-                    <ComboBoxItem Content="1/3 step"/>
-                    <ComboBoxItem Content="1/4 step"/>
-                    <ComboBoxItem Content="1/6 step"/>
-                    <ComboBoxItem Content="1/8 step"/>
-                </ComboBox>
-                <Button Grid.Column="1" 
-                        Content="SnapAll"
-                        Command="{Binding SnapAllCommand}"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Melodize">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0"
-                          ItemsSource="{Binding MelodizeTypes, Mode=OneWay}"
-                          Text="{Binding ChoosenMelodizeType, Mode=TwoWay}"
-                          Margin="0,0,5,0"/>
-                <Button Grid.Column="1"
-                        Content="Melodize"
-                        Command="{Binding MelodizeCommand}"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Change BPM">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0"
-                         Text="{Binding ChangeBPMParameter, Mode=TwoWay}"
-                         Margin="0,0,5,0"/>
-                <Button Grid.Column="1"
-                        Content="Change"
-                        Command="{Binding ChangeBPMCommand}"/>
-            </Grid>
-        </GroupBox>
-    </StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <GroupBox Header="Apply 🧲 for all visible notes">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="SnapAllComboBox"
+                              Grid.Column="0" 
+                              IsEditable="True"
+                              SelectedIndex="0"
+                              Margin="0,0,5,0"
+                            >
+                        <ComboBox.Text>
+                            <Binding Path="SnapAllInterval" Mode="TwoWay"
+                                    Converter="{StaticResource beatToMusicalNameConverter}">
+                                <Binding.ValidationRules>
+                                    <util:MusicalNameRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </ComboBox.Text>
+                        <ComboBoxItem Content="none"/>
+                        <ComboBoxItem Content="bar"/>
+                        <ComboBoxItem Content="beat"/>
+                        <ComboBoxItem Content="1/2 beat"/>
+                        <ComboBoxItem Content="1/3 beat"/>
+                        <ComboBoxItem Content="1/4 beat"/>
+                        <ComboBoxItem Content="1/6 beat"/>
+                        <ComboBoxItem Content="step"/>
+                        <ComboBoxItem Content="1/2 step"/>
+                        <ComboBoxItem Content="1/3 step"/>
+                        <ComboBoxItem Content="1/4 step"/>
+                        <ComboBoxItem Content="1/6 step"/>
+                        <ComboBoxItem Content="1/8 step"/>
+                    </ComboBox>
+                    <Button Grid.Column="1" 
+                            Content="SnapAll"
+                            Command="{Binding SnapAllCommand}"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Melodize">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0"
+                              ItemsSource="{Binding MelodizeTypes, Mode=OneWay}"
+                              Text="{Binding ChoosenMelodizeType, Mode=TwoWay}"
+                              Margin="0,0,5,0"/>
+                    <Button Grid.Column="1"
+                            Content="Melodize"
+                            Command="{Binding MelodizeCommand}"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Change BPM">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                             Text="{Binding ChangeBPMParameter, Mode=TwoWay}"
+                             Margin="0,0,5,0"/>
+                    <Button Grid.Column="1"
+                            Content="Change"
+                            Command="{Binding ChangeBPMCommand}"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Lyrics"
+                      Visibility="{Binding IsThereSequenceSelected, 
+                            Converter={StaticResource visibilityConverter}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0" Grid.Row="0"
+                            Content="{Binding AddRemoveLyricsBtn, Mode=OneWay}"
+                            Command="{Binding AddRemoveLyricsCommand}"
+                            Margin="0,0,5,0"/>
+                    <Button Grid.Column="1" Grid.Row="0"
+                            Content="Divide By Words"
+                            Command="{Binding DivideByWordsCommand}"/>
+                    <TextBox TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             Grid.ColumnSpan="2" Grid.Row="1"
+                             Text="{Binding LyricsText, Mode=TwoWay}"
+                             Visibility="{Binding LyricsEnabled, 
+                                Converter={StaticResource visibilityConverter}}"/>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

@@ -58,7 +58,8 @@
                            DragDelta="ResizeThumb_DragDelta"/>
                 </Grid>
                 <TextBlock Text="{Binding Lyrics}" 
-                           Foreground="Black"
+                           Foreground="{Binding Parent.ReverseColor, Mode=OneWay, 
+                                Converter={StaticResource colorToBrushConverter}}"
                            FontSize="45"
                            HorizontalAlignment="Left"
                            Width="NaN">

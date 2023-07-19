@@ -9,13 +9,15 @@ namespace MuzU_Studio.model;
 
 public class SequenceListModel: BindableBase
 {
-    private readonly ProjectRepository projectRepository;
+    private readonly ProjectRepository _projectRepository;
+    private readonly PanAndZoomModel _panAndZoomModel;
 
     private readonly ObservableCollection<SequenceViewModel> sequences = new();
     private readonly ObservableCollection<NoteViewModel> notes = new();
 
-    public SequenceListModel(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
+    public SequenceListModel(ProjectRepository projectRepository, PanAndZoomModel panAndZoomModel) {
+        this._projectRepository = projectRepository;
+        _panAndZoomModel = panAndZoomModel;
         sequences.CollectionChanged += Sequences_CollectionChanged;
         notes.CollectionChanged += Notes_CollectionChanged;
         ReinitCollections();
@@ -25,7 +27,7 @@ public class SequenceListModel: BindableBase
     private void Sequences_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         if (!isCollectionChangedEventEnabled) return;
-        var data = projectRepository.ProjectModel.MuzUProject.MuzUData.SequenceList.List;
+        var data = _projectRepository.ProjectModel.MuzUProject.MuzUData.SequenceList;
         if (e.NewItems != null)
         {
             foreach (SequenceViewModel sequence in e.NewItems)
@@ -68,16 +70,16 @@ public class SequenceListModel: BindableBase
             isCollectionChangedEventEnabled = false;
             sequences.Clear();
             notes.Clear();
-            if (!projectRepository.ProjectExists) return;
-            MuzUData muzUData = projectRepository.ProjectModel.MuzUProject.MuzUData;
-            foreach (var sequenceData in muzUData.SequenceList.List)
+            if (!_projectRepository.ProjectExists) return;
+            MuzUData muzUData = _projectRepository.ProjectModel.MuzUProject.MuzUData;
+            foreach (var sequenceData in muzUData.SequenceList)
             {
                 SequenceViewModel sequenceViewModel = new(sequenceData);
                 sequences.Add(sequenceViewModel);
                 foreach (NoteViewModel note in sequenceViewModel.Notes)
                     notes.Add(note);
             }
-            App.Current.Services.GetService<PanAndZoomModel>()!.UpdateWidth();
+            _panAndZoomModel.ResetWidth();
             SelectedSequence = Sequences.FirstOrDefault();
             isCollectionChangedEventEnabled = true;
         }));

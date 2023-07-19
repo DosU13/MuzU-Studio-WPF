@@ -6,10 +6,11 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:MuzU_Studio.viewmodel"
         xmlns:view="clr-namespace:MuzU_Studio.view"
-        Title="MainWindow" Height="900" Width="1600"
+        Height="900" Width="1600"
         Style="{DynamicResource MainWindowStyle}"
         DataContext="{Binding Source={StaticResource Locator}, 
                               Path=ProjectViewModel}"
+        Title="{Binding ProjectPath, Mode=OneWay}" 
         Closing="Window_Closing"
         >
     <Window.Resources>
@@ -67,8 +68,6 @@
                     <Separator/>
                     <MenuItem Header="Open"
                               Click="Open_Click"/>
-                    <Separator/>
-                    <MenuItem Header="Open MuzU Hub" Click="OpenMuzUHub_Click"/>
                     <Separator/>
                     <MenuItem Header="Save" Click="Save_Click"
                                   IsEnabled="{Binding ProjectPathExists, Mode=OneWay}"/>

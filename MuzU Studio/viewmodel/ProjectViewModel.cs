@@ -65,6 +65,7 @@ public class ProjectViewModel: BindableBase
 
     public Task<bool> SaveProject()
     {
+        if(ProjectPath == null) throw new ArgumentNullException(nameof(ProjectPath));
         return SaveToFile(ProjectPath);
     }
 

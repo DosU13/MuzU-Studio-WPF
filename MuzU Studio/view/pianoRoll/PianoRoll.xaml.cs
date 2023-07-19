@@ -10,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
-using static MuzU_Studio.model.PianoRollModel;
 using Point = System.Windows.Point;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -32,7 +31,6 @@ public sealed partial class PianoRoll : UserControl
     }
 
     private PianoRollViewModel pianoRollViewModel => (PianoRollViewModel)DataContext;
-    private bool EditingLocked => App.Current.Services.GetService<PianoRollModel>()!.EditingLocked;
 
     private void zoomAndPanControl_MouseWheel(object sender, MouseWheelEventArgs e)
     {
@@ -70,7 +68,7 @@ public sealed partial class PianoRoll : UserControl
         mouseDownPointRelativeToContent = e.GetPosition(content);
         if (e.ChangedButton == MouseButton.Left)
         {
-            if(!EditingLocked)
+            if(!pianoRollViewModel.EditingLocked)
                 pianoRollViewModel.AddNote(mouseDownPointRelativeToContent, NewNoteWidth);
         }
     }
@@ -130,12 +128,12 @@ public sealed partial class PianoRoll : UserControl
     private double? _newNoteWidth = null;
     private double NewNoteWidth
     {
-        get => _newNoteWidth ??= BeatLength;
+        get => _newNoteWidth ??= pianoRollViewModel.BeatLength;
         set => _newNoteWidth = value;
     }
     private void Note_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        if (EditingLocked) return;
+        if (pianoRollViewModel.EditingLocked) return;
 
         content.Focus();
         Keyboard.Focus(content);
@@ -167,7 +165,7 @@ public sealed partial class PianoRoll : UserControl
     {
         draggingNoteMode = false;
 
-        if (EditingLocked) return;
+        if (pianoRollViewModel.EditingLocked) return;
 
         FrameworkElement? noteFrame = (FrameworkElement)sender;
         noteFrame?.ReleaseMouseCapture();
@@ -175,7 +173,7 @@ public sealed partial class PianoRoll : UserControl
 
     private void Note_MouseMove(object sender, MouseEventArgs e)
     {
-        if (EditingLocked) return;
+        if (pianoRollViewModel.EditingLocked) return;
 
         Point curContentPoint = e.GetPosition(content);
         if (sender is not FrameworkElement noteFrame ||

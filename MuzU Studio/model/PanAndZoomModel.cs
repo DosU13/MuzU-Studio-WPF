@@ -14,6 +14,13 @@ namespace MuzU_Studio.model;
 
 public class PanAndZoomModel : BindableBase
 {
+    private AudioService _audioService;
+
+    public PanAndZoomModel(AudioService audioService)
+    {
+        _audioService = audioService;
+    }
+
     /// <summary>
     /// Microseconds * HOR_SCALE = Proper measurement on the piano board
     /// </summary>
@@ -228,10 +235,9 @@ public class PanAndZoomModel : BindableBase
     public const string Nameof_ContentWidth = nameof(ContentWidth);
     public const string Nameof_ContentViewportWidth = nameof(ContentViewportWidth);
 
-    public void UpdateWidth()
+    public void ResetWidth()
     {
-        var audioService = App.Current.Services.GetService<AudioService>()!;
-        double max = FromMicroseconds((long)audioService.AudioDurationMicroseconds);
+        double max = FromMicroseconds((long)_audioService.AudioDurationMicroseconds);
         var notes = App.Current.Services.GetService<SequenceListModel>()!.Notes;
         foreach (var n in notes) if (max < n.Width + n.X) max = n.Width + n.X;
         ContentWidth = max;

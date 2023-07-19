@@ -10,7 +10,7 @@ using System.Windows.Threading;
 
 namespace MuzU_Studio.service
 {
-    internal partial class AudioService: BindableBase
+    public partial class AudioService: BindableBase
     {
         private readonly DispatcherTimer _timer = new();
 
@@ -26,8 +26,8 @@ namespace MuzU_Studio.service
             OnPropertyChanged(nameof(PlayheadPosition));
         }
 
-        private long MusicOffset => App.Current.Services.GetService<ProjectRepository>()!
-                    .ProjectModel.MuzUProject.MuzUData.MusicLocal.MusicOffsetMicroseconds;
+        private long MusicOffset => _projectRepository.ProjectModel.MuzUProject.
+                                        MuzUData.MusicLocal.MusicOffsetMicroseconds;
                                     
         public double PlayheadPosition {
             get => PanAndZoomModel.FromMicroseconds(

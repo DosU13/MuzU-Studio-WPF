@@ -23,7 +23,7 @@ internal class MidiImporter
             Melanchall.DryWetMidi.Interaction.Tempo.Default.MicrosecondsPerQuarterNote;
         data.Tempo.TimeSignature.Numerator = timeSignature?.Numerator ?? 4;
         data.Tempo.TimeSignature.Denominator = timeSignature?.Denominator ?? 4;
-        data.SequenceList.List.AddRange(ImportSequences(midiFile, displayName));
+        data.SequenceList.AddRange(ImportSequences(midiFile, displayName));
         return result;
     }
 
@@ -57,7 +57,6 @@ internal class MidiImporter
             SequenceTemplate template = new SequenceTemplate();
             template.LengthEnabled = true;
             template.NoteEnabled = true;
-            template.TimeUnit = TimeUnite.Both;
             sequence.SequenceTemplate = template;
             foreach (Note note in trackNotes)
             {
@@ -79,7 +78,7 @@ internal class MidiImporter
                     Length = metricLength.TotalMicroseconds,
                     Note = note.NoteNumber
                 };
-                sequence.NodeList.List.Add(item);
+                sequence.NodeList.Add(item);
             }
             result.Add(sequence);
         }
