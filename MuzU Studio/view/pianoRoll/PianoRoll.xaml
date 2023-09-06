@@ -57,12 +57,17 @@
                            Cursor="SizeWE"
                            DragDelta="ResizeThumb_DragDelta"/>
                 </Grid>
-                <TextBlock Text="{Binding Lyrics}" 
+                <TextBlock Text="{Binding LyricsWithoutNewlines, Mode=OneWay}" 
                            Foreground="{Binding Parent.ReverseColor, Mode=OneWay, 
                                 Converter={StaticResource colorToBrushConverter}}"
+                           Visibility="Collapsed"
                            FontSize="45"
                            HorizontalAlignment="Left"
-                           Width="NaN">
+                           Width="NaN"
+                           TextWrapping="NoWrap"
+                           Padding="5,0,0,0">
+                    <!--Visibility="{Binding Parent.Visible, 
+     Converter={StaticResource visibilityConverter}}"-->
                     <TextBlock.RenderTransform>
                         <ScaleTransform
                         ScaleX="{Binding DataContext.PanAndZoomModel.ContentScaleXAspectReverser, Mode=OneWay,

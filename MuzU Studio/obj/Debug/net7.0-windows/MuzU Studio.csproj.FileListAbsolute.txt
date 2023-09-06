@@ -28,7 +28,6 @@ D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Mela
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.VisualStudio.Modeling.Sdk.dll
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\System.Text.Json.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\ResourceLibrary.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\ZoomAndPan.dll

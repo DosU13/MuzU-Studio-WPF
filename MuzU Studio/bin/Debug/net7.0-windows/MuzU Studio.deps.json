@@ -67,12 +67,6 @@
       "System.Text.Json/7.0.3": {
         "dependencies": {
           "System.Text.Encodings.Web": "7.0.0"
-        },
-        "runtime": {
-          "lib/net7.0/System.Text.Json.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.723.27404"
-          }
         }
       },
       "MuzUStandard/1.0.0": {

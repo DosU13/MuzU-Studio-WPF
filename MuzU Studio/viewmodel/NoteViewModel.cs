@@ -152,6 +152,12 @@ public class NoteViewModel : BindableBase
             if (data.Lyrics == value) return;
             data.Lyrics = value;
             OnPropertyChanged();
+            OnPropertyChanged(nameof(LyricsWithoutNewlines));
         }
+    }
+
+    public string LyricsWithoutNewlines
+    {
+        get => data.Lyrics?.Replace("\r\n","")?.Replace("\n", "")??string.Empty;
     }
 }

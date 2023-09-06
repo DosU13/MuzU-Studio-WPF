@@ -113,9 +113,9 @@
                     <view:PianoOverview x:Name="PianoOverview" 
                                         Grid.Row="1"/>
                     <view:PianoRoll x:Name="PianoRoll" 
-                                          Grid.Row="2"/>
-                    <GridSplitter Grid.Row="3" Height="5" HorizontalAlignment="Stretch" />
-                    <view:LyricsControl Grid.Row="4"/>
+                                          Grid.Row="2" Grid.RowSpan="3"/>
+                    <!--<GridSplitter Grid.Row="3" Height="5" HorizontalAlignment="Stretch" />
+                    <view:LyricsControl Grid.Row="4"/>-->
                 </Grid>
                 <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
                 <view:Visualizer x:Name="Visualizer" 
