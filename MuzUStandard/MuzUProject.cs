@@ -1,6 +1,7 @@
 ﻿using MuzUStandard.data;
+using Newtonsoft.Json;
 using System.IO;
-using System.Text.Json;
+//using System.Text.Json;
 
 namespace MuzUStandard
 {
@@ -15,12 +16,14 @@ namespace MuzUStandard
         {
             using var reader = new StreamReader(stream);
             var json = reader.ReadToEnd();
-            return JsonSerializer.Deserialize<MuzUData>(json);
+            //return JsonSerializer.Deserialize<MuzUData>(json);
+            return JsonConvert.DeserializeObject<MuzUData>(json);
         }
 
         public void Save(Stream stream)
         {
-            var json = JsonSerializer.Serialize(MuzUData);
+            //var json = JsonSerializer.Serialize(MuzUData);
+            var json = JsonConvert.SerializeObject(MuzUData);
             stream.SetLength(0);
             using var writer = new StreamWriter(stream);
             writer.Write(json);

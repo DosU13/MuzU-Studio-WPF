@@ -28,10 +28,8 @@ D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Mela
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Microsoft.VisualStudio.Modeling.Sdk.dll
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\ResourceLibrary.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\ZoomAndPan.dll
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\ResourceLibrary.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\App.baml
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsControl.baml
@@ -54,3 +52,6 @@ D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\refi
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.genruntimeconfig.cache
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\ref\MuzU Studio.dll
+D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard_NetStandard.dll
+D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard_NetStandard.pdb
+D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Newtonsoft.Json.dll

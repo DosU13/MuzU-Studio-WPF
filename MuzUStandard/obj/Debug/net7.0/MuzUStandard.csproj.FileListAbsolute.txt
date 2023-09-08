@@ -9,3 +9,4 @@ D:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\net7.0\MuzUStandar
 D:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\net7.0\refint\MuzUStandard.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\net7.0\MuzUStandard.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\net7.0\ref\MuzUStandard.dll
+D:\Doslan\source\repos\MuzU Studio WPF\MuzUStandard\obj\Debug\net7.0\MuzUStandard.csproj.AssemblyReference.cache
