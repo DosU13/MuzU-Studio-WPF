@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/Rq5xcuxz3iHXLT46KJ8tINq5qrkJkbB5LnvlVOEmArdfnyysvpnRCRNTZjLDC5xdDpEanoEyx8Vyafb3b3ndQ==",
+  "dgSpecHash": "gDSkcpPqpByxxJ8Gzoh2/ARkSMxYMcSWWBAEsLY0B3g6cjJH3HQy1VpyaKi5YmzWftH2DJcF9toX34HnS4en/A==",
   "success": true,
-  "projectFilePath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard_NetStandard\\MuzUStandard_NetStandard.csproj",
+  "projectFilePath": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\MuzUStandard_NetStandard\\MuzUStandard_NetStandard.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Пользователь\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Пользователь\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

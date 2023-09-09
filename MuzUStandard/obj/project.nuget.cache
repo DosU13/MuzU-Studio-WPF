@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zUCIKzf2XwMldHX2rFOoo26I5wcnph3GSc3FMpSoAmjdJOReSWNULo9QlzfdCgLPPUHNztqYIz0OF8gPJUf4CQ==",
+  "dgSpecHash": "b3eS3JlbXFe6JX7jNdoZRXL9OI7KgJVjejxB8BCFTlMBEZFGYA5JtuMpa35MfSrwhF2WrXqbcu7hW7QrW/nA+w==",
   "success": true,
-  "projectFilePath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard\\MuzUStandard.csproj",
+  "projectFilePath": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\MuzUStandard\\MuzUStandard.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\Пользователь\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

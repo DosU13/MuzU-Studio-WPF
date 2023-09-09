@@ -301,24 +301,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Пользователь\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\MuzU Studio.csproj",
+      "projectUniqueName": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\MuzU Studio\\MuzU Studio.csproj",
       "projectName": "MuzU Studio",
-      "projectPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\MuzU Studio.csproj",
-      "packagesPath": "C:\\Users\\djeksheev.SRS\\.nuget\\packages\\",
-      "outputPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzU Studio\\obj\\",
+      "projectPath": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\MuzU Studio\\MuzU Studio.csproj",
+      "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
+      "outputPath": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\MuzU Studio\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\djeksheev.SRS\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -326,18 +321,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\ClassLibrary\\Nugets": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard_NetStandard\\MuzUStandard_NetStandard.csproj": {
-              "projectPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\MuzUStandard_NetStandard\\MuzUStandard_NetStandard.csproj"
+            "D:\\Doslan\\VS\\MuzU-Studio-WPF\\MuzUStandard_NetStandard\\MuzUStandard_NetStandard.csproj": {
+              "projectPath": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\MuzUStandard_NetStandard\\MuzUStandard_NetStandard.csproj"
             },
-            "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\ResourceLibrary\\ResourceLibrary.csproj": {
-              "projectPath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\ResourceLibrary\\ResourceLibrary.csproj"
+            "D:\\Doslan\\VS\\MuzU-Studio-WPF\\ResourceLibrary\\ResourceLibrary.csproj": {
+              "projectPath": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\ResourceLibrary\\ResourceLibrary.csproj"
             }
           }
         }
