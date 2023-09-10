@@ -21,7 +21,7 @@ public class NoteViewModel : BindableBase
     /// </summary>
     private readonly Node data;
 
-    private readonly ISequenceSharedProperty parent;
+    private ISequenceSharedProperty parent;
 
     /// <summary>
     /// Set to 'true' when the rectangle is selected in the ListBox.
@@ -128,7 +128,11 @@ public class NoteViewModel : BindableBase
         get => NOTE_HEIGHT;
     }
 
-    public ISequenceSharedProperty Parent => parent;
+    public ISequenceSharedProperty Parent
+    {
+        get => parent;
+        set => SetProperty(ref parent, value);
+    }
 
     public Color BorderColor => IsSelected ? Parent.ReverseColor : Parent.DarkerColor;
 

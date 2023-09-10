@@ -24,13 +24,19 @@ public sealed partial class PianoRoll : UserControl
         App.Current.ServiceManager.ServiceUpdated += ServiceManager_ServiceUpdated;
     }
 
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
+    {
+        Window.GetWindow(this).KeyDown += PianoRoll_KeyDown; ;
+    }
+
     private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)
     {
         Application.Current.Dispatcher.Invoke(() => 
             DataContext = serviceProvider.GetService<PianoRollViewModel>());
     }
 
-    private PianoRollViewModel pianoRollViewModel => (PianoRollViewModel)DataContext;
+    private PianoRollViewModel PianoRollViewModel => (PianoRollViewModel)DataContext;
+    private static SequenceListModel SequenceListModel => App.Current.Services.GetService<SequenceListModel>()!;
 
     private void zoomAndPanControl_MouseWheel(object sender, MouseWheelEventArgs e)
     {
@@ -68,8 +74,8 @@ public sealed partial class PianoRoll : UserControl
         mouseDownPointRelativeToContent = e.GetPosition(content);
         if (e.ChangedButton == MouseButton.Left)
         {
-            if(!pianoRollViewModel.EditingLocked)
-                pianoRollViewModel.AddNote(mouseDownPointRelativeToContent, NewNoteWidth);
+            if(!PianoRollViewModel.EditingLocked)
+                PianoRollViewModel.AddNote(mouseDownPointRelativeToContent, NoteCreationWidth);
         }
     }
 
@@ -95,7 +101,8 @@ public sealed partial class PianoRoll : UserControl
         zoomAndPanControl.ScaleToFit();
     }
 
-    private void zoomAndPanControl_KeyDown(object sender, KeyEventArgs e)
+    private List<NoteViewModel> copiedNotes;
+    private void PianoRoll_KeyDown(object sender, KeyEventArgs e)
     {
         if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
         {
@@ -104,15 +111,35 @@ public sealed partial class PianoRoll : UserControl
             double hor = isHor ? 1.3 : 1.0;
             double ver = isHor ? 1.0 : 1.3;
             Point zoomPoint = new Point(zoomAndPanControl.ContentZoomFocusX, zoomAndPanControl.ContentZoomFocusY);
-            if (e.Key == Key.OemPlus) {
-                Zoom(zoomPoint, hor, ver);
-                e.Handled = true;
-            }
-            else if(e.Key == Key.OemMinus) {
-                Zoom(zoomPoint, 1 / hor, 1 / ver);
-                e.Handled = true;
+            switch (e.Key)
+            {
+                case Key.OemPlus:
+                    Zoom(zoomPoint, hor, ver);
+                    break;
+                case Key.OemMinus:
+                    Zoom(zoomPoint, 1 / hor, 1 / ver);
+                    break;
+                case Key.X:
+                    if (PianoRollViewModel.EditingLocked) break;
+                    copiedNotes = SequenceListModel.Notes.Where(x => x.IsSelected).ToList();
+                    foreach(var x in copiedNotes)
+                    {
+                        SequenceListModel.Notes.Remove(x);
+                    }
+                    break;
+                case Key.C:
+                    copiedNotes = SequenceListModel.Notes.Where(x => x.IsSelected).ToList();
+                    break;
+                case Key.V:
+                    if (PianoRollViewModel.EditingLocked) break;
+                    foreach (var x in copiedNotes)
+                    {
+                        PianoRollViewModel.AddNote(x);
+                    }
+                    break;
             }
         }
+        e.Handled = true;
     }
 
     private void Zoom(Point curContentMousePoint, double horizontalChange, double verticalChange)
@@ -125,15 +152,20 @@ public sealed partial class PianoRoll : UserControl
     private bool draggingNoteMode = false;
     private Point notePosRelativeToContentWhenPressed;
     private Point noteXYWhenPressed;
-    private double? _newNoteWidth = null;
-    private double NewNoteWidth
+    private double? _noteCreationWidth = null;
+    private double NoteCreationWidth
     {
-        get => _newNoteWidth ??= pianoRollViewModel.BeatLength;
-        set => _newNoteWidth = value;
+        get
+        {
+            if (_noteCreationWidth == null || _noteCreationWidth <= 0) _noteCreationWidth = PianoRollViewModel.BeatLength;
+            return _noteCreationWidth.Value;
+        }
+
+        set => _noteCreationWidth = value;
     }
     private void Note_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        if (pianoRollViewModel.EditingLocked) return;
+        if (PianoRollViewModel.EditingLocked) return;
 
         content.Focus();
         Keyboard.Focus(content);
@@ -143,21 +175,27 @@ public sealed partial class PianoRoll : UserControl
         {
             return;
         }
-
-        note.IsSelected = true;
-
+        
         if(e.ChangedButton == MouseButton.Right)
         {
-            pianoRollViewModel.Notes.Remove(note);
-            e.Handled = true;
+            PianoRollViewModel.Notes.Remove(note);
         }
         else if(e.ChangedButton == MouseButton.Left)
         {
+            //var noteIsSelected = note.IsSelected;
+            //if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
+            //{
+            //    foreach (var x in SequenceListModel.Notes)
+            //    {
+            //        x.IsSelected = false;
+            //    }
+            //}
+            //note.IsSelected = !noteIsSelected;
+
             draggingNoteMode = true;
             notePosRelativeToContentWhenPressed = e.GetPosition(content);
             noteXYWhenPressed = new Point(note.X, note.Y);
             noteFrame.CaptureMouse();
-            e.Handled = true;
         }
     }
 
@@ -165,7 +203,7 @@ public sealed partial class PianoRoll : UserControl
     {
         draggingNoteMode = false;
 
-        if (pianoRollViewModel.EditingLocked) return;
+        if (PianoRollViewModel.EditingLocked) return;
 
         FrameworkElement? noteFrame = (FrameworkElement)sender;
         noteFrame?.ReleaseMouseCapture();
@@ -173,7 +211,7 @@ public sealed partial class PianoRoll : UserControl
 
     private void Note_MouseMove(object sender, MouseEventArgs e)
     {
-        if (pianoRollViewModel.EditingLocked) return;
+        if (PianoRollViewModel.EditingLocked) return;
 
         Point curContentPoint = e.GetPosition(content);
         if (sender is not FrameworkElement noteFrame ||
@@ -212,8 +250,7 @@ public sealed partial class PianoRoll : UserControl
         }
 
         note.Width += e.HorizontalChange;
-        Debug.WriteLine(note.Width + ":" + e.HorizontalChange);
-        NewNoteWidth = note.Width;
+        NoteCreationWidth = note.Width;
             
         e.Handled = true;
     }

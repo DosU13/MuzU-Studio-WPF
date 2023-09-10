@@ -13,6 +13,7 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
+    Loaded="UserControl_Loaded"
     DataContext="{Binding Source={StaticResource Locator},
                           Path=PianoRollViewModel}"
     >
@@ -267,7 +268,6 @@
                       CanContentScroll="True"
                       VerticalScrollBarVisibility="Visible"
                       HorizontalScrollBarVisibility="Visible"
-                      KeyDown="zoomAndPanControl_KeyDown"
                       >
             <zoomAndPan:ZoomAndPanControl
                 x:Name="zoomAndPanControl"
@@ -281,7 +281,6 @@
                 MouseUp="zoomAndPanControl_MouseUp"
                 MouseMove="zoomAndPanControl_MouseMove"
 	            MouseWheel="zoomAndPanControl_MouseWheel"
-                KeyDown="zoomAndPanControl_KeyDown"
                 >
                 <Grid x:Name="content" 
                       Width="{Binding PanAndZoomModel.ContentWidth}" 
@@ -293,10 +292,8 @@
                         Background="Transparent"
                         Style="{StaticResource noScrollViewerListBoxStyle}"
                         ItemContainerStyle="{StaticResource listBoxItemStyle}"
+                        SelectionMode="Extended"
                         />
-                    <!--<ItemsControl
-                        ItemsSource="{Binding Lines}"
-                        />-->
                 </Grid>
             </zoomAndPan:ZoomAndPanControl>
         </ScrollViewer>

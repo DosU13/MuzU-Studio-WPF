@@ -8,11 +8,13 @@ using MuzUStandard.data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using static MuzU_Studio.model.PianoRollModel;
+using Point = System.Windows.Point;
 
 namespace MuzU_Studio.viewmodel;
 
@@ -50,6 +52,13 @@ internal class PianoRollViewModel: BindableBase
             OnPropertyChanged(nameof(PlayheadThumbWidth));
             OnPropertyChanged(nameof(PlayheadThumbLeft));
         }
+    }
+
+    internal void AddNote(NoteViewModel noteVM)
+    {
+        if (sequenceModel.SelectedSequence is null) return;
+        noteVM.Parent = sequenceModel.SelectedSequence;
+        Notes.Add(noteVM);
     }
 
     internal void AddNote(Point point, double width)

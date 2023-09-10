@@ -39,6 +39,7 @@ public class ProjectRepository
         {
             using var stream = File.OpenText(path);
             var muzUProject = await Task.FromResult(new MuzUProject(stream.BaseStream));
+            if (muzUProject.MuzUData == null) throw new Exception("Couldn't read MuzU file");
             stream.Close();
             return new ProjectRepository(new ProjectModel(muzUProject), path);
         }
