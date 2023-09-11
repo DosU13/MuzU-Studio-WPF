@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JodSTkKl1wW1G20e8aIUO0as68CCwvRQA5r6YIts4bpMnNazjuio+YEPFIev+OMp2MqC7aq4FXJL+b4A7PAtYA==",
+  "dgSpecHash": "SN2jjIj0nsDqhbEY3AIfbAVvuu8sn/7rc9cpdsn3gse8jbJApSUX5+GbKhFAegodGCPKet0ZPP3id9oOjd2SdA==",
   "success": true,
-  "projectFilePath": "D:\\Doslan\\VS\\MuzU-Studio-WPF\\ResourceLibrary\\ResourceLibrary.csproj",
+  "projectFilePath": "D:\\Doslan\\source\\repos\\MuzU Studio WPF\\ResourceLibrary\\ResourceLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
