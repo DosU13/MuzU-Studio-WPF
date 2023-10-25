@@ -61,14 +61,13 @@
                 <TextBlock Text="{Binding LyricsWithoutNewlines, Mode=OneWay}" 
                            Foreground="{Binding Parent.ReverseColor, Mode=OneWay, 
                                 Converter={StaticResource colorToBrushConverter}}"
-                           Visibility="Collapsed"
+                           Visibility="{Binding Parent.Visible, 
+                                        Converter={StaticResource visibilityConverter}}"
                            FontSize="45"
                            HorizontalAlignment="Left"
                            Width="NaN"
                            TextWrapping="NoWrap"
                            Padding="5,0,0,0">
-                    <!--Visibility="{Binding Parent.Visible, 
-     Converter={StaticResource visibilityConverter}}"-->
                     <TextBlock.RenderTransform>
                         <ScaleTransform
                         ScaleX="{Binding DataContext.PanAndZoomModel.ContentScaleXAspectReverser, Mode=OneWay,
@@ -166,7 +165,8 @@
         </Style>
     </UserControl.Resources>
     
-    <Grid x:Name="mainContainer">
+    <Grid x:Name="mainContainer"
+          KeyDown="PianoRoll_KeyDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="{Binding Source={StaticResource TimelineHeight},
                                     Converter={StaticResource gridLengthConverter}}"/>

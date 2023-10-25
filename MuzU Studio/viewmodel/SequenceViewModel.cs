@@ -15,18 +15,10 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
     public readonly Sequence Sequence;
     private bool visible = true;
 
-    private static readonly Random random = new();
     public SequenceViewModel(Sequence sequence)
     {
         this.Sequence = sequence;
-        var hueProperty = sequence.SequenceTemplate.PropertiesList.
-            FirstOrDefault(x => x.Name == HueName);
-        if (hueProperty == null || !int.TryParse(hueProperty.Value, out int hue)) {
-            hue = random.Next(256);
-            sequence.SequenceTemplate.PropertiesList.Add(
-                new Property { Name = HueName, Value = hue.ToString()}); 
-        }
-        Hue = hue;
+        Hue = sequence.SoundClassification.Hue;
         foreach(var node in sequence.NodeList) 
             Notes.Add(new NoteViewModel(node, this));
 
@@ -57,7 +49,6 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
         set => SetProperty(ref reverseColor, value);
     }
 
-    private const string HueName = "Hue";
     private int _hue = -1;
     public int Hue { 
         get => _hue;
@@ -65,8 +56,7 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
         {
             if (SetProperty(ref _hue, value))
             {
-                Sequence.SequenceTemplate.PropertiesList.
-                    First(x => x.Name == HueName).Value = value.ToString();
+                Sequence.SoundClassification.Hue = value;
                 HslColor hslColor = new(value, 240, 176);
                 var drColor = hslColor.ToRgbColor();
                 Color = Color.FromRgb(drColor.R, drColor.G, drColor.B);

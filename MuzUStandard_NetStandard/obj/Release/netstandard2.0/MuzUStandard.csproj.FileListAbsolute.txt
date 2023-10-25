@@ -1,0 +1,10 @@
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\bin\Release\netstandard2.0\MuzUStandard.deps.json
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\bin\Release\netstandard2.0\MuzUStandard.dll
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\bin\Release\netstandard2.0\MuzUStandard.pdb
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\obj\Release\netstandard2.0\MuzUStandard.csproj.AssemblyReference.cache
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\obj\Release\netstandard2.0\MuzUStandard.GeneratedMSBuildEditorConfig.editorconfig
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\obj\Release\netstandard2.0\MuzUStandard.AssemblyInfoInputs.cache
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\obj\Release\netstandard2.0\MuzUStandard.AssemblyInfo.cs
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\obj\Release\netstandard2.0\MuzUStandard.csproj.CoreCompileInputs.cache
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\obj\Release\netstandard2.0\MuzUStandard.dll
+D:\Doslan\VS\MuzU-Studio-WPF\MuzUStandard_NetStandard\obj\Release\netstandard2.0\MuzUStandard.pdb

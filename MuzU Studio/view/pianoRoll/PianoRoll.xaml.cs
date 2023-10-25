@@ -26,7 +26,7 @@ public sealed partial class PianoRoll : UserControl
 
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        Window.GetWindow(this).KeyDown += PianoRoll_KeyDown; ;
+        //Window.GetWindow(this).KeyDown += PianoRoll_KeyDown; ;
     }
 
     private void ServiceManager_ServiceUpdated(IServiceProvider serviceProvider)

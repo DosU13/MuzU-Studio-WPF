@@ -15,8 +15,8 @@ namespace MuzUStandard.data
         /// <summary>
         /// Time as micro seconds
         /// </summary>
-        public long? Length { get; set; }
-        public int? Note{ get; set; }
-        public string Lyrics { get; set; }
+        public long? Length { get; set; } = null;
+        public int? Note { get; set; } = null;
+        public string Lyrics { get; set; } = null;
     }
 }

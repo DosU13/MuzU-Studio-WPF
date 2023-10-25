@@ -12,7 +12,7 @@
           "Melanchall.DryWetMidi": "6.1.4",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.VisualStudio.Modeling.Sdk": "17.4.33103.184",
-          "MuzUStandard_NetStandard": "1.0.0",
+          "MuzUStandard": "1.0.0",
           "ResourceLibrary": "1.0.0",
           "ZoomAndPan": "1.0.0.0"
         },
@@ -71,12 +71,12 @@
           }
         }
       },
-      "MuzUStandard_NetStandard/1.0.0": {
+      "MuzUStandard/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
-          "MuzUStandard_NetStandard.dll": {}
+          "MuzUStandard.dll": {}
         }
       },
       "ResourceLibrary/1.0.0": {
@@ -142,7 +142,7 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
-    "MuzUStandard_NetStandard/1.0.0": {
+    "MuzUStandard/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

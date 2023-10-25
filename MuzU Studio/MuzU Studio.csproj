@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MuzUStandard_NetStandard\MuzUStandard_NetStandard.csproj" />
+    <ProjectReference Include="..\MuzUStandard_NetStandard\MuzUStandard.csproj" />
     <ProjectReference Include="..\ResourceLibrary\ResourceLibrary.csproj" />
   </ItemGroup>
 
