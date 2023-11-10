@@ -1,6 +1,5 @@
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.csproj.AssemblyReference.cache
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\Visualizer.baml
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsControl.g.cs
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsMapper.g.cs
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MainWindow.g.cs
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MediaControls.g.cs
@@ -32,7 +31,6 @@ D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Reso
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\ZoomAndPan.dll
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\ResourceLibrary.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\App.baml
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsControl.baml
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\LyricsMapper.baml
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MainWindow.baml
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\view\MediaControls.baml
@@ -52,8 +50,6 @@ D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\refi
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.genruntimeconfig.cache
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\obj\Debug\net7.0-windows\ref\MuzU Studio.dll
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard_NetStandard.dll
-D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard_NetStandard.pdb
 D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
 D:\Doslan\VS\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
 D:\Doslan\VS\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\Melanchall.DryWetMidi.dll
@@ -110,3 +106,5 @@ D:\Doslan\VS\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\MuzU Studio.ge
 D:\Doslan\VS\MuzU-Studio-WPF\MuzU Studio\obj\Debug\net7.0-windows\ref\MuzU Studio.dll
 D:\Doslan\VS\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.dll
 D:\Doslan\VS\MuzU-Studio-WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.pdb
+D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.dll
+D:\Doslan\source\repos\MuzU Studio WPF\MuzU Studio\bin\Debug\net7.0-windows\MuzUStandard.pdb

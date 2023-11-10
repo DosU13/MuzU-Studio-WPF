@@ -1,4 +1,0 @@
-C:\Users\Пользователь\Desktop\MuzUStandard_Release\MuzUStandard.dll
-C:\Users\Пользователь\Desktop\MuzUStandard_Release\MuzUStandard.deps.json
-C:\Users\Пользователь\Desktop\MuzUStandard_Release\MuzUStandard.pdb
-C:\Users\Пользователь\Desktop\MuzUStandard_Release\Newtonsoft.Json.dll
