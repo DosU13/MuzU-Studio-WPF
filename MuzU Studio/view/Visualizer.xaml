@@ -28,12 +28,36 @@
         <Canvas x:Name="MainCanvas"  
                 Background="#FF221531"
                 />
-        <TextBlock
-            x:Name="LyricsTextBlock"
-            Text="Lyrics"
-            FontSize="100"
+        <Grid
             HorizontalAlignment="Center" 
-            VerticalAlignment="Center"
-            />
+            VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                x:Name="PreviousLyricsBox"
+                Text=""
+                FontSize="100"
+                FontWeight="Thin"
+                />
+            <TextBlock
+                Grid.Column="1"
+                x:Name="LyricsBox"
+                Text=""
+                FontSize="100"
+                />
+            <TextBlock
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                x:Name="NextLyricsBox"
+                Text=""
+                FontSize="100"
+                FontWeight="Thin"
+                />      
+        </Grid>
     </Grid>
 </UserControl>

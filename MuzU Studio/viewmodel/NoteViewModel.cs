@@ -162,6 +162,6 @@ public class NoteViewModel : BindableBase
 
     public string LyricsWithoutNewlines
     {
-        get => data.Lyrics?.Replace("\r\n","")?.Replace("\n", "")??string.Empty;
+        get => data.Lyrics?.Replace("\r\n"," ")?.Replace("\n", " ")??string.Empty;
     }
 }

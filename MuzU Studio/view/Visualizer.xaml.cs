@@ -4,7 +4,9 @@ using MuzU_Studio.model;
 using MuzU_Studio.service;
 using MuzU_Studio.viewmodel;
 using System.Diagnostics;
+using System.Text;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -19,27 +21,19 @@ public sealed partial class Visualizer : UserControl
         audioService.PropertyChanged += AudioService_PropertyChanged;
     }
 
-    private string _lyricsText;
-    private string LyricsText
-    {
-        get => _lyricsText;
-        set
-        {
-            if (value != _lyricsText)
-            {
-                _lyricsText = value;
-                LyricsTextBlock.Text = value;
-            }
-        }
-    }
-
     private void AudioService_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         if (sender is not AudioService audioService) return;
         if(e.PropertyName == AudioService.Nameof_IsPlaying)
         {
-            if(audioService.IsPlaying)
+            if (audioService.IsPlaying)
+            {
                 CompositionTarget.Rendering += CompositionTarget_Rendering;
+                var sequenceList = App.Current.Services.GetService<SequenceListModel>()!;
+                lyricsSequence = sequenceList.Sequences.FirstOrDefault(x => x.LyricsEnabled);
+                lyricsList = lyricsSequence?.Notes.ToList();
+
+            }
             else
                 CompositionTarget.Rendering -= CompositionTarget_Rendering;
         }
@@ -50,12 +44,17 @@ public sealed partial class Visualizer : UserControl
         var sequenceList = App.Current.Services.GetService<SequenceListModel>()!;
         var musicPos = App.Current.Services.GetService<AudioService>()!.PlayheadPosition;
         MainCanvas.Children.Clear();
+        RenderLasers(sequenceList, musicPos);
+        RenderLyrics(sequenceList, musicPos);
+    }
+
+    private void RenderLasers(SequenceListModel sequenceList, double musicPos)
+    {
         double backFlashFactor = 0;
-        var lyricsText = "";
-        foreach (var note in sequenceList.Notes.Where(x => x.Parent.Visible && 
+        foreach (var note in sequenceList.Notes.Where(x => x.Parent.Visible &&
                                 x.X <= musicPos && musicPos <= x.X + x.Width))
         {
-            double width = 50 + 50 * (((musicPos % 10 / 10.0) + note.Data.Note!.Value/128.0) % 1.0);
+            double width = 50 + 50 * (((musicPos % 10 / 10.0) + note.Data.Note!.Value / 128.0) % 1.0);
             double tempFlashFactor = Math.Max(100_000D - PanAndZoomModel.ToMicroseconds(musicPos - note.X), 0) / 100_000;
             if (backFlashFactor < tempFlashFactor) backFlashFactor = tempFlashFactor;
             Rectangle rect = new()
@@ -65,12 +64,42 @@ public sealed partial class Visualizer : UserControl
                 Fill = LaserBrushFrom(note.Parent.Hue)
             };
             MainCanvas.Children.Add(rect);
-            Canvas.SetLeft(rect, (MainCanvas.ActualWidth - 100) * 
-                (note.Data.Note!.Value/128.0) + 50 - width / 2); 
-            if (!string.IsNullOrEmpty(note.Lyrics)) lyricsText = note.LyricsWithoutNewlines;
+            Canvas.SetLeft(rect, (MainCanvas.ActualWidth - 100) *
+                (note.Data.Note!.Value / 128.0) + 50 - width / 2);
         }
-        LyricsText = lyricsText;
         MainCanvas.Background = BackBrushFrom(backFlashFactor);
+    }
+
+    private SequenceViewModel? lyricsSequence;
+    private List<NoteViewModel>? lyricsList;
+    private void RenderLyrics(SequenceListModel sequenceList, double musicPos)
+    {
+        PreviousLyricsBox.Text = "";
+        LyricsBox.Text = "";
+        NextLyricsBox.Text = "";
+        if (lyricsSequence == null || lyricsSequence.LyricsEnabled == false) return;
+
+        var note = lyricsSequence.Notes.FirstOrDefault(x => x.X <= musicPos && musicPos <= x.X + x.Width);
+        if (note == null || string.IsNullOrEmpty(note.LyricsWithoutNewlines)) return;
+        LyricsBox.Text = note.LyricsWithoutNewlines;
+
+        var index = lyricsList.IndexOf(note);
+        var previousIndex = index - 1;
+        var previousLyrics = "";
+        while (previousIndex >= 0 && EndsWithLetter(lyricsList[previousIndex].LyricsWithoutNewlines))
+        {
+            previousLyrics = lyricsList[previousIndex].LyricsWithoutNewlines + previousLyrics;
+            previousIndex--;
+        }
+        PreviousLyricsBox.Text = previousLyrics;
+        var nextIndex = index;
+        var nextLyrics = "";
+        while(nextIndex < lyricsList.Count && EndsWithLetter(lyricsList[nextIndex].LyricsWithoutNewlines))
+        {
+            nextIndex++;
+            nextLyrics += lyricsList[nextIndex].LyricsWithoutNewlines;
+        }
+        NextLyricsBox.Text = nextLyrics;
     }
 
     private static Brush BackBrushFrom(double factor)
@@ -112,5 +141,26 @@ public sealed partial class Visualizer : UserControl
         );
 
         return laserBrush;
+    }
+
+    private static T? GetPreviousElement<T>(SortedSet<T> set, T target)
+    {
+        var view = set.GetViewBetween(set.Min, target);
+        return view.Count > 0 ? view.Max : default;
+    }
+
+    private static T? GetNextElement<T>(SortedSet<T> set, T target)
+    {
+        var view = set.GetViewBetween(target, set.Max);
+        return view.Count > 0 ? view.Min : default;
+    }
+    private static bool EndsWithLetter(string input)
+    {
+        if (!string.IsNullOrEmpty(input))
+        {
+            char lastCharacter = input[input.Length - 1];
+            return char.IsLetter(lastCharacter);
+        }
+        return false;
     }
 }
