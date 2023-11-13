@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
 
-namespace MuzUStandard.data
+namespace MuzUStandard.data 
 {
     public class MuzUData
     {

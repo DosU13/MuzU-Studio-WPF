@@ -1,24 +1,3 @@
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.deps.json
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.dll
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.pdb
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulDarkTheme.baml
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulLightTheme.baml
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\DarkTheme.baml
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\LightTheme.baml
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulDarkTheme.g.cs
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulLightTheme.g.cs
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\DarkTheme.g.cs
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\LightTheme.g.cs
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary_MarkupCompile.cache
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.g.resources
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.GeneratedMSBuildEditorConfig.editorconfig
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.AssemblyInfoInputs.cache
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.AssemblyInfo.cs
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.csproj.CoreCompileInputs.cache
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.dll
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\refint\ResourceLibrary.dll
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.pdb
-D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ref\ResourceLibrary.dll
 D:\Doslan\VS\MuzU-Studio-WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.deps.json
 D:\Doslan\VS\MuzU-Studio-WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.dll
 D:\Doslan\VS\MuzU-Studio-WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.pdb
@@ -40,3 +19,24 @@ D:\Doslan\VS\MuzU-Studio-WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLi
 D:\Doslan\VS\MuzU-Studio-WPF\ResourceLibrary\obj\Debug\net7.0-windows\refint\ResourceLibrary.dll
 D:\Doslan\VS\MuzU-Studio-WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.pdb
 D:\Doslan\VS\MuzU-Studio-WPF\ResourceLibrary\obj\Debug\net7.0-windows\ref\ResourceLibrary.dll
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.deps.json
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.dll
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\bin\Debug\net7.0-windows\ResourceLibrary.pdb
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulDarkTheme.baml
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulLightTheme.baml
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\DarkTheme.baml
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\LightTheme.baml
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulDarkTheme.g.cs
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\ColourfulLightTheme.g.cs
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\DarkTheme.g.cs
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\Themes\LightTheme.g.cs
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary_MarkupCompile.cache
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.g.resources
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.AssemblyInfoInputs.cache
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.AssemblyInfo.cs
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.csproj.CoreCompileInputs.cache
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.dll
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\refint\ResourceLibrary.dll
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ResourceLibrary.pdb
+D:\Doslan\source\repos\MuzU Studio WPF\ResourceLibrary\obj\Debug\net7.0-windows\ref\ResourceLibrary.dll

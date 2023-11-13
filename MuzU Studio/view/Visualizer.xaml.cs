@@ -19,6 +19,20 @@ public sealed partial class Visualizer : UserControl
         audioService.PropertyChanged += AudioService_PropertyChanged;
     }
 
+    private string _lyricsText;
+    private string LyricsText
+    {
+        get => _lyricsText;
+        set
+        {
+            if (value != _lyricsText)
+            {
+                _lyricsText = value;
+                LyricsTextBlock.Text = value;
+            }
+        }
+    }
+
     private void AudioService_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         if (sender is not AudioService audioService) return;
@@ -37,6 +51,7 @@ public sealed partial class Visualizer : UserControl
         var musicPos = App.Current.Services.GetService<AudioService>()!.PlayheadPosition;
         MainCanvas.Children.Clear();
         double backFlashFactor = 0;
+        var lyricsText = "";
         foreach (var note in sequenceList.Notes.Where(x => x.Parent.Visible && 
                                 x.X <= musicPos && musicPos <= x.X + x.Width))
         {
@@ -51,8 +66,10 @@ public sealed partial class Visualizer : UserControl
             };
             MainCanvas.Children.Add(rect);
             Canvas.SetLeft(rect, (MainCanvas.ActualWidth - 100) * 
-                (note.Data.Note!.Value/128.0) + 50 - width / 2);
+                (note.Data.Note!.Value/128.0) + 50 - width / 2); 
+            if (!string.IsNullOrEmpty(note.Lyrics)) lyricsText = note.LyricsWithoutNewlines;
         }
+        LyricsText = lyricsText;
         MainCanvas.Background = BackBrushFrom(backFlashFactor);
     }
 

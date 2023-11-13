@@ -24,7 +24,16 @@
         </LinearGradientBrush>
     </UserControl.Resources>
 
-    <Canvas x:Name="MainCanvas"  
-            Background="#FF221531"
+    <Grid>
+        <Canvas x:Name="MainCanvas"  
+                Background="#FF221531"
+                />
+        <TextBlock
+            x:Name="LyricsTextBlock"
+            Text="Lyrics"
+            FontSize="100"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
             />
+    </Grid>
 </UserControl>
