@@ -89,11 +89,14 @@ public sealed partial class PianoRoll : UserControl
             zoomAndPanControl.ContentOffsetY -= dragOffset.Y;
             e.Handled = true;
         }
+
+        Note_MouseMove(sender, e);
     }
 
     private void zoomAndPanControl_MouseUp(object sender, MouseButtonEventArgs e)
     {
         isPanningMode = false;
+        Note_MouseUp(sender, e);
     }
 
     private void pianoRoll_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -149,7 +152,8 @@ public sealed partial class PianoRoll : UserControl
     }
 
 
-    private bool draggingNoteMode = false;
+    private bool isNoteDragging = false;
+    private NoteViewModel? draggingNote;
     private Point notePosRelativeToContentWhenPressed;
     private Point noteXYWhenPressed;
     private double? _noteCreationWidth = null;
@@ -163,6 +167,7 @@ public sealed partial class PianoRoll : UserControl
 
         set => _noteCreationWidth = value;
     }
+
     private void Note_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (PianoRollViewModel.EditingLocked) return;
@@ -181,27 +186,19 @@ public sealed partial class PianoRoll : UserControl
             PianoRollViewModel.Notes.Remove(note);
         }
         else if(e.ChangedButton == MouseButton.Left)
-        {
-            //var noteIsSelected = note.IsSelected;
-            //if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
-            //{
-            //    foreach (var x in SequenceListModel.Notes)
-            //    {
-            //        x.IsSelected = false;
-            //    }
-            //}
-            //note.IsSelected = !noteIsSelected;
-
-            draggingNoteMode = true;
+        {        
+            isNoteDragging = true;
             notePosRelativeToContentWhenPressed = e.GetPosition(content);
             noteXYWhenPressed = new Point(note.X, note.Y);
             noteFrame.CaptureMouse();
+            draggingNote = note;
         }
     }
 
     private void Note_MouseUp(object sender, MouseButtonEventArgs e)
     {
-        draggingNoteMode = false;
+        isNoteDragging = false;
+        draggingNote = null;
 
         if (PianoRollViewModel.EditingLocked) return;
 
@@ -214,16 +211,16 @@ public sealed partial class PianoRoll : UserControl
         if (PianoRollViewModel.EditingLocked) return;
 
         Point curContentPoint = e.GetPosition(content);
-        if (sender is not FrameworkElement noteFrame ||
-            noteFrame.DataContext is not NoteViewModel note)
-        {
-            return;
-        }
+        //if (sender is not FrameworkElement noteFrame ||
+        //    noteFrame.DataContext is not NoteViewModel note)
+        //{
+        //    return;
+        //}
 
-        if (draggingNoteMode)
+        if (isNoteDragging && draggingNote!=null)
         {
-            note.X = noteXYWhenPressed.X + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
-            note.Y = Convert.ToInt32(noteXYWhenPressed.Y + curContentPoint.Y - notePosRelativeToContentWhenPressed.Y);
+            draggingNote.X = noteXYWhenPressed.X + curContentPoint.X - notePosRelativeToContentWhenPressed.X;
+            draggingNote.Y = Convert.ToInt32(noteXYWhenPressed.Y + curContentPoint.Y - notePosRelativeToContentWhenPressed.Y);
             e.Handled = true;
         }
     }
