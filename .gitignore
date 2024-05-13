@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.idea/.idea.MuzU Studio/.idea
+/MuzU Studio/bin/Debug/net8.0-windows
+/MuzU Studio/obj
+/MuzUStandard/bin/Debug/net8.0-windows
+/MuzUStandard/obj
+/ResourceLibrary/bin/Debug
+/ResourceLibrary/obj
+/.vs/MuzU Studio
+*.bin
+/MuzU Studio/bin
+/MuzUStandard/bin

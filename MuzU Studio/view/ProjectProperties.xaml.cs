@@ -41,7 +41,7 @@ public partial class ProjectProperties : Window
     private void MusicLocalPath_Click(object sender, RoutedEventArgs e)
     {
         var picker = new OpenFileDialog();
-        picker.Filter = "Audio (*.mp3,*.acc,*wma)|*.acc;*.mp3;*.wma|All Files (*.*)|*.*";
+        picker.Filter = "Audio (*.mp3,*.acc,*wma,*m4a)|*.acc;*.mp3;*.wma;*m4a|All Files (*.*)|*.*";
         if (picker.ShowDialog() ?? false)
         {
             projectPropertiesVM.MusicLocalPath = picker.FileName;
