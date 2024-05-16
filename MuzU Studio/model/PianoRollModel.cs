@@ -68,7 +68,8 @@ public class PianoRollModel
     }
     #endregion
 
-    public bool EditingLocked = true;
+    public bool EditingLocked { get; set; } = true;
+    public bool RecordEnabled { get; set; } = true;
 
     #region TimeLine
     private readonly ObservableCollection<TimelineItemViewModel> timelineItems = new();

@@ -105,21 +105,30 @@
                  ItemsSource="{Binding Sequences}"
                  SelectedItem="{Binding SelectedSequence, Mode=OneWayToSource}"
                  HorizontalContentAlignment="Stretch"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" HorizontalAlignment="Center" Width="110"
-                    Content="New" Margin="5"
-                    Command="{Binding AddNewSequenceCommand}"/>
-            <Button Grid.Column="1" HorizontalAlignment="Center" Width="110"
-                    Content="Midi(Simple)" Margin="5"
+        <Menu Grid.Row="1">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Grid.Column="0" Margin="5"
+                      Header="New"
+                      Command="{Binding AddNewSequenceCommand}">
+            </MenuItem>
+            <MenuItem Margin="5" Grid.Column="1"
+                      Header="More">
+                <MenuItem 
+                    Header="Midi file"
                     Click="AddSequenceFromMidi_Click"/>
-            <Button Grid.Column="2" HorizontalAlignment="Center" Width="110"
-                    Content="Midi(Raw)" Margin="5"
-                    Click="AddSequenceFromMidi_Click"/>
-        </Grid>
+                <MenuItem 
+                    Header="Every Beat"
+                    Command="{Binding AddNewSequenceEveryBeatCommand}"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </UserControl>

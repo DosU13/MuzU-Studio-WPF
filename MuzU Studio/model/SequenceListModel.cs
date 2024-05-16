@@ -10,14 +10,12 @@ namespace MuzU_Studio.model;
 public class SequenceListModel: BindableBase
 {
     private readonly ProjectRepository _projectRepository;
-    private readonly PanAndZoomModel _panAndZoomModel;
 
     private readonly ObservableCollection<SequenceViewModel> sequences = new();
     private readonly ObservableCollection<NoteViewModel> notes = new();
 
-    public SequenceListModel(ProjectRepository projectRepository, PanAndZoomModel panAndZoomModel) {
+    public SequenceListModel(ProjectRepository projectRepository) {
         this._projectRepository = projectRepository;
-        _panAndZoomModel = panAndZoomModel;
         sequences.CollectionChanged += Sequences_CollectionChanged;
         notes.CollectionChanged += Notes_CollectionChanged;
         ReinitCollections();
@@ -79,7 +77,8 @@ public class SequenceListModel: BindableBase
                 foreach (NoteViewModel note in sequenceViewModel.Notes)
                     notes.Add(note);
             }
-            _panAndZoomModel.ResetWidth();
+            var panAndZoomModel = App.Current.Services.GetRequiredService<PanAndZoomModel>();
+            panAndZoomModel.ResetWidth();
             SelectedSequence = Sequences.FirstOrDefault();
             isCollectionChangedEventEnabled = true;
         }));
@@ -89,6 +88,26 @@ public class SequenceListModel: BindableBase
     {
         var newSequence = new Sequence() { Name = "New Sequence" };
         Sequences.Add(new SequenceViewModel(newSequence));
+    }
+
+    internal void AddNewSequenceEveryBeat()
+    {
+        var newSequence = new Sequence() { Name = "Every Beat" };
+        var pianoRollModel = App.Current.Services.GetRequiredService<PianoRollModel>();
+        var panAndZoomModel = App.Current.Services.GetRequiredService<PanAndZoomModel>();
+        var beatLengthPixels = pianoRollModel.BeatLength;
+        var beatLengthMicrosecs = PanAndZoomModel.ToMicroseconds(beatLengthPixels);
+        for (int i = 0; i < panAndZoomModel.ContentViewportWidth / beatLengthPixels; i++)
+        {
+            newSequence.NodeList.Add(new Node()
+            {
+                Time = PanAndZoomModel.ToMicroseconds(i * beatLengthPixels),
+                Length = beatLengthMicrosecs,
+                Note = 64
+            });
+        }
+        Sequences.Add(new SequenceViewModel(newSequence));
+        ReinitCollections();
     }
 
     /// <summary>

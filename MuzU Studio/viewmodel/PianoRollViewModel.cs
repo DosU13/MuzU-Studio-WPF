@@ -100,4 +100,5 @@ internal class PianoRollViewModel: BindableBase
     public double BeatLength => PianoRollModel.BeatLength;
 
     public bool EditingLocked => PianoRollModel.EditingLocked;
+    public bool RecordEnabled => PianoRollModel.RecordEnabled;
 }

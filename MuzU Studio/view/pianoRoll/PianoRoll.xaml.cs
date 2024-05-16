@@ -142,6 +142,12 @@ public sealed partial class PianoRoll : UserControl
                     break;
             }
         }
+        else if(PianoRollViewModel.RecordEnabled)
+        {
+            Dictionary<char, int> keyToNote = new();
+            var newNote = new NoteViewModel();
+            PianoRollViewModel.AddNote(newNote);
+        }
         e.Handled = true;
     }
 

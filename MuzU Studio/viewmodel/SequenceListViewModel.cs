@@ -30,4 +30,9 @@ public class SequenceListViewModel
     {
         MessageBox.Show("Not implemented yet");
     }
+
+    private ICommand? addNewSequenceEveryBeatCommand;
+    public ICommand AddNewSequenceEveryBeatCommand =>
+        addNewSequenceEveryBeatCommand ??= new RelayCommand(param => sequenceModel.AddNewSequenceEveryBeat());
+
 }

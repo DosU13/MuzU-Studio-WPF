@@ -50,7 +50,23 @@ internal class MediaControlsViewModel : BindableBase
             OnPropertyChanged();
         }
     }
+
+    public bool RecordEnabled
+    {
+        get => pianoRollModel.RecordEnabled;
+        set
+        {
+            pianoRollModel.RecordEnabled = value;
+            OnPropertyChanged();
+        }
+    }
+
     private ICommand? toggleEditableCommand;
+
     public ICommand ToggleEditableCommand =>
             toggleEditableCommand ??= new RelayCommand(param => EditingLocked = !EditingLocked);
+
+    public ICommand? toggleRecordCommand;
+    public ICommand ToggleRecordCommand =>
+        toggleRecordCommand ??= new RelayCommand(param => RecordEnabled = !RecordEnabled);
 }
