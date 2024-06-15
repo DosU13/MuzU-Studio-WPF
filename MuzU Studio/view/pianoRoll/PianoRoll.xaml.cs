@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MuzU_Studio.model;
 using MuzU_Studio.service;
+using MuzU_Studio.util;
 using MuzU_Studio.viewmodel;
 using System;
 using System.Diagnostics;
@@ -142,11 +143,10 @@ public sealed partial class PianoRoll : UserControl
                     break;
             }
         }
-        else if(PianoRollViewModel.RecordEnabled)
+        else if(PianoRollViewModel.RecordEnabled && !PianoRollViewModel.EditingLocked)
         {
-            Dictionary<char, int> keyToNote = new();
-            var newNote = new NoteViewModel();
-            PianoRollViewModel.AddNote(newNote);
+            PianoRollViewModel.AddNoteAtCurrentTime(
+                KeyboardToNote.Convert(e.Key), NoteCreationWidth);
         }
         e.Handled = true;
     }

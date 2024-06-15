@@ -1,4 +1,5 @@
 ﻿using Melanchall.DryWetMidi.MusicTheory;
+using Microsoft.Extensions.DependencyInjection;
 using MuzU_Studio.model;
 using MuzU_Studio.service;
 using MuzU_Studio.util;
@@ -69,6 +70,19 @@ internal class PianoRollViewModel: BindableBase
         {
             X = pianoRollModel.SnapToGridByFloor(point.X),
             Y = (int)(point.Y / PanAndZoomModel.NOTE_HEIGHT)*PanAndZoomModel.NOTE_HEIGHT,
+            Width = width
+        };
+        Notes.Add(newNote);
+    }
+
+    internal void AddNoteAtCurrentTime(int note, double width)
+    {
+        var audioService = App.Current.Services.GetService<AudioService>()!;
+        Node newNode = new();
+        NoteViewModel newNote = new(newNode, sequenceModel.SelectedSequence)
+        {
+            X = audioService.PlayheadPosition,
+            Y = note * PanAndZoomModel.NOTE_HEIGHT,
             Width = width
         };
         Notes.Add(newNote);

@@ -94,7 +94,7 @@ public sealed partial class Visualizer : UserControl
         PreviousLyricsBox.Text = previousLyrics;
         var nextIndex = index;
         var nextLyrics = "";
-        while(nextIndex < lyricsList.Count && EndsWithLetter(lyricsList[nextIndex].LyricsWithoutNewlines))
+        while(nextIndex < lyricsList.Count-1 && EndsWithLetter(lyricsList[nextIndex].LyricsWithoutNewlines))
         {
             nextIndex++;
             nextLyrics += lyricsList[nextIndex].LyricsWithoutNewlines;
