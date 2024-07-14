@@ -86,6 +86,20 @@
                             Command="{Binding ChangeBPMCommand}"/>
                 </Grid>
             </GroupBox>
+            <GroupBox Header="Move all by beat amount">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                             Text="{Binding MoveAmount, Mode=TwoWay}"
+                             Margin="0,0,5,0"/>
+                    <Button Grid.Column="1"
+                            Content="Move"
+                            Command="{Binding MoveCommand}"/>
+                </Grid>
+            </GroupBox>
             <GroupBox Header="Lyrics"
                       Visibility="{Binding IsThereSequenceSelected, 
                             Converter={StaticResource visibilityConverter}}">

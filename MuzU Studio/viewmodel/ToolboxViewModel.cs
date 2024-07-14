@@ -217,6 +217,36 @@ internal class ToolboxViewModel : BindableBase
     }
     #endregion
 
+
+    #region Move all notes by beat amount
+    private double moveAmount;
+    public double MoveAmount
+    {
+        get => moveAmount;
+        set => SetProperty(ref moveAmount, value);
+    }
+
+
+    private ICommand? moveCommand;
+    public ICommand MoveCommand
+    {
+        get
+        {
+            moveCommand ??= new RelayCommand(param => Move());
+            return moveCommand;
+        }
+    }
+
+    private void Move()
+    {
+        var moveXAmount = moveAmount * pianoRollModel.BeatLength;
+        foreach (var note in sequenceListModel.SelectedSequence?.Notes.ToList() ?? [])
+        {
+            note.X += moveXAmount;
+        }
+    }
+    #endregion
+
     #region Lyrics
 
     public bool LyricsEnabled => SelectedSequence?.LyricsEnabled ?? false;

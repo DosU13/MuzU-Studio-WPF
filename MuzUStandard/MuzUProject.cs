@@ -1,6 +1,7 @@
 ﻿using MuzUStandard.data;
 using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
 //using System.Text.Json;
 
 namespace MuzUStandard
@@ -34,6 +35,10 @@ namespace MuzUStandard
         public void Save(Stream stream)
         {
             //var json = JsonSerializer.Serialize(MuzUData);
+            foreach(var sequence in MuzUData.SequenceList)
+            {
+                sequence.NodeList = sequence.NodeList.OrderBy(x => x.Time).ToList();
+            }
             var json = JsonConvert.SerializeObject(MuzUData);
             stream.SetLength(0);
             using (var writer = new StreamWriter(stream))

@@ -19,7 +19,18 @@ public class SequenceViewModel : BindableBase, ISequenceSharedProperty
     {
         this.Sequence = sequence;
         Hue = sequence.SoundClassification.Hue;
-        foreach(var node in sequence.NodeList) 
+
+        if (sequence.SequenceTemplate.LyricsEnabled)
+        {
+            sequence.NodeList.RemoveAll(x => x.Lyrics == null);
+        }
+        else
+        {
+            sequence.NodeList.RemoveAll(x => x.Lyrics != null);
+        }
+        sequence.NodeList = sequence.NodeList.OrderBy(x => x.Time).ToList();
+
+        foreach (var node in sequence.NodeList) 
             Notes.Add(new NoteViewModel(node, this));
 
         var list = Notes.Select(x => x.X).ToList();
